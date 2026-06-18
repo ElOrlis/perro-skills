@@ -1,0 +1,16 @@
+{
+  "entries": {
+    "anthropic:claude-opus-4-7": {
+      "recorded_at": 1781807415,
+      "result": {
+        "kind": "Ok"
+      }
+    },
+    "anthropic:claude-sonnet-4-6": {
+      "recorded_at": 1781807421,
+      "result": {
+        "kind": "Ok"
+      }
+    }
+  }
+}

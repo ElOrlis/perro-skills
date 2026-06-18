@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "grill-me": {
+      "source": "alirezarezvani/claude-skills",
+      "sourceType": "github",
+      "skillPath": "engineering/grill-me/skills/grill-me/SKILL.md",
+      "computedHash": "2c7cc3444a7e7b8c510d2cf366cecf7374d054b26421aa5ab449c4761d28294e"
+    }
+  }
+}

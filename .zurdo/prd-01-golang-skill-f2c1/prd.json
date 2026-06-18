@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "prd_path": "docs/golang/prds/prd-01-golang-skill.md",
+  "prd_hash": "47f78160ed3d5e3fb632ff7ec8bb94e2a3352ca5",
+  "started_at": "2026-06-18T18:30:21.414374Z",
+  "last_updated": "2026-06-18T18:40:19.187516Z",
+  "tasks": {
+    "task-integrate-verify": {
+      "status": "passed-pending-review",
+      "attempts": 0,
+      "passed_at": "2026-06-18T18:40:19.187515Z",
+      "iterations": []
+    },
+    "task-ref-concurrency-memory": {
+      "status": "passed-pending-review",
+      "attempts": 1,
+      "passed_at": "2026-06-18T18:39:11.740249Z",
+      "iterations": [
+        {
+          "attempt": 1,
+          "started_at": "2026-06-18T18:36:26.158681Z",
+          "ended_at": "2026-06-18T18:39:11.740249Z",
+          "model": "claude-opus-4-7",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-concurrency-memory-1.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-concurrency-memory-1.err",
+          "agent_stdout_bytes": 2509,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 227521,
+          "tokens_out": 8720,
+          "cost_usd_est": 4.0668,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/programing-languages/golang/references/concurrency-and-memory.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            }
+          ]
+        }
+      ]
+    },
+    "task-ref-idioms": {
+      "status": "passed-pending-review",
+      "attempts": 1,
+      "passed_at": "2026-06-18T18:32:54.628298Z",
+      "iterations": [
+        {
+          "attempt": 1,
+          "started_at": "2026-06-18T18:31:07.830046Z",
+          "ended_at": "2026-06-18T18:32:54.628298Z",
+          "model": "claude-opus-4-7",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-idioms-1.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-idioms-1.err",
+          "agent_stdout_bytes": 1640,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 125847,
+          "tokens_out": 6557,
+          "cost_usd_est": 2.3795,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/programing-languages/golang/references/idioms.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            }
+          ]
+        }
+      ]
+    },
+    "task-ref-naming-style": {
+      "status": "passed-pending-review",
+      "attempts": 1,
+      "passed_at": "2026-06-18T18:35:10.693066Z",
+      "iterations": [
+        {
+          "attempt": 1,
+          "started_at": "2026-06-18T18:32:54.654974Z",
+          "ended_at": "2026-06-18T18:35:10.693066Z",
+          "model": "claude-sonnet-4-6",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-naming-style-1.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-naming-style-1.err",
+          "agent_stdout_bytes": 2598,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 270700,
+          "tokens_out": 4473,
+          "cost_usd_est": 0.8792,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/programing-languages/golang/references/naming-and-style.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            }
+          ]
+        }
+      ]
+    },
+    "task-ref-philosophy": {
+      "status": "passed-pending-review",
+      "attempts": 1,
+      "passed_at": "2026-06-18T18:40:19.159716Z",
+      "iterations": [
+        {
+          "attempt": 1,
+          "started_at": "2026-06-18T18:39:11.767291Z",
+          "ended_at": "2026-06-18T18:40:19.159716Z",
+          "model": "claude-sonnet-4-6",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-philosophy-1.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-philosophy-1.err",
+          "agent_stdout_bytes": 2239,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 285331,
+          "tokens_out": 2631,
+          "cost_usd_est": 0.8955,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/programing-languages/golang/references/philosophy.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            }
+          ]
+        }
+      ]
+    },
+    "task-ref-testing": {
+      "status": "passed-pending-review",
+      "attempts": 1,
+      "passed_at": "2026-06-18T18:36:26.127602Z",
+      "iterations": [
+        {
+          "attempt": 1,
+          "started_at": "2026-06-18T18:35:10.721758Z",
+          "ended_at": "2026-06-18T18:36:26.127602Z",
+          "model": "claude-sonnet-4-6",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-testing-1.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-ref-testing-1.err",
+          "agent_stdout_bytes": 2113,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 209338,
+          "tokens_out": 3083,
+          "cost_usd_est": 0.6743,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/programing-languages/golang/references/testing.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            }
+          ]
+        }
+      ]
+    },
+    "task-skill-scaffold": {
+      "status": "passed-pending-review",
+      "attempts": 1,
+      "passed_at": "2026-06-18T18:31:07.806295Z",
+      "iterations": [
+        {
+          "attempt": 1,
+          "started_at": "2026-06-18T18:30:21.431768Z",
+          "ended_at": "2026-06-18T18:31:07.806295Z",
+          "model": "claude-sonnet-4-6",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-skill-scaffold-1.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-golang-skill-f2c1/iterations/task-skill-scaffold-1.err",
+          "agent_stdout_bytes": 1638,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 131185,
+          "tokens_out": 1599,
+          "cost_usd_est": 0.4175,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/programing-languages/golang/SKILL.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

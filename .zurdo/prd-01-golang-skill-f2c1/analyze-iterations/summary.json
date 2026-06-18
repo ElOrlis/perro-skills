@@ -1,0 +1,11 @@
+{
+  "iterations": 0,
+  "exit_code": 0,
+  "exit_condition": "already-clean",
+  "per_iteration_warning_counts": [],
+  "per_warning_trajectory": [],
+  "aggregate_tokens_in": 0,
+  "aggregate_tokens_out": 0,
+  "aggregate_cost_usd_est": 0.0,
+  "aggregate_cost_partial": false
+}
