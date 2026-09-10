@@ -109,6 +109,7 @@ _dry_stub() {
       n=$(next_dry_num); printf 'https://github.com/%s/issues/%d\n' "$REPO" "$n" ;;
     project\ create*)                            echo '{"number":1,"id":"PVT_dryrun"}' ;;
     project\ link*)                              echo '' ;;
+    project\ edit*)                              echo '' ;;
     project\ field-create*)                      echo '{"id":"PVTSSF_dryrun"}' ;;
     project\ item-add*)                          echo '{"id":"PVTI_dryrun"}' ;;
     api\ repos/*/issues/*)
@@ -1049,6 +1050,22 @@ project_link_repo() {
   run_gh project link "$project_number" --owner "$OWNER" --repo "$REPO" >/dev/null 2>&1 || true
 }
 
+# Project description and README are projections of scope.md: the description
+# is the first Destination paragraph (GitHub caps it at 256 chars), the README
+# is the scope body without the marker. Overwritten on every scope run; never
+# written by board, which has no scope.md in hand.
+project_set_metadata() {
+  local project_number="$1" description="$2" readme_file="$3"
+  description=$(printf '%s' "$description" | awk 'BEGIN{RS=""} NR==1{gsub(/\n/," "); print; exit}')
+  description=$(printf '%s' "$description" | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//')
+  if [ "${#description}" -gt 256 ]; then
+    description="${description:0:253}..."
+  fi
+  run_gh project edit "$project_number" --owner "$OWNER" \
+    --description "$description" \
+    --readme "$(cat "$readme_file")" >/dev/null 2>&1 || true
+}
+
 # Add issue to project, creating project + Status field if needed.
 project_ensure_and_add() {
   local title="$1" issue_num
@@ -1211,8 +1228,9 @@ do_scope() {
   body="${body}## Phases"$'\n\n'"${phases_table}"$'\n'
   body="${body}## Not yet specified"$'\n\n'"${sec_notyet}"$'\n\n'
   body="${body}## Out of scope"$'\n\n'"${sec_out}"$'\n'
-  local body_file
+  local body_file readme_file
   body_file=$(printf '%s' "$body" | write_tmp_body)
+  readme_file=$(printf '# %s\n\n%s' "$scope_title" "${body#"$smarker"$'\n\n'}" | write_tmp_body)
 
   # Find or create scope issue.
   local snum
@@ -1338,6 +1356,7 @@ do_scope() {
       items+=("${TK_NUM[$name]}")
     done
     project_number=$(project_ensure_and_add "$project_title" "${items[@]}")
+    project_set_metadata "$project_number" "$sec_dest" "$readme_file"
   fi
 
   # (6) Summary.
@@ -1349,7 +1368,7 @@ do_scope() {
   echo "  tickets: created=$created updated=$updated closed=$closed"
   echo "  edges: mode=$edges_mode"
   if [ -n "$project_number" ]; then
-    echo "  project: $project_title (#$project_number)"
+    echo "  project: $project_title (#$project_number); description + README refreshed from scope.md"
   else
     echo "  project: skipped"
   fi

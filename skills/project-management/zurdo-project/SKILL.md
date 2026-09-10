@@ -23,13 +23,17 @@ Orchestrate a multi-phase initiative from raw idea to shipped phases: scope it, 
 
 ## Decision Rules
 
-**`scope.md` is the source of truth; the scope issue is a projection; never edit the file from GitHub state.**
-GitHub issues are read-only projections. Editing from them creates drift and breaks the single-source model.
+**`scope.md` is the source of truth; the scope issue, the Project description, and the Project README are projections; never edit the file from GitHub state.**
+GitHub issues and Project fields are read-only projections. Editing from them creates drift and breaks the single-source model.
 → see references/scope-map.md
 
 **One initiative = one Project + one scope issue; one phase = one PRD = one milestone + one epic, all inside that Project.**
 The Project board is the wayfinding surface; every phase's epic and milestone belong to it. Mixing initiatives into one Project makes status filtering unreliable.
 → see references/phases.md
+
+**The Project's description is the Destination and its README is the scope body; `scope` refreshes both, so re-run it after every `scope.md` edit.**
+A newcomer opens the board before the issue list, so the board's front page must state the destination and the phase table without a click-through. Hand-edits to those fields are lost on the next `scope` run.
+→ see references/scope-map.md
 
 **Ticket when the question is sharp, fog when it is not; never pre-slice fog.**
 Slicing fog early produces tickets that evaporate or contradict each other. Leave foggy areas in the Notes section until a research or grilling ticket sharpens them.
@@ -99,7 +103,7 @@ All GitHub writes go through `scripts/zurdo-github.sh`. Always pass `--dry-run` 
 | Invocation | Purpose |
 |---|---|
 | `zurdo-github.sh scope --dry-run` | Preview scope issue creation |
-| `zurdo-github.sh scope` | Create (or update) the scope issue from `scope.md`; creates the Project and links it to the repo |
+| `zurdo-github.sh scope` | Create (or update) the scope issue from `scope.md`; creates the Project, links it to the repo, and sets the Project description and README from `scope.md` |
 | `zurdo-github.sh ticket --dry-run` | Preview ticket issue creation |
 | `zurdo-github.sh ticket` | Create a research or grilling ticket issue |
 | `zurdo-github.sh publish --dry-run --scope <n> <prd>` | Preview full publish: milestone, epic, task issues, board membership |

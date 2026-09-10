@@ -9,6 +9,8 @@ Data model: how Zurdo PRD concepts map to GitHub milestones, epic issues, task i
 | PRD concept | GitHub object |
 |---|---|
 | `scope.md` (project scope file) | Scope issue (top-level container; all PRD epics nest under it as sub-issues when `--scope` is given) |
+| `## Destination` first paragraph in `scope.md` | Projects v2 project short description (capped at 256 chars; rewritten on every `scope` run) |
+| Whole `scope.md` body | Projects v2 project README, under a `# <initiative title>` heading (rewritten on every `scope` run) |
 | Ticket file (`tickets/<phase>-<name>.md`) | Ticket issue (phase-level deliverable; sub-issue of the scope issue; phase epics are blocked by it) |
 | `# PRD: <title>` | Milestone title + epic issue title |
 | Intro text (after H1, before first `## Task:`) | Milestone description + epic issue body intro |

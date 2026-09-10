@@ -55,7 +55,7 @@ A publishing and sync skill. The `SKILL.md` spine carries the high-frequency dec
 - **github-model.md** — Data model: how PRD concepts map to GitHub milestones, epics, task issues, labels, markers, and dependency edges
 - **status-sync.md** — Status mapping: how each Zurdo task outcome translates to GitHub label swaps, issue state, and comments
 - **runbook.md** — Operational runbook: auth prerequisites, invocation examples, re-run safety, rollback, and troubleshooting
-- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `scope`, `ticket`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags. `scope` and `board` create the Projects v2 project and link it to the repo
+- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `scope`, `ticket`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags. `scope` and `board` create the Projects v2 project and link it to the repo; `scope` also sets the Project description and README from `scope.md`
 
 ### `zurdo-project`
 

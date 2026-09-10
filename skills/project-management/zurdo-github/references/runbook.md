@@ -49,7 +49,7 @@ Run every step in sequence; do not skip `--dry-run` passes.
 2. ./scripts/zurdo-github.sh bootstrap --dry-run <prd>                   # review label plan and About/doc actions
 3. ./scripts/zurdo-github.sh bootstrap <prd>                             # live: labels, optional About, conventions doc
 4. ./scripts/zurdo-github.sh scope --dry-run <prd>                       # review scope issue + project creation plan
-5. ./scripts/zurdo-github.sh scope <prd>                                 # live: scope issue, Projects v2 project linked to the repo
+5. ./scripts/zurdo-github.sh scope <prd>                                 # live: scope issue, Projects v2 project linked to the repo with description + README from scope.md
 6. ./scripts/zurdo-github.sh ticket --dry-run <prd>                      # review ticket issues + blocked-by edges
 7. ./scripts/zurdo-github.sh ticket <prd>                                # live: ticket issues, sub-issue links, edges
 8. ./scripts/zurdo-github.sh publish --dry-run --scope <n> <prd>         # read the plan: counts, edges, labels, repo
@@ -99,6 +99,10 @@ and exits 3. Run `./scripts/zurdo-github.sh scope <prd>` (or confirm the correct
 **`--project` title for `board`**
 
 `board` uses `--project <project-title>` to find or create the Projects v2 project. Both `scope` and `board` link the project to the target repository (`gh project link`) right after creating it, so it appears under the repo's **Projects** tab; the link call is idempotent and is re-issued on every run. When `--project` is omitted, the project title defaults to the PRD title. Pass `--project` explicitly when the project was created by `scope` under a different title, so `board` attaches task issues to the same project.
+
+**Project description and README**
+
+`scope` runs `gh project edit` after the project exists: `--description` gets the first paragraph of `## Destination` (trimmed to 256 characters, GitHub's cap), and `--readme` gets the scope body rendered exactly as the scope issue body minus the marker comment, under a `# <initiative title>` heading. Both are overwritten on every `scope` run; edit `scope.md` and re-run, never the Project settings page. `board` never touches either field because it works from a PRD and has no `scope.md` in hand. The dry-run plan shows the full `gh project edit` payload, so read it to confirm the description reads as a one-liner.
 
 **Hand-closed tickets**
 

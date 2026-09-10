@@ -80,7 +80,7 @@ zurdo-github.sh publish --scope <n>
 # Create or update the Project board (also links it to the repo)
 zurdo-github.sh board --project "<initiative title>"
 
-# Refresh the scope issue to reflect the new running phase
+# Refresh the scope issue and the Project description/README to reflect the new running phase
 zurdo-github.sh scope --dry-run
 zurdo-github.sh scope
 ```

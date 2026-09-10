@@ -56,7 +56,7 @@ Run these steps once, at initiative start. Stop after step 9 even if more work i
    zurdo-github.sh scope --dry-run
    ```
 
-   Read the full plan. Confirm the initiative title, the Phases table, and the ticket list are correct.
+   Read the full plan. Confirm the initiative title, the Phases table, the ticket list, and the `gh project edit` payload (description one-liner, README body) are correct.
 
 6. **Create the scope issue**:
 
@@ -176,6 +176,8 @@ Run the board command after each successful publish, not before. The board enrol
 
 **Project-to-repo link.** Projects v2 projects are owned by the user or org, not the repo. Both `scope` and `board` link the project to the target repository immediately after creating it, so it appears under the repo's **Projects** tab and issues can be added from the sidebar. Verify the link in the sandbox check below; if the Projects tab is empty, re-run `scope` (the link call is idempotent).
 
+**Project description and README.** Only `scope` writes them: the description is the Destination paragraph and the README is the scope body. `board` leaves both alone. After any `scope.md` edit that touches the Destination, the phase table, or a decision, re-run `scope` so the board's front page catches up; do not patch the fields in the GitHub UI.
+
 ---
 
 ## Failure handling
@@ -233,6 +235,7 @@ Follow the first-session sequence verbatim. Use a minimal initiative: one destin
 | Epic sub-issue | After publishing phase-01, its epic issue appears as a sub-issue under the scope issue, labeled with the phase title. |
 | Blocked-by badge | On the phase-02 epic (after it is published), a `blocked-by` relationship points to the open research ticket. The badge is visible in the issue sidebar. |
 | Project board | Listed under the repository's **Projects** tab (linked, not just owner-level). Grouped by milestone. Phase-01 milestone contains the epic and its task issues. Phase-02 milestone is absent until its PRD is published. |
+| Project description and README | The project's short description reads as the Destination one-liner. The README (project settings, or the README panel on the board) shows the initiative title, all six scope sections, and the phases table with the same statuses as `scope.md`. Edit the Destination in `scope.md`, re-run `scope`, and confirm both fields change. |
 
 ### Teardown
 

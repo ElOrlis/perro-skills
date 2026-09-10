@@ -41,8 +41,8 @@ Older GitHub plans lack the sub-issues beta and the dependency graph; graceful d
 Edits flow one direction: `scope.md` and ticket files → GitHub issues. Pulling GitHub state into these source files creates drift.
 → see references/github-model.md
 
-**`scope` creates the Project, links it to the repo, and skips with a hint when `scope.md` is absent; `publish --scope <n>` nests the epic as a sub-issue of issue `<n>`.**
-The scope issue must exist before `publish --scope` runs. `publish --scope` exits 3 with `run scope first` when the scope marker is not found.
+**`scope` creates the Project, links it to the repo, sets its description and README from `scope.md`, and skips with a hint when `scope.md` is absent; `publish --scope <n>` nests the epic as a sub-issue of issue `<n>`.**
+The Project description is the Destination paragraph and the Project README is the rendered scope body, both overwritten on every `scope` run so the board's front page never drifts from the file. The scope issue must exist before `publish --scope` runs. `publish --scope` exits 3 with `run scope first` when the scope marker is not found.
 → see references/runbook.md
 
 **`passed` closes; `passed-pending-review` labels and stays open until `zurdo review`; `failed` labels and comments the failed hints; swap status labels, never stack.**
@@ -61,8 +61,8 @@ Dry-run output is the only way to verify scope before mutations. Missing scopes 
 Project boards require the `project` scope and an org that has enabled Projects v2. Core publishing must not depend on either.
 → see references/runbook.md
 
-**Touch the milestone description always, repo About only when empty and `--about` is passed, the README never.**
-Milestone descriptions are safe to overwrite on every sync. The About field is owned by the repo maintainer once set and requires the `--about` flag to write. The README is user-controlled content.
+**Touch the milestone description always, repo About only when empty and `--about` is passed, the repo README never; the Project README is the script's to overwrite.**
+Milestone descriptions are safe to overwrite on every sync. The About field is owned by the repo maintainer once set and requires the `--about` flag to write. The repo README is user-controlled content. The Projects v2 README is a projection of `scope.md`, so `scope` rewrites it every run.
 → see references/runbook.md
 
 ## Modes
@@ -76,7 +76,7 @@ scripts/zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-sl
 | Mode | What it does |
 |---|---|
 | `bootstrap` | Ensures the labels exist (type, effort from the PRD's `Effort` values, status, triage five); sets repo About only when empty and `--about` is given; appends `## Zurdo operations` to `docs/agents/issue-tracker.md` when that file exists and lacks the heading. |
-| `scope` | Reads `scope.md` and creates or updates the scope issue with the `zurdo:scope` label; creates the Projects v2 project (title from `--project` or `scope.md` title) and links it to the repository so it shows under the repo's Projects tab; exits 3 with a hint when `scope.md` is absent. |
+| `scope` | Reads `scope.md` and creates or updates the scope issue with the `zurdo:scope` label; creates the Projects v2 project (title from `--project` or `scope.md` title), links it to the repository so it shows under the repo's Projects tab, and sets the Project's description (Destination paragraph, capped at 256 chars) and README (rendered scope body) on every run; exits 3 with a hint when `scope.md` is absent. |
 | `ticket` | Reads ticket files (`tickets/<phase>-<name>.md`) and projects each to a GitHub issue with the `zurdo:ticket` label; links each ticket as a sub-issue of the scope issue; wires phase-epic-to-ticket blocked-by edges in a second pass. |
 | `publish` | Runs the label step, then milestone → epic issue → task issues → second-pass wiring (sub-issues, blocked-by edges, `Blocked by:` lines) → epic body. When `--scope <n>` is given, nests the epic as a sub-issue of issue `<n>`. Re-runs update in place by marker. |
 | `sync-status` | Reads `.zurdo/<slug>/prd.json` (`--slug`, else newest) and applies the status mapping: close, label swap, comment. Refreshes the epic's task table. |

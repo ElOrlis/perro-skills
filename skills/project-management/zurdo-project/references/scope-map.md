@@ -76,16 +76,24 @@ The destination belongs in `docs/<initiative>/scope.md` under `## Destination`. 
 
 **Out of scope** — explicit exclusions with a one-line reason each. Items land here because they are outside the destination's scope, not because they are hard or deferred.
 
-### The scope issue is a projection
+### The scope issue, Project description, and Project README are projections
 
-The scope issue on GitHub is a rendered view of `scope.md`. Refresh it with:
+`scope.md` is rendered onto three GitHub surfaces, all by the same command:
+
+| Surface | What it shows | Source section |
+|---|---|---|
+| Scope issue body | All six sections, phases table re-rendered with epic and milestone links | whole file |
+| Project description | The first Destination paragraph, one line, capped at 256 characters | `## Destination` |
+| Project README | The scope issue body without the marker, under a `# <initiative title>` heading | whole file |
+
+Refresh all three with:
 
 ```bash
 zurdo-github.sh scope --dry-run   # preview
 zurdo-github.sh scope             # live refresh
 ```
 
-Always run `--dry-run` first and read the plan. Never edit the scope issue body directly.
+Always run `--dry-run` first and read the plan. Never edit the scope issue body, the Project description, or the Project README directly; the next `scope` run overwrites them. Keep the first Destination paragraph to one or two sentences so the description reads cleanly in the Projects list; the truncation is a safety net, not a formatting tool.
 
 ---
 
