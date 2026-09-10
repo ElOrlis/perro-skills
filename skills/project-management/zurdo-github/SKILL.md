@@ -41,7 +41,7 @@ Older GitHub plans lack the sub-issues beta and the dependency graph; graceful d
 Edits flow one direction: `scope.md` and ticket files → GitHub issues. Pulling GitHub state into these source files creates drift.
 → see references/github-model.md
 
-**`scope` creates the Project and skips with a hint when `scope.md` is absent; `publish --scope <n>` nests the epic as a sub-issue of issue `<n>`.**
+**`scope` creates the Project, links it to the repo, and skips with a hint when `scope.md` is absent; `publish --scope <n>` nests the epic as a sub-issue of issue `<n>`.**
 The scope issue must exist before `publish --scope` runs. `publish --scope` exits 3 with `run scope first` when the scope marker is not found.
 → see references/runbook.md
 
@@ -76,11 +76,11 @@ scripts/zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-sl
 | Mode | What it does |
 |---|---|
 | `bootstrap` | Ensures the labels exist (type, effort from the PRD's `Effort` values, status, triage five); sets repo About only when empty and `--about` is given; appends `## Zurdo operations` to `docs/agents/issue-tracker.md` when that file exists and lacks the heading. |
-| `scope` | Reads `scope.md` and creates or updates the scope issue with the `zurdo:scope` label; creates the Projects v2 project (title from `--project` or `scope.md` title); exits 3 with a hint when `scope.md` is absent. |
+| `scope` | Reads `scope.md` and creates or updates the scope issue with the `zurdo:scope` label; creates the Projects v2 project (title from `--project` or `scope.md` title) and links it to the repository so it shows under the repo's Projects tab; exits 3 with a hint when `scope.md` is absent. |
 | `ticket` | Reads ticket files (`tickets/<phase>-<name>.md`) and projects each to a GitHub issue with the `zurdo:ticket` label; links each ticket as a sub-issue of the scope issue; wires phase-epic-to-ticket blocked-by edges in a second pass. |
 | `publish` | Runs the label step, then milestone → epic issue → task issues → second-pass wiring (sub-issues, blocked-by edges, `Blocked by:` lines) → epic body. When `--scope <n>` is given, nests the epic as a sub-issue of issue `<n>`. Re-runs update in place by marker. |
 | `sync-status` | Reads `.zurdo/<slug>/prd.json` (`--slug`, else newest) and applies the status mapping: close, label swap, comment. Refreshes the epic's task table. |
-| `board` | Finds or creates one repo-level Projects v2 project (title from `--project` or the PRD title) with a `Status` field, adds every task issue, sets Status from prd.json. Exits 3 with a `gh auth refresh -s project` hint when the scope is missing. |
+| `board` | Finds or creates one repo-level Projects v2 project (title from `--project` or the PRD title), links it to the repository, adds a `Status` field, adds every task issue, sets Status from prd.json. Exits 3 with a `gh auth refresh -s project` hint when the scope is missing. |
 
 **Flags**
 

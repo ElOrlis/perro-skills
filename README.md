@@ -36,7 +36,7 @@ skills-lock.json             Lockfile for vendored external skills
 |-------|------|-------------|
 | `golang` | `skills/programing-languages/golang/` | Writing or modifying Go source — idioms, naming/style, concurrency correctness, testing patterns |
 | `zurdo-github` | `skills/project-management/zurdo-github/` | Publishing a Zurdo PRD to GitHub as milestones, epics, issues, labels, or a project board; syncing Zurdo run status back to GitHub issues |
-| `zurdo-project` | `skills/project-management/zurdo-project/` | Starting a new initiative from an idea, scoping it into phases, setting up a GitHub Project, asking what the next phase is, or running a phase review after a Zurdo run |
+| `zurdo-project` | `skills/project-management/zurdo-project/` | Starting a new initiative from an idea, scoping it into phases, setting up a GitHub Project, asking what the next phase is, or running a phase review after a Zurdo run. Requires the bundled `zurdo-prd-author`, `zurdo-domain`, and `zurdo-lessons` skills (`zurdo skills install --all`) |
 
 ### `golang`
 
@@ -55,17 +55,19 @@ A publishing and sync skill. The `SKILL.md` spine carries the high-frequency dec
 - **github-model.md** — Data model: how PRD concepts map to GitHub milestones, epics, task issues, labels, markers, and dependency edges
 - **status-sync.md** — Status mapping: how each Zurdo task outcome translates to GitHub label swaps, issue state, and comments
 - **runbook.md** — Operational runbook: auth prerequisites, invocation examples, re-run safety, rollback, and troubleshooting
-- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags
+- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `scope`, `ticket`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags. `scope` and `board` create the Projects v2 project and link it to the repo
 
 ### `zurdo-project`
 
-An initiative orchestration skill. The `SKILL.md` spine carries the high-frequency decision rules for the full lifecycle — scope, research, PRD authoring, publish, run, phase review — with all mechanics inline. Five `references/*.md` files provide depth, and the shared `zurdo-github.sh` script handles every GitHub write:
+An initiative orchestration skill. The `SKILL.md` spine carries the high-frequency decision rules for the full lifecycle — scope, research, PRD authoring, publish, run, phase review — with all mechanics inline. Five `references/*.md` files provide depth, and the shared `zurdo-github.sh` script handles every GitHub write.
+
+It orchestrates Zurdo's bundled skills rather than duplicating them: `zurdo-prd-author` (required; one interview covering decomposition, §2.2 grammar, criteria forcing, and review) with its peers `zurdo-domain` and `zurdo-lessons` (required); `zurdo-design-author` (optional design record before a PRD); `zurdo-prd-review` (intent-level review that opens every phase review); `zurdo-state-summary` and `zurdo-hint-debugger` (run monitoring and criterion forensics). Install them all with `zurdo skills install --all`.
 
 - **scope-map.md** — Source-of-truth model: `scope.md` structure, ticket types, fog vs. sharp questions, out-of-scope handling, and claim discipline
 - **interview.md** — Interview mechanics: frontier rounds, recommendation format, what counts as a fact vs. a decision
 - **research.md** — Research and grilling ticket lifecycle: AFK vs. HITL, blocking rules, PRD traceability links
 - **phases.md** — Phase model: one-at-a-time graduation, scope table columns, milestone + epic relationship, phase review checklist
-- **runbook.md** — Operational runbook: required vs. optional skills, `zurdo-github.sh` invocation patterns, dry-run gate, auth prerequisites
+- **runbook.md** — Operational runbook: required vs. optional zurdo skills with fallbacks, `zurdo-github.sh` invocation patterns, dry-run gate, auth prerequisites, project-to-repo link check
 - **examples/scope.md** — Annotated `scope.md` for a sample initiative
 - **examples/tickets/** — Sample research and grilling ticket files
 

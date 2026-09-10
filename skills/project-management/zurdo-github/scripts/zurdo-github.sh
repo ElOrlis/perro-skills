@@ -108,6 +108,7 @@ _dry_stub() {
     issue\ create*)
       n=$(next_dry_num); printf 'https://github.com/%s/issues/%d\n' "$REPO" "$n" ;;
     project\ create*)                            echo '{"number":1,"id":"PVT_dryrun"}' ;;
+    project\ link*)                              echo '' ;;
     project\ field-create*)                      echo '{"id":"PVTSSF_dryrun"}' ;;
     project\ item-add*)                          echo '{"id":"PVTI_dryrun"}' ;;
     api\ repos/*/issues/*)
@@ -810,6 +811,7 @@ do_board() {
     created=$(run_gh project create --owner "$OWNER" --title "$title" --format json 2>/dev/null || echo '{"number":1}')
     project_number=$(printf '%s' "$created" | jq -r '.number // 1')
   fi
+  project_link_repo "$project_number"
 
   local fields
   fields=$(run_gh project field-list "$project_number" --owner "$OWNER" --format json 2>/dev/null || echo '{"fields":[]}')
@@ -1040,6 +1042,13 @@ ensure_project_scope() {
   return 1
 }
 
+# Link a Projects v2 project to the target repository so it appears under the
+# repo's Projects tab. Idempotent: gh errors when already linked; that is swallowed.
+project_link_repo() {
+  local project_number="$1"
+  run_gh project link "$project_number" --owner "$OWNER" --repo "$REPO" >/dev/null 2>&1 || true
+}
+
 # Add issue to project, creating project + Status field if needed.
 project_ensure_and_add() {
   local title="$1" issue_num
@@ -1053,6 +1062,7 @@ project_ensure_and_add() {
     created=$(run_gh project create --owner "$OWNER" --title "$title" --format json 2>/dev/null || echo '{"number":1}')
     project_number=$(printf '%s' "$created" | jq -r '.number // 1')
   fi
+  project_link_repo "$project_number"
   fields=$(run_gh project field-list "$project_number" --owner "$OWNER" --format json 2>/dev/null || echo '{"fields":[]}')
   [ -z "$fields" ] && fields='{"fields":[]}'
   status_field=$(printf '%s' "$fields" | jq -r '.fields[]? | select(.name == "Status") | .id' | head -1)

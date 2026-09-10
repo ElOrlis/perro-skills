@@ -174,6 +174,8 @@ zurdo-github.sh board --project "<initiative title>"
 
 Run the board command after each successful publish, not before. The board enrolls already-published milestones and epics — running it before publish leaves gaps.
 
+**Project-to-repo link.** Projects v2 projects are owned by the user or org, not the repo. Both `scope` and `board` link the project to the target repository immediately after creating it, so it appears under the repo's **Projects** tab and issues can be added from the sidebar. Verify the link in the sandbox check below; if the Projects tab is empty, re-run `scope` (the link call is idempotent).
+
 ---
 
 ## Failure handling
@@ -230,7 +232,7 @@ Follow the first-session sequence verbatim. Use a minimal initiative: one destin
 | Ticket sub-issues | Each ticket issue appears as a sub-issue under the scope issue, labeled `research` or `grilling`. |
 | Epic sub-issue | After publishing phase-01, its epic issue appears as a sub-issue under the scope issue, labeled with the phase title. |
 | Blocked-by badge | On the phase-02 epic (after it is published), a `blocked-by` relationship points to the open research ticket. The badge is visible in the issue sidebar. |
-| Project board | Grouped by milestone. Phase-01 milestone contains the epic and its task issues. Phase-02 milestone is absent until its PRD is published. |
+| Project board | Listed under the repository's **Projects** tab (linked, not just owner-level). Grouped by milestone. Phase-01 milestone contains the epic and its task issues. Phase-02 milestone is absent until its PRD is published. |
 
 ### Teardown
 

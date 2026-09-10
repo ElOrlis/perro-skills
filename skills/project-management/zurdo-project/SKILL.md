@@ -99,13 +99,13 @@ All GitHub writes go through `scripts/zurdo-github.sh`. Always pass `--dry-run` 
 | Invocation | Purpose |
 |---|---|
 | `zurdo-github.sh scope --dry-run` | Preview scope issue creation |
-| `zurdo-github.sh scope` | Create (or update) the scope issue from `scope.md` |
+| `zurdo-github.sh scope` | Create (or update) the scope issue from `scope.md`; creates the Project and links it to the repo |
 | `zurdo-github.sh ticket --dry-run` | Preview ticket issue creation |
 | `zurdo-github.sh ticket` | Create a research or grilling ticket issue |
 | `zurdo-github.sh publish --dry-run --scope <n> <prd>` | Preview full publish: milestone, epic, task issues, board membership |
 | `zurdo-github.sh publish --scope <n> <prd>` | Publish the phase PRD into the initiative's Project |
 | `zurdo-github.sh board --project "<title>" --dry-run` | Preview Project board creation and issue enrollment |
-| `zurdo-github.sh board --project "<title>"` | Create or update the Project board |
+| `zurdo-github.sh board --project "<title>"` | Create or update the Project board and link it to the repo |
 | `zurdo-github.sh sync-status --dry-run` | Preview status sync from the latest Zurdo run |
 | `zurdo-github.sh sync-status` | Mirror Zurdo run outcomes back to GitHub issue statuses |
 

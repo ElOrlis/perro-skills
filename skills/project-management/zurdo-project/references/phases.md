@@ -77,7 +77,7 @@ zurdo-github.sh publish --dry-run --scope <n>
 # Live publish: creates milestone, epic, task issues, enrolls them in the Project
 zurdo-github.sh publish --scope <n>
 
-# Create or update the Project board
+# Create or update the Project board (also links it to the repo)
 zurdo-github.sh board --project "<initiative title>"
 
 # Refresh the scope issue to reflect the new running phase
