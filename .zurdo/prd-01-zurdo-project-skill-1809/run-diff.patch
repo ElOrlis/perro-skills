@@ -1,0 +1,3768 @@
+diff --git a/.zurdo/prd-01-zurdo-project-skill-1809/baseline b/.zurdo/prd-01-zurdo-project-skill-1809/baseline
+new file mode 100644
+index 0000000..7908d77
+--- /dev/null
++++ b/.zurdo/prd-01-zurdo-project-skill-1809/baseline
+@@ -0,0 +1,8 @@
++{
++  "run_tree": "4bc25b218b7e38e6abc5ff4208d492ceb13c8613",
++  "dirty": true,
++  "captured_at": "2026-09-10T19:03:50.008817Z",
++  "git_version": "git version 2.55.0",
++  "task_tree": "c334546957674364abc5e0c53f2166b699fdc848",
++  "task_id": "task-integrate-verify"
++}
+diff --git a/.zurdo/prd-01-zurdo-project-skill-1809/baseline-diff.index.lock b/.zurdo/prd-01-zurdo-project-skill-1809/baseline-diff.index.lock
+new file mode 100644
+index 0000000..e69de29
+diff --git a/.zurdo/prd-01-zurdo-project-skill-1809/baseline.index.lock b/.zurdo/prd-01-zurdo-project-skill-1809/baseline.index.lock
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/.zurdo/prd-01-zurdo-project-skill-1809/prd.json b/.zurdo/prd-01-zurdo-project-skill-1809/prd.json
+index 8e80191..1382d31 100644
+--- a/.zurdo/prd-01-zurdo-project-skill-1809/prd.json
++++ b/.zurdo/prd-01-zurdo-project-skill-1809/prd.json
+@@ -3,77 +3,1530 @@
+   "prd_path": "docs/zurdo-project/prds/prd-01-zurdo-project-skill.md",
+   "prd_hash": "b0ade5946e250e9607135cef154fa02b24e329dc",
+   "started_at": "2026-09-10T19:03:50.001926Z",
+-  "last_updated": "2026-09-10T19:03:50.001926Z",
++  "last_updated": "2026-09-10T19:25:02.767875Z",
+   "tasks": {
+     "task-examples": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:06:06.668419Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:05:16.639927Z",
++          "ended_at": "2026-09-10T19:06:06.668419Z",
++          "model": "claude-haiku-4-5",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-examples-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-examples-1.err",
++          "agent_stdout_bytes": 146078,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 434109,
++          "tokens_out": 3417,
++          "tokens_cache_write": 16897,
++          "tokens_cache_read": 417123,
++          "premium_requests": null,
++          "cost_usd_est": 0.08,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/examples/scope.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: | Phase | Title | PRD | Status | in skills/project-management/zurdo-project/examples/scope.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: phase-02 in skills/project-management/zurdo-project/examples/scope.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/examples/tickets/webhook-retries.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: phase-02 in skills/project-management/zurdo-project/examples/tickets/webhook-retries.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/examples/tickets/webhook-auth.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: status: resolved in skills/project-management/zurdo-project/examples/tickets/webhook-auth.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: ## Findings in skills/project-management/zurdo-project/examples/tickets/webhook-auth.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "Example scope exists",
++          "hint": "file-exists: skills/project-management/zurdo-project/examples/scope.md",
++          "passed": false
++        },
++        {
++          "criterion": "Example scope has the phases table header",
++          "hint": "grep: | Phase | Title | PRD | Status | in skills/project-management/zurdo-project/examples/scope.md",
++          "passed": false
++        },
++        {
++          "criterion": "Example scope names a researching phase",
++          "hint": "grep: phase-02 in skills/project-management/zurdo-project/examples/scope.md",
++          "passed": false
++        },
++        {
++          "criterion": "Open research ticket exists and blocks phase-02",
++          "hint": "file-exists: skills/project-management/zurdo-project/examples/tickets/webhook-retries.md; grep: phase-02 in skills/project-management/zurdo-project/examples/tickets/webhook-retries.md",
++          "passed": false
++        },
++        {
++          "criterion": "Resolved grilling ticket exists with findings",
++          "hint": "file-exists: skills/project-management/zurdo-project/examples/tickets/webhook-auth.md; grep: status: resolved in skills/project-management/zurdo-project/examples/tickets/webhook-auth.md; grep: ## Findings in skills/project-management/zurdo-project/examples/tickets/webhook-auth.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-github-docs-update": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:21:40.021723Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:18:17.109528Z",
++          "ended_at": "2026-09-10T19:21:40.021723Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-github-docs-update-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-github-docs-update-1.err",
++          "agent_stdout_bytes": 416615,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 930271,
++          "tokens_out": 12593,
++          "tokens_cache_write": 38242,
++          "tokens_cache_read": 892011,
++          "premium_requests": null,
++          "cost_usd_est": 0.6,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "grep: `scope` in skills/project-management/zurdo-github/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: `ticket` in skills/project-management/zurdo-github/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: --project in skills/project-management/zurdo-github/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: zurdo-github scope= in skills/project-management/zurdo-github/references/github-model.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: zurdo:grilling in skills/project-management/zurdo-github/references/github-model.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: run scope first in skills/project-management/zurdo-github/references/runbook.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "SKILL.md names the scope mode",
++          "hint": "grep: `scope` in skills/project-management/zurdo-github/SKILL.md",
++          "passed": false
++        },
++        {
++          "criterion": "SKILL.md names the ticket mode",
++          "hint": "grep: `ticket` in skills/project-management/zurdo-github/SKILL.md",
++          "passed": false
++        },
++        {
++          "criterion": "SKILL.md names the --project flag",
++          "hint": "grep: --project in skills/project-management/zurdo-github/SKILL.md",
++          "passed": false
++        },
++        {
++          "criterion": "github-model.md documents the scope marker",
++          "hint": "grep: zurdo-github scope= in skills/project-management/zurdo-github/references/github-model.md",
++          "passed": false
++        },
++        {
++          "criterion": "github-model.md documents the new labels",
++          "hint": "grep: zurdo:grilling in skills/project-management/zurdo-github/references/github-model.md",
++          "passed": false
++        },
++        {
++          "criterion": "runbook.md documents the ticket-before-scope exit case",
++          "hint": "grep: run scope first in skills/project-management/zurdo-github/references/runbook.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-integrate-verify": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:25:00.838699Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:21:41.689591Z",
++          "ended_at": "2026-09-10T19:25:00.838699Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-integrate-verify-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-integrate-verify-1.err",
++          "agent_stdout_bytes": 372529,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 839998,
++          "tokens_out": 10043,
++          "tokens_cache_write": 39375,
++          "tokens_cache_read": 800606,
++          "premium_requests": null,
++          "cost_usd_est": 0.5385,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "grep: references/scope-map.md in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: references/interview.md in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: references/research.md in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: references/phases.md in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: scripts/zurdo-github.sh in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: skills/project-management/zurdo-project/ in README.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "shell: zurdo validate docs/zurdo-project/prds/prd-01-zurdo-project-skill.md",
++              "passed": true,
++              "duration_ms": 20,
++              "exit_code": 0,
++              "stdout_truncated": "OK\n",
++              "stderr_truncated": "docs/zurdo-project/prds/prd-01-zurdo-project-skill.md:33: warning: task `task-skill-scaffold` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:157: warning: task `task-ref-scope-map` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\n[... 6229 bytes omitted ...]\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:300: warning: task `task-github-docs-update` grep pattern ``ticket`` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:301: warning: task `task-github-docs-update` grep pattern `--project` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:302: warning: task `task-github-docs-update` grep pattern `zurdo-github scope=` already matches `skills/project-management/zurdo-github/references/github-model.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:303: warning: task `task-github-docs-update` grep pattern `zurdo:grilling` already matches `skills/project-management/zurdo-github/references/github-model.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:304: warning: task `task-github-docs-update` grep pattern `run scope first` already matches `skills/project-management/zurdo-github/references/runbook.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:327: warning: task `task-integrate-verify` grep pattern `references/scope-map.md` already matches `skills/project-management/zurdo-project/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:328: warning: task `task-integrate-verify` grep pattern `references/interview.md` already matches `skills/project-management/zurdo-project/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:329: warning: task `task-integrate-verify` grep pattern `references/research.md` already matches `skills/project-management/zurdo-project/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:330: warning: task `task-integrate-verify` grep pattern `references/phases.md` already matches `skills/project-management/zurdo-project/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:331: warning: task `task-integrate-verify` grep pattern `scripts/zurdo-github.sh` already matches `skills/project-management/zurdo-project/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-project/prds/prd-01-zurdo-project-skill.md:332: warning: task `task-integrate-verify` grep pattern `skills/project-management/zurdo-project/` already matches `README.md` in the current working tree — the criterion may not prove the change\n",
++              "timed_out": false,
++              "stdout_bytes": 3,
++              "stderr_bytes": 10019,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: zurdo validate docs/zurdo-github/prds/prd-01-zurdo-github-skill.md",
++              "passed": true,
++              "duration_ms": 12,
++              "exit_code": 0,
++              "stdout_truncated": "OK\n",
++              "stderr_truncated": "docs/zurdo-github/prds/prd-01-zurdo-github-skill.md:30: warning: task `task-skill-scaffold` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:117: warning: task `task-ref-github-model` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:144: warning: task `task-ref-status-sync` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:170: warning: task `task-ref-runbook` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:198: warning: task `task-integrate-verify` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:60: warning: task `task-skill-scaffold` grep pattern `name: zurdo-github` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:213: warning: task `task-integrate-verify` grep pattern `references/github-model.md` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:214: warning: task `task-integrate-verify` grep pattern `references/status-sync.md` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:215: warning: task `task-integrate-verify` grep pattern `references/runbook.md` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:216: warning: task `task-integrate-verify` grep pattern `scripts/zurdo-github.sh` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:217: warning: task `task-integrate-verify` grep pattern `skills/project-management/zurdo-github/` already matches `README.md` in the current working tree — the criterion may not prove the change\n",
++              "timed_out": false,
++              "stdout_bytes": 3,
++              "stderr_bytes": 3590,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: S=skills/project-management/zurdo-github/scripts/zurdo-github.sh; $S scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md >/dev/null && $S publish --dry-run --repo ElOrlis/perro-skills --scope 12 docs/golang/prds/prd-01-golang-skill.md >/dev/null && $S board --dry-run --repo ElOrlis/perro-skills --project \"Example Initiative\" docs/golang/prds/prd-01-golang-skill.md >/dev/null",
++              "passed": true,
++              "duration_ms": 1813,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "SKILL.md links the scope-map reference",
++          "hint": "grep: references/scope-map.md in skills/project-management/zurdo-project/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "SKILL.md links the interview reference",
++          "hint": "grep: references/interview.md in skills/project-management/zurdo-project/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "SKILL.md links the research reference",
++          "hint": "grep: references/research.md in skills/project-management/zurdo-project/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "SKILL.md links the phases reference",
++          "hint": "grep: references/phases.md in skills/project-management/zurdo-project/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "SKILL.md names the script it drives",
++          "hint": "grep: scripts/zurdo-github.sh in skills/project-management/zurdo-project/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "README lists the new skill",
++          "hint": "grep: skills/project-management/zurdo-project/ in README.md",
++          "passed": false
++        },
++        {
++          "criterion": "The zurdo-project PRD validates",
++          "hint": "shell: zurdo validate docs/zurdo-project/prds/prd-01-zurdo-project-skill.md",
++          "passed": true
++        },
++        {
++          "criterion": "The zurdo-github PRD still validates",
++          "hint": "shell: zurdo validate docs/zurdo-github/prds/prd-01-zurdo-github-skill.md",
++          "passed": true
++        },
++        {
++          "criterion": "Full first-session dry-run sequence exits 0",
++          "hint": "shell: S=skills/project-management/zurdo-github/scripts/zurdo-github.sh; $S scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md >/dev/null && $S publish --dry-run --repo ElOrlis/perro-skills --scope 12 docs/golang/prds/prd-01-golang-skill.md >/dev/null && $S board --dry-run --repo ElOrlis/perro-skills --project \"Example Initiative\" docs/golang/prds/prd-01-golang-skill.md >/dev/null",
++          "passed": true
++        }
++      ]
+     },
+     "task-ref-interview": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:14:13.970889Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:13:06.467260Z",
++          "ended_at": "2026-09-10T19:14:13.970889Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-interview-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-interview-1.err",
++          "agent_stdout_bytes": 44391,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 148899,
++          "tokens_out": 2028,
++          "tokens_cache_write": 15950,
++          "tokens_cache_read": 132944,
++          "premium_requests": null,
++          "cost_usd_est": 0.1301,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/references/interview.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: ➡️ in skills/project-management/zurdo-project/references/interview.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "interview.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-project/references/interview.md",
++          "passed": false
++        },
++        {
++          "criterion": "Carries the question format with the recommended-answer arrow",
++          "hint": "grep: ➡️ in skills/project-management/zurdo-project/references/interview.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-ref-phases": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:16:45.508646Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:15:16.336474Z",
++          "ended_at": "2026-09-10T19:16:45.508646Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-phases-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-phases-1.err",
++          "agent_stdout_bytes": 142799,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 259004,
++          "tokens_out": 4215,
++          "tokens_cache_write": 25932,
++          "tokens_cache_read": 233065,
++          "premium_requests": null,
++          "cost_usd_est": 0.2304,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/references/phases.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: researching in skills/project-management/zurdo-project/references/phases.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "phases.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-project/references/phases.md",
++          "passed": false
++        },
++        {
++          "criterion": "Names all five statuses in the transition section",
++          "hint": "grep: researching in skills/project-management/zurdo-project/references/phases.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-ref-research": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:15:16.181696Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:14:14.126128Z",
++          "ended_at": "2026-09-10T19:15:16.181696Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-research-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-research-1.err",
++          "agent_stdout_bytes": 76831,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 239261,
++          "tokens_out": 2248,
++          "tokens_cache_write": 19819,
++          "tokens_cache_read": 219435,
++          "premium_requests": null,
++          "cost_usd_est": 0.1739,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/references/research.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: blocks: in skills/project-management/zurdo-project/references/research.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "research.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-project/references/research.md",
++          "passed": false
++        },
++        {
++          "criterion": "Carries the ticket template with the blocks key",
++          "hint": "grep: blocks: in skills/project-management/zurdo-project/references/research.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-ref-runbook": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:18:16.961994Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:16:45.674537Z",
++          "ended_at": "2026-09-10T19:18:16.961994Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-runbook-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-runbook-1.err",
++          "agent_stdout_bytes": 129052,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 259765,
++          "tokens_out": 4161,
++          "tokens_cache_write": 26635,
++          "tokens_cache_read": 233123,
++          "premium_requests": null,
++          "cost_usd_est": 0.2323,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/references/runbook.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: zurdo-prd-reviewer in skills/project-management/zurdo-project/references/runbook.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: zurdo skills install zurdo-domain in skills/project-management/zurdo-project/references/runbook.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "runbook.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-project/references/runbook.md",
++          "passed": false
++        },
++        {
++          "criterion": "Names the required writer and reviewer skills",
++          "hint": "grep: zurdo-prd-reviewer in skills/project-management/zurdo-project/references/runbook.md",
++          "passed": false
++        },
++        {
++          "criterion": "Names the bundled domain skill install command",
++          "hint": "grep: zurdo skills install zurdo-domain in skills/project-management/zurdo-project/references/runbook.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-ref-scope-map": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:13:06.305753Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:11:12.705198Z",
++          "ended_at": "2026-09-10T19:13:06.305753Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-scope-map-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-ref-scope-map-1.err",
++          "agent_stdout_bytes": 149461,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 410049,
++          "tokens_out": 4170,
++          "tokens_cache_write": 23864,
++          "tokens_cache_read": 386174,
++          "premium_requests": null,
++          "cost_usd_est": 0.2679,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/references/scope-map.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: ## Not yet specified in skills/project-management/zurdo-project/references/scope-map.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "no-grep: /wayfinder in skills/project-management/zurdo-project/references/scope-map.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "scope-map.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-project/references/scope-map.md",
++          "passed": false
++        },
++        {
++          "criterion": "Carries the scope.md template with all six sections in order",
++          "hint": "grep: ## Not yet specified in skills/project-management/zurdo-project/references/scope-map.md",
++          "passed": false
++        },
++        {
++          "criterion": "Makes no reference to an external wayfinder skill being required",
++          "hint": "no-grep: /wayfinder in skills/project-management/zurdo-project/references/scope-map.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-script-modes": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:11:06.436282Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:06:08.178338Z",
++          "ended_at": "2026-09-10T19:11:06.436282Z",
++          "model": "claude-opus-4-7",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-script-modes-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-script-modes-1.err",
++          "agent_stdout_bytes": 583571,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 1836823,
++          "tokens_out": 23385,
++          "tokens_cache_write": 66472,
++          "tokens_cache_read": 1770324,
++          "premium_requests": null,
++          "cost_usd_est": 1.8854,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "shell: bash -n skills/project-management/zurdo-github/scripts/zurdo-github.sh",
++              "passed": true,
++              "duration_ms": 28,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh >/dev/null 2>&1; test $? -eq 2",
++              "passed": true,
++              "duration_ms": 21,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh --help 2>&1 | grep -q 'scope | ticket'",
++              "passed": true,
++              "duration_ms": 20,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: test \"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:task' | wc -l | tr -d ' ')\" = \"7\"",
++              "passed": true,
++              "duration_ms": 1089,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md > /dev/null",
++              "passed": true,
++              "duration_ms": 489,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep -E 'DRY: .*gh issue create .*zurdo:scope' | grep -q -- '--assignee @me' && echo \"$OUT\" | grep -q 'gh issue pin'",
++              "passed": true,
++              "duration_ms": 500,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; test \"$(echo \"$OUT\" | grep -E 'DRY: .*gh issue create .*zurdo:research' | wc -l | tr -d ' ')\" = \"1\" && test \"$(echo \"$OUT\" | grep -E 'DRY: .*gh issue create .*zurdo:grilling' | wc -l | tr -d ' ')\" = \"1\"",
++              "passed": true,
++              "duration_ms": 494,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep -q 'gh issue comment' && echo \"$OUT\" | grep -q 'gh issue close'",
++              "passed": true,
++              "duration_ms": 477,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep -q '/sub_issues' && echo \"$OUT\" | grep -q 'defer: phase-02'",
++              "passed": true,
++              "duration_ms": 481,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep 'gh project create' | grep -q 'Example Initiative' && echo \"$OUT\" | grep -q 'gh project item-add'",
++              "passed": true,
++              "duration_ms": 495,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md | grep -q 'Epic | Milestone'",
++              "passed": true,
++              "duration_ms": 478,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh ticket --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/tickets/webhook-retries.md >/dev/null 2>&1; test $? -eq 3",
++              "passed": true,
++              "duration_ms": 109,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills --scope 12 docs/golang/prds/prd-01-golang-skill.md | grep -q 'issues/12/sub_issues'",
++              "passed": true,
++              "duration_ms": 1095,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh board --dry-run --repo ElOrlis/perro-skills --project \"Example Initiative\" docs/golang/prds/prd-01-golang-skill.md | grep 'gh project create' | grep -q 'Example Initiative'",
++              "passed": true,
++              "duration_ms": 200,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh bootstrap --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md)\"; for l in zurdo:scope zurdo:research zurdo:grilling; do echo \"$OUT\" | grep -q \"gh label create $l \" || exit 1; done",
++              "passed": true,
++              "duration_ms": 134,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": [],
++          "out_of_tree_refs": [
++            "referenced a path outside the repo root: /tmp/scope-out.txt"
++          ]
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "Script parses as bash",
++          "hint": "shell: bash -n skills/project-management/zurdo-github/scripts/zurdo-github.sh",
++          "passed": true
++        },
++        {
++          "criterion": "Usage still exits 2 on a missing mode",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh >/dev/null 2>&1; test $? -eq 2",
++          "passed": true
++        },
++        {
++          "criterion": "Usage names the new modes",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh --help 2>&1 | grep -q 'scope | ticket'",
++          "passed": false
++        },
++        {
++          "criterion": "Existing publish dry-run still plans seven golang task issues",
++          "hint": "shell: test \"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:task' | wc -l | tr -d ' ')\" = \"7\"",
++          "passed": true
++        },
++        {
++          "criterion": "Dry-run scope against the example exits 0",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md > /dev/null",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run scope plans the scope issue with label, assignee, and pin",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep -E 'DRY: .*gh issue create .*zurdo:scope' | grep -q -- '--assignee @me' && echo \"$OUT\" | grep -q 'gh issue pin'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run scope plans one research and one grilling ticket",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; test \"$(echo \"$OUT\" | grep -E 'DRY: .*gh issue create .*zurdo:research' | wc -l | tr -d ' ')\" = \"1\" && test \"$(echo \"$OUT\" | grep -E 'DRY: .*gh issue create .*zurdo:grilling' | wc -l | tr -d ' ')\" = \"1\"",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run scope closes the resolved ticket with a findings comment",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep -q 'gh issue comment' && echo \"$OUT\" | grep -q 'gh issue close'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run scope wires tickets as sub-issues and defers the phase-02 edge",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep -q '/sub_issues' && echo \"$OUT\" | grep -q 'defer: phase-02'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run scope plans the Project titled after the initiative and adds items",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md)\"; echo \"$OUT\" | grep 'gh project create' | grep -q 'Example Initiative' && echo \"$OUT\" | grep -q 'gh project item-add'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run scope re-renders the phases table with Epic and Milestone columns",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh scope --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/scope.md | grep -q 'Epic | Milestone'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run ticket on the open research ticket exits 3 when no scope issue exists",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh ticket --dry-run --repo ElOrlis/perro-skills skills/project-management/zurdo-project/examples/tickets/webhook-retries.md >/dev/null 2>&1; test $? -eq 3",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish with --scope wires the epic under the scope issue",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills --scope 12 docs/golang/prds/prd-01-golang-skill.md | grep -q 'issues/12/sub_issues'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run board with --project uses the given title",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh board --dry-run --repo ElOrlis/perro-skills --project \"Example Initiative\" docs/golang/prds/prd-01-golang-skill.md | grep 'gh project create' | grep -q 'Example Initiative'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run bootstrap plans the three new labels",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh bootstrap --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md)\"; for l in zurdo:scope zurdo:research zurdo:grilling; do echo \"$OUT\" | grep -q \"gh label create $l \" || exit 1; done",
++          "passed": false
++        }
++      ]
+     },
+     "task-skill-scaffold": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T19:05:16.498768Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T19:03:50.145248Z",
++          "ended_at": "2026-09-10T19:05:16.498768Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-skill-scaffold-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-project-skill-1809/iterations/task-skill-scaffold-1.err",
++          "agent_stdout_bytes": 66617,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 274334,
++          "tokens_out": 3180,
++          "tokens_cache_write": 18879,
++          "tokens_cache_read": 255447,
++          "premium_requests": null,
++          "cost_usd_est": 0.1952,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "grep: name: zurdo-project in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 2,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "grep: references/runbook.md in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "no-grep: TODO in skills/project-management/zurdo-project/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            }
++          ],
++          "frozen_violations": [],
++          "out_of_tree_refs": [
++            "referenced a path outside the repo root: /Users/orlandogarcia/.claude/projects/-Users-orlandogarcia-Workspaces-Dev-Agents-perro-skills/memory/zurdo-project-skill-design.md"
++          ]
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "SKILL.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-project/SKILL.md",
++          "passed": false
++        },
++        {
++          "criterion": "Frontmatter declares the skill name",
++          "hint": "grep: name: zurdo-project in skills/project-management/zurdo-project/SKILL.md",
++          "passed": false
++        },
++        {
++          "criterion": "SKILL.md links every reference file",
++          "hint": "grep: references/runbook.md in skills/project-management/zurdo-project/SKILL.md",
++          "passed": false
++        },
++        {
++          "criterion": "No placeholder markers remain",
++          "hint": "no-grep: TODO in skills/project-management/zurdo-project/SKILL.md",
++          "passed": false
++        }
++      ]
+     }
+   },
+   "completion_gate": null
+diff --git a/README.md b/README.md
+index 73fe92b..9db8211 100644
+--- a/README.md
++++ b/README.md
+@@ -17,9 +17,14 @@ skills/                      Published skills, organized by category
+       SKILL.md               Standalone spine — inline decision rules
+       references/            On-demand depth files
+       scripts/               zurdo-github.sh — the publishing/sync script
++    zurdo-project/           Orchestrate a multi-phase initiative end-to-end
++      SKILL.md               Standalone spine — inline decision rules
++      references/            On-demand depth files
++      examples/              Annotated scope.md and sample ticket files
+ docs/                        Design docs / PRDs, one folder per skill
+   golang/prds/
+   zurdo-github/prds/
++  zurdo-project/prds/
+ skills-lock.json             Lockfile for vendored external skills
+ .zurdo/                      Zurdo task-runner state (skill build pipeline)
+ .claude/, .agents/           Installed authoring tooling (see below)
+@@ -31,6 +36,7 @@ skills-lock.json             Lockfile for vendored external skills
+ |-------|------|-------------|
+ | `golang` | `skills/programing-languages/golang/` | Writing or modifying Go source — idioms, naming/style, concurrency correctness, testing patterns |
+ | `zurdo-github` | `skills/project-management/zurdo-github/` | Publishing a Zurdo PRD to GitHub as milestones, epics, issues, labels, or a project board; syncing Zurdo run status back to GitHub issues |
++| `zurdo-project` | `skills/project-management/zurdo-project/` | Starting a new initiative from an idea, scoping it into phases, setting up a GitHub Project, asking what the next phase is, or running a phase review after a Zurdo run |
+ 
+ ### `golang`
+ 
+@@ -51,6 +57,18 @@ A publishing and sync skill. The `SKILL.md` spine carries the high-frequency dec
+ - **runbook.md** — Operational runbook: auth prerequisites, invocation examples, re-run safety, rollback, and troubleshooting
+ - **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags
+ 
++### `zurdo-project`
++
++An initiative orchestration skill. The `SKILL.md` spine carries the high-frequency decision rules for the full lifecycle — scope, research, PRD authoring, publish, run, phase review — with all mechanics inline. Five `references/*.md` files provide depth, and the shared `zurdo-github.sh` script handles every GitHub write:
++
++- **scope-map.md** — Source-of-truth model: `scope.md` structure, ticket types, fog vs. sharp questions, out-of-scope handling, and claim discipline
++- **interview.md** — Interview mechanics: frontier rounds, recommendation format, what counts as a fact vs. a decision
++- **research.md** — Research and grilling ticket lifecycle: AFK vs. HITL, blocking rules, PRD traceability links
++- **phases.md** — Phase model: one-at-a-time graduation, scope table columns, milestone + epic relationship, phase review checklist
++- **runbook.md** — Operational runbook: required vs. optional skills, `zurdo-github.sh` invocation patterns, dry-run gate, auth prerequisites
++- **examples/scope.md** — Annotated `scope.md` for a sample initiative
++- **examples/tickets/** — Sample research and grilling ticket files
++
+ ## How skills are built
+ 
+ Skills are specified as PRDs under `docs/<skill>/prds/` and executed with [Zurdo](https://github.com/), a task-runner that decomposes a PRD into gated tasks and drives an agent through them. The `.zurdo/` directory holds per-run state and configuration (`.zurdo/config.toml`). Each task gates on explicit acceptance criteria, following the `superpowers:writing-skills` authoring discipline.
+diff --git a/skills/project-management/zurdo-github/SKILL.md b/skills/project-management/zurdo-github/SKILL.md
+index 0e06b4c..c81cb98 100644
+--- a/skills/project-management/zurdo-github/SKILL.md
++++ b/skills/project-management/zurdo-github/SKILL.md
+@@ -1,8 +1,9 @@
+ ---
+ name: zurdo-github
+ description: >
+-  Triggers when the user asks to publish, mirror, or set up a Zurdo PRD on GitHub as milestones,
+-  epics, issues, labels, or a project board, or to sync a Zurdo run's status back to GitHub.
++  Triggers when the user asks to publish, mirror, or set up a Zurdo PRD or its scope and tickets
++  on GitHub as milestones, epics, issues, labels, or a project board, or to sync a Zurdo run's
++  status back to GitHub.
+   Does NOT trigger for general issue triage, pull-request work, or authoring the PRD itself.
+ ---
+ 
+@@ -36,6 +37,14 @@ GitHub's sub-issue and dependency APIs require the parent/blocker to already exi
+ Older GitHub plans lack the sub-issues beta and the dependency graph; graceful degradation keeps the tool usable everywhere.
+ → see references/github-model.md
+ 
++**`scope.md` and ticket files are sources of truth projected to GitHub issues; the script never writes back.**
++Edits flow one direction: `scope.md` and ticket files → GitHub issues. Pulling GitHub state into these source files creates drift.
++→ see references/github-model.md
++
++**`scope` creates the Project and skips with a hint when `scope.md` is absent; `publish --scope <n>` nests the epic as a sub-issue of issue `<n>`.**
++The scope issue must exist before `publish --scope` runs. `publish --scope` exits 3 with `run scope first` when the scope marker is not found.
++→ see references/runbook.md
++
+ **`passed` closes; `passed-pending-review` labels and stays open until `zurdo review`; `failed` labels and comments the failed hints; swap status labels, never stack.**
+ Stacking status labels makes filtering unreliable. One status label per issue at all times.
+ → see references/status-sync.md
+@@ -58,18 +67,20 @@ Milestone descriptions are safe to overwrite on every sync. The About field is o
+ 
+ ## Modes
+ 
+-One script, four modes, one invocation shape:
++One script, six modes, one invocation shape:
+ 
+ ```
+-scripts/zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-slug>] [--about "<text>"] <prd-path>
++scripts/zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-slug>] [--about "<text>"] [--scope <issue-number>] [--project <project-title>] <prd-path>
+ ```
+ 
+ | Mode | What it does |
+ |---|---|
+ | `bootstrap` | Ensures the labels exist (type, effort from the PRD's `Effort` values, status, triage five); sets repo About only when empty and `--about` is given; appends `## Zurdo operations` to `docs/agents/issue-tracker.md` when that file exists and lacks the heading. |
+-| `publish` | Runs the label step, then milestone → epic issue → task issues → second-pass wiring (sub-issues, blocked-by edges, `Blocked by:` lines) → epic body. Re-runs update in place by marker. |
++| `scope` | Reads `scope.md` and creates or updates the scope issue with the `zurdo:scope` label; creates the Projects v2 project (title from `--project` or `scope.md` title); exits 3 with a hint when `scope.md` is absent. |
++| `ticket` | Reads ticket files (`tickets/<phase>-<name>.md`) and projects each to a GitHub issue with the `zurdo:ticket` label; links each ticket as a sub-issue of the scope issue; wires phase-epic-to-ticket blocked-by edges in a second pass. |
++| `publish` | Runs the label step, then milestone → epic issue → task issues → second-pass wiring (sub-issues, blocked-by edges, `Blocked by:` lines) → epic body. When `--scope <n>` is given, nests the epic as a sub-issue of issue `<n>`. Re-runs update in place by marker. |
+ | `sync-status` | Reads `.zurdo/<slug>/prd.json` (`--slug`, else newest) and applies the status mapping: close, label swap, comment. Refreshes the epic's task table. |
+-| `board` | Finds or creates one repo-level Projects v2 project with a `Status` field, adds every task issue, sets Status from prd.json. Exits 3 with a `gh auth refresh -s project` hint when the scope is missing. |
++| `board` | Finds or creates one repo-level Projects v2 project (title from `--project` or the PRD title) with a `Status` field, adds every task issue, sets Status from prd.json. Exits 3 with a `gh auth refresh -s project` hint when the scope is missing. |
+ 
+ **Flags**
+ 
+@@ -77,6 +88,8 @@ scripts/zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-sl
+ - `--repo owner/name` — override the repository; otherwise parsed from `git remote get-url origin` (https and ssh forms), never from a network call.
+ - `--slug` — pick a specific `.zurdo/<slug>/` run directory for `sync-status` and `board`.
+ - `--about "<text>"` — the one-line repo description `bootstrap` may set when About is empty; never invented.
++- `--scope <issue-number>` — link the published epic as a sub-issue of the given scope issue number; `publish` only. Exits 3 with `run scope first` when the scope issue marker is not found.
++- `--project <project-title>` — override the Projects v2 project title used by `scope` and `board` when finding or creating the project.
+ 
+ Exit codes: 0 ok, 2 usage or PRD parse error, 3 auth or capability error, 1 anything else.
+ 
+diff --git a/skills/project-management/zurdo-github/references/github-model.md b/skills/project-management/zurdo-github/references/github-model.md
+index 07f8842..8febd91 100644
+--- a/skills/project-management/zurdo-github/references/github-model.md
++++ b/skills/project-management/zurdo-github/references/github-model.md
+@@ -8,6 +8,8 @@ Data model: how Zurdo PRD concepts map to GitHub milestones, epic issues, task i
+ 
+ | PRD concept | GitHub object |
+ |---|---|
++| `scope.md` (project scope file) | Scope issue (top-level container; all PRD epics nest under it as sub-issues when `--scope` is given) |
++| Ticket file (`tickets/<phase>-<name>.md`) | Ticket issue (phase-level deliverable; sub-issue of the scope issue; phase epics are blocked by it) |
+ | `# PRD: <title>` | Milestone title + epic issue title |
+ | Intro text (after H1, before first `## Task:`) | Milestone description + epic issue body intro |
+ | `## Task: <id> — <title>` | Task issue (sub-issue of epic, member of milestone) |
+@@ -19,7 +21,7 @@ Data model: how Zurdo PRD concepts map to GitHub milestones, epic issues, task i
+ | `### Description` | `## Description` section in task body (content verbatim) |
+ | `### Acceptance Criteria` `- [ ] <text> [hint]` | `## Acceptance Criteria` section; each criterion becomes `- [ ] <text>` with hints in inline code spans |
+ 
+-One PRD maps to exactly one milestone and one epic issue. Every task issue is a member of the milestone and a sub-issue of the epic.
++One PRD maps to exactly one milestone and one epic issue. Every task issue is a member of the milestone and a sub-issue of the epic. When `--scope <n>` is passed to `publish`, the epic is additionally linked as a sub-issue of scope issue `<n>`.
+ 
+ ---
+ 
+@@ -31,8 +33,11 @@ Labels belong to three groups plus the five triage labels.
+ 
+ | Name | Hex | Description |
+ |---|---|---|
++| `zurdo:scope` | `#0075CA` | Zurdo project scope issue |
++| `zurdo:ticket` | `#006B75` | Zurdo phase ticket issue |
+ | `zurdo:epic` | `#5319E7` | Zurdo PRD epic issue |
+ | `zurdo:task` | `#1D76DB` | Zurdo PRD task issue |
++| `zurdo:grilling` | `#E4E669` | Issue under active grilling / design review |
+ 
+ ### Group 2 — state
+ 
+@@ -118,6 +123,45 @@ Notes:
+ - Omit the `Blocked by:` line entirely on the first-pass body; it is written in the second pass once all issue numbers are known.
+ - Hints from `[hint text]` suffixes on criteria lines appear as `` `hint text` `` after the criterion.
+ 
++### Scope body
++
++```markdown
++<!-- zurdo-github scope=<project-slug> -->
++
++<intro text from scope.md>
++
++## Phases
++
++| Phase | Ticket | Status |
++|---|---|---|
++| <phase-name> | [<ticket-title>](#<number>) | Todo |
++```
++
++When sub-issues are unavailable (fallback mode), append:
++
++```markdown
++### Checklist (sub-issues unavailable)
++
++- [ ] #<ticket-number>
++- [ ] #<ticket-number>
++```
++
++### Ticket body
++
++```markdown
++<!-- zurdo-github ticket=<phase>-<name> -->
++
++<description from ticket file>
++
++## Epics
++
++| Epic | PRD | Status |
++|---|---|---|
++| [<epic-title>](#<epic-number>) | <prd-path> | Todo |
++```
++
++`ticket` creates the issue, links it as a sub-issue of the scope issue, and wires a blocked-by edge from each phase epic to the ticket in a second pass (so the epic cannot start until the ticket is complete). The checklist fallback applies to the scope body only; the epic-blocked-by-ticket edge degrades to a `Blocked by:` line in the epic body when the dependency endpoint is unavailable.
++
+ ---
+ 
+ ## The marker
+@@ -127,9 +171,11 @@ Notes:
+ ```
+ <!-- zurdo-github prd=<path> task=<task-id> -->
+ <!-- zurdo-github prd=<path> epic -->
++<!-- zurdo-github scope=<project-slug> -->
++<!-- zurdo-github ticket=<phase>-<name> -->
+ ```
+ 
+-`<path>` is the PRD file path as passed to the script (e.g. `docs/my-feature/prds/prd-01-setup.md`).
++`<path>` is the PRD file path as passed to the script (e.g. `docs/my-feature/prds/prd-01-setup.md`). `<project-slug>` is the slugified project title from `scope.md`. `<phase>-<name>` identifies the ticket file (e.g. `phase-01-foundations`).
+ 
+ ### Why an HTML comment
+ 
+@@ -186,6 +232,14 @@ gh api --method POST \
+   -F "issue_id=<blocker-db-id>"
+ ```
+ 
++### `--scope` sub-issue link
++
++When `publish --scope <n>` is given, the epic is linked as a sub-issue of issue `<n>` in the second pass using the same Sub-issue POST above (epic as child, scope issue as parent). If the sub-issues endpoint returns a 4xx, append a `Blocked by: #<n>` line to the epic body as the checklist fallback.
++
++### Phase-epic-to-ticket blocked-by edge
++
++`ticket` wires a blocked-by edge from each phase epic to the ticket in the second pass: the epic cannot start until the ticket is complete. This edge is wired with the standard Blocked-by POST using the ticket's database id as the blocker. If the dependency endpoint is unavailable, the fallback `Blocked by: #<ticket-number>` line is written into the epic body instead.
++
+ ### Reading the live blocked-by summary
+ 
+ ```bash
+@@ -254,6 +308,8 @@ Re-running any mode must be safe. The rules:
+ |---|---|---|---|
+ | Milestone | `GET repos/<o>/<r>/milestones?state=all` — match on title | PATCH description; reuse number | Delete or renumber |
+ | Labels | `gh label list --json name` — match on name | Skip create | Delete or rename |
++| Scope issue | Search marker `<!-- zurdo-github scope=<slug> -->` + body confirm | Edit body in place | Reopen if closed; create duplicate |
++| Ticket issue | Search marker `<!-- zurdo-github ticket=<phase>-<name> -->` + body confirm | Edit title, body, labels | Reopen if closed; create duplicate |
+ | Epic issue | Search marker `<!-- zurdo-github prd=<path> epic -->` + body confirm | Edit body in place | Reopen if closed; create duplicate |
+ | Task issue | Search marker `<!-- zurdo-github prd=<path> task=<id> -->` + body confirm | Edit title, body, labels, milestone | Reopen if closed; create duplicate |
+ | Sub-issue edge | 422 "already" response is silently ignored | No action needed | — |
+diff --git a/skills/project-management/zurdo-github/references/runbook.md b/skills/project-management/zurdo-github/references/runbook.md
+index d4b245c..b769dd1 100644
+--- a/skills/project-management/zurdo-github/references/runbook.md
++++ b/skills/project-management/zurdo-github/references/runbook.md
+@@ -45,28 +45,70 @@ Must exit 0. A Zurdo-parse error at validate time means the same error will surf
+ Run every step in sequence; do not skip `--dry-run` passes.
+ 
+ ```
+-1. zurdo validate <prd>                                   # exit 0 required
+-2. ./scripts/zurdo-github.sh bootstrap --dry-run <prd>   # review label plan and About/doc actions
+-3. ./scripts/zurdo-github.sh bootstrap <prd>             # live: labels, optional About, conventions doc
+-4. ./scripts/zurdo-github.sh publish --dry-run <prd>     # read the plan: counts, edges, labels, repo
+-5. ./scripts/zurdo-github.sh publish <prd>               # live: milestone, epic, tasks, wiring
+-6. ./scripts/zurdo-github.sh board <prd>                 # optional: Projects v2 mirror
++1. zurdo validate <prd>                                                   # exit 0 required
++2. ./scripts/zurdo-github.sh bootstrap --dry-run <prd>                   # review label plan and About/doc actions
++3. ./scripts/zurdo-github.sh bootstrap <prd>                             # live: labels, optional About, conventions doc
++4. ./scripts/zurdo-github.sh scope --dry-run <prd>                       # review scope issue + project creation plan
++5. ./scripts/zurdo-github.sh scope <prd>                                 # live: scope issue, Projects v2 project
++6. ./scripts/zurdo-github.sh ticket --dry-run <prd>                      # review ticket issues + blocked-by edges
++7. ./scripts/zurdo-github.sh ticket <prd>                                # live: ticket issues, sub-issue links, edges
++8. ./scripts/zurdo-github.sh publish --dry-run --scope <n> <prd>         # read the plan: counts, edges, labels, repo
++9. ./scripts/zurdo-github.sh publish --scope <n> <prd>                   # live: milestone, epic, tasks, wiring; epic nested under scope
++10. ./scripts/zurdo-github.sh board --project "<title>" <prd>            # optional: Projects v2 mirror
+ ```
+ 
+ After `zurdo run` completes on any tasks:
+ 
+ ```
+-7. ./scripts/zurdo-github.sh sync-status --dry-run <prd>  # preview label swaps + closes
+-8. ./scripts/zurdo-github.sh sync-status <prd>            # live: apply sync
++11. ./scripts/zurdo-github.sh sync-status --dry-run <prd>  # preview label swaps + closes
++12. ./scripts/zurdo-github.sh sync-status <prd>            # live: apply sync
+ ```
+ 
+ After `zurdo review` signs off pending tasks:
+ 
+ ```
+-9. ./scripts/zurdo-github.sh sync-status <prd>            # close tasks now recorded as passed
++13. ./scripts/zurdo-github.sh sync-status <prd>            # close tasks now recorded as passed
+ ```
+ 
+-Step 3 is idempotent. Step 5 (`publish`) repeats the label step of `bootstrap` but not the About or conventions-doc actions, so run `bootstrap` once per repo and `publish` once per PRD.
++Step 3 is idempotent. Step 9 (`publish`) repeats the label step of `bootstrap` but not the About or conventions-doc actions, so run `bootstrap` once per repo and `publish` once per PRD. Steps 4–7 (`scope` and `ticket`) are per-project, not per-PRD; run them once when setting up a new project scope, then re-run `publish --scope <n>` for each PRD in that project.
++
++---
++
++## Scope and ticket prerequisite checks
++
++**`scope.md` absent — `scope` exits 3**
++
++When `scope.md` is not present in the repository root, `scope` prints:
++
++```
++skip: scope.md not found — create scope.md before running the scope mode
++```
++
++and exits 3. Create `scope.md` with at minimum a title heading before retrying.
++
++**`run scope first` — `publish --scope` exits 3**
++
++When `publish --scope <n>` is given but the scope issue marker (`<!-- zurdo-github scope=... -->`) is not found in issue `<n>`, the script prints:
++
++```
++error: scope issue #<n> has no zurdo-github scope marker — run scope first
++```
++
++and exits 3. Run `./scripts/zurdo-github.sh scope <prd>` (or confirm the correct issue number) before retrying `publish --scope`.
++
++**`--project` title for `board`**
++
++`board` uses `--project <project-title>` to find or create the Projects v2 project. When `--project` is omitted, the project title defaults to the PRD title. Pass `--project` explicitly when the project was created by `scope` under a different title, so `board` attaches task issues to the same project.
++
++**Hand-closed tickets**
++
++If a ticket issue is closed by hand outside of sync, `ticket` re-runs leave it closed and print:
++
++```
++DIVERGED: ticket-<phase>-<name> is closed in GitHub; body and labels updated, state unchanged
++```
++
++The ticket body and labels are updated in place; the closed state is never changed by the tool.
+ 
+ ---
+ 
+@@ -156,7 +198,7 @@ Marker format: `<!-- zurdo-github prd=<path> task=<id> -->` (and `epic` variant)
+ 
+ Epic layout: the PRD becomes a milestone plus an epic issue holding the intro, a task table, and (fallback) a task checklist. Task issues are sub-issues of the epic.
+ 
+-Modes: `bootstrap` (labels + docs), `publish` (milestone + epic + tasks + wiring), `sync-status` (label/close from a Zurdo run), `board` (Projects v2 mirror).
++Modes: `bootstrap` (labels + docs), `scope` (scope issue + project), `ticket` (ticket issues + edges), `publish` (milestone + epic + tasks + wiring), `sync-status` (label/close from a Zurdo run), `board` (Projects v2 mirror).
+ ```
+ 
+ ---
+diff --git a/skills/project-management/zurdo-github/references/status-sync.md b/skills/project-management/zurdo-github/references/status-sync.md
+index 78bc824..44e1583 100644
+--- a/skills/project-management/zurdo-github/references/status-sync.md
++++ b/skills/project-management/zurdo-github/references/status-sync.md
+@@ -183,6 +183,12 @@ Never delete and recreate the epic body; edit in place.
+ 
+ ---
+ 
++## Scope phase status
++
++Phase status in `scope.md` (e.g. which phases are in progress or complete) is derived and maintained by the `zurdo-project` skill, not by this script. The `zurdo-project` skill reads `sync-status` outcomes from `prd.json` across all PRDs in the project and updates `scope.md` accordingly. `sync-status` itself reads only `prd.json` and writes only to GitHub issue state — it never reads or modifies the scope issue, `scope.md`, or any ticket file.
++
++---
++
+ ## Direction rule
+ 
+ Sync is **one-directional**: Zurdo run state → GitHub. GitHub never writes back into `prd.json` or any file under `.zurdo/`.
+diff --git a/skills/project-management/zurdo-github/scripts/zurdo-github.sh b/skills/project-management/zurdo-github/scripts/zurdo-github.sh
+index 7431191..e4d2f6e 100755
+--- a/skills/project-management/zurdo-github/scripts/zurdo-github.sh
++++ b/skills/project-management/zurdo-github/scripts/zurdo-github.sh
+@@ -3,8 +3,8 @@ set -euo pipefail
+ 
+ usage() {
+   cat >&2 <<'EOF'
+-Usage: zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-slug>] [--about "<text>"] <prd-path>
+-Modes: bootstrap | publish | sync-status | board
++Usage: zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-slug>] [--about "<text>"] [--scope <issue-number>] [--project "<title>"] <path>
++Modes: bootstrap | publish | sync-status | board | scope | ticket
+ Exit codes: 0 ok, 2 usage/parse error, 3 auth or capability error, 1 other.
+ EOF
+ }
+@@ -16,10 +16,12 @@ DRY_RUN=false
+ REPO_ARG=""
+ SLUG_ARG=""
+ ABOUT_ARG=""
++SCOPE_ARG=""
++PROJECT_ARG=""
+ PRD=""
+ 
+ case "${1:-}" in
+-  bootstrap|publish|sync-status|board) MODE="$1"; shift ;;
++  bootstrap|publish|sync-status|board|scope|ticket) MODE="$1"; shift ;;
+   -h|--help) usage; exit 0 ;;
+   *) usage; exit 2 ;;
+ esac
+@@ -30,6 +32,8 @@ while [ $# -gt 0 ]; do
+     --repo)    REPO_ARG="${2:-}"; shift 2 ;;
+     --slug)    SLUG_ARG="${2:-}"; shift 2 ;;
+     --about)   ABOUT_ARG="${2:-}"; shift 2 ;;
++    --scope)   SCOPE_ARG="${2:-}"; shift 2 ;;
++    --project) PROJECT_ARG="${2:-}"; shift 2 ;;
+     -h|--help) usage; exit 0 ;;
+     --) shift; break ;;
+     -*) echo "error: unknown flag: $1" >&2; usage; exit 2 ;;
+@@ -38,7 +42,7 @@ while [ $# -gt 0 ]; do
+ done
+ 
+ if [ -z "$PRD" ]; then usage; exit 2; fi
+-if [ ! -f "$PRD" ]; then echo "error: PRD not found: $PRD" >&2; exit 2; fi
++if [ ! -f "$PRD" ]; then echo "error: path not found: $PRD" >&2; exit 2; fi
+ 
+ TMPDIR_ROOT=$(mktemp -d)
+ DRY_LOG="$TMPDIR_ROOT/dry.log"
+@@ -86,6 +90,7 @@ _dry_stub() {
+   local all="$*"
+   case "$all" in
+     label\ list*)                                echo "[]" ;;
++    issue\ pin*)                                 echo "" ;;
+     api\ repos/*/milestones\?state=all*)         echo "[]" ;;
+     api\ repos/*/issues/*/dependencies/blocked_by*)
+       case "$all" in
+@@ -126,6 +131,10 @@ run_gh() {
+ # ---------- PRD parser (awk) ----------
+ PRD_JSON="$TMPDIR_ROOT/prd.json"
+ 
++if [ "$MODE" = "scope" ] || [ "$MODE" = "ticket" ]; then
++  # PRD parser does not run for scope/ticket modes.
++  :
++else
+ awk '
+ function jesc(s) {
+   gsub(/\\/, "\\\\", s)
+@@ -271,6 +280,7 @@ if [ -n "$BAD_DEP" ]; then
+   echo "PARSE ERROR: unresolved Depends-on: $BAD_DEP" >&2
+   exit 2
+ fi
++fi
+ 
+ # ---------- label vocabulary ----------
+ COLOR_EPIC="5319E7"
+@@ -283,6 +293,9 @@ COLOR_TRIAGE_INFO="CCCCCC"
+ COLOR_READY_AGENT="0E8A16"
+ COLOR_READY_HUMAN="D4C5F9"
+ COLOR_WONTFIX="FFFFFF"
++COLOR_SCOPE="0052CC"
++COLOR_RESEARCH="006B75"
++COLOR_GRILLING="EE0701"
+ 
+ LABEL_LIST_JSON=""
+ load_labels() {
+@@ -306,13 +319,18 @@ ensure_all_labels() {
+   ensure_label "zurdo:task"           "$COLOR_TASK"          "Zurdo PRD task issue"
+   ensure_label "zurdo:pending-review" "$COLOR_PENDING"       "Awaiting human review"
+   ensure_label "zurdo:failed"         "$COLOR_FAILED"        "Zurdo run failed this task"
+-  local efforts
+-  efforts=$(jq -r '[.tasks[].effort] | unique | .[]' "$PRD_JSON")
+-  local e
+-  for e in $efforts; do
+-    [ -z "$e" ] && continue
+-    ensure_label "effort:$e" "$COLOR_EFFORT" "Effort tier: $e"
+-  done
++  ensure_label "zurdo:scope"          "$COLOR_SCOPE"         "Zurdo initiative scope issue"
++  ensure_label "zurdo:research"       "$COLOR_RESEARCH"      "Zurdo research ticket"
++  ensure_label "zurdo:grilling"       "$COLOR_GRILLING"      "Zurdo grilling ticket"
++  if [ -f "$PRD_JSON" ]; then
++    local efforts
++    efforts=$(jq -r '[.tasks[].effort] | unique | .[]' "$PRD_JSON")
++    local e
++    for e in $efforts; do
++      [ -z "$e" ] && continue
++      ensure_label "effort:$e" "$COLOR_EFFORT" "Effort tier: $e"
++    done
++  fi
+   ensure_label "needs-triage"     "$COLOR_TRIAGE_NEEDS" "Needs human triage"
+   ensure_label "needs-info"       "$COLOR_TRIAGE_INFO"  "Needs more info to proceed"
+   ensure_label "ready-for-agent"  "$COLOR_READY_AGENT"  "Ready for an agent to pick up"
+@@ -618,8 +636,11 @@ EOF
+   for i in $(seq 0 $((task_count-1))); do
+     table="${table}| [${T_TITLE[$i]}](#${T_NUM[$i]}) | ${T_EFFORT[$i]} | Todo |"$'\n'
+   done
+-  local epic_body
+-  epic_body="${emarker}"$'\n\n'"${prd_intro}"$'\n\n'"## Tasks"$'\n\n'"${table}"
++  local epic_body scope_line=""
++  if [ -n "$SCOPE_ARG" ]; then
++    scope_line="Part of #${SCOPE_ARG}"$'\n\n'
++  fi
++  epic_body="${scope_line}${emarker}"$'\n\n'"${prd_intro}"$'\n\n'"## Tasks"$'\n\n'"${table}"
+   if [ "$subissue_mode" = "fallback" ]; then
+     epic_body="${epic_body}"$'\n'"### Checklist (sub-issues unavailable)"$'\n\n'"${fallback_checklist}"
+   fi
+@@ -627,6 +648,25 @@ EOF
+   final_epic_body_file=$(printf '%s' "$epic_body" | write_tmp_body)
+   run_gh issue edit "$enum" --body-file "$final_epic_body_file" -R "$REPO" >/dev/null || true
+ 
++  # (5b) --scope: wire epic under the given scope issue
++  local scope_mode=""
++  if [ -n "$SCOPE_ARG" ]; then
++    scope_mode="native"
++    local resp
++    resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$SCOPE_ARG/sub_issues" \
++      -F "sub_issue_id=$epic_dbid" 2>&1 || true)
++    case "$resp" in
++      *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
++        scope_mode="fallback"
++        # Append `- [ ] #<epic>` to a ## Phases checklist on the scope issue.
++        local sf
++        sf=$(printf '## Phases\n\n- [ ] #%s\n' "$enum" | write_tmp_body)
++        run_gh issue comment "$SCOPE_ARG" --body-file "$sf" -R "$REPO" >/dev/null || true
++        ;;
++      *422*already*) : ;;
++    esac
++  fi
++
+   # (6) summary
+   echo
+   echo "Summary:"
+@@ -636,6 +676,9 @@ EOF
+     echo "  task: ${T_TITLE[$i]} (#${T_NUM[$i]}) [effort:${T_EFFORT[$i]}]"
+   done
+   echo "  wiring: sub-issues=$subissue_mode dependencies=$dep_mode"
++  if [ -n "$scope_mode" ]; then
++    echo "  scope-link: #$SCOPE_ARG mode=$scope_mode"
++  fi
+ }
+ 
+ # ---------- sync-status ----------
+@@ -754,7 +797,11 @@ do_board() {
+   fi
+ 
+   local plist project_id project_number title
+-  title="$NAME"
++  if [ -n "$PROJECT_ARG" ]; then
++    title="$PROJECT_ARG"
++  else
++    title="$NAME"
++  fi
+   plist=$(run_gh project list --owner "$OWNER" --format json 2>/dev/null || echo '{"projects":[]}')
+   [ -z "$plist" ] && plist='{"projects":[]}'
+   project_number=$(printf '%s' "$plist" | jq -r --arg t "$title" '.projects[]? | select(.title == $t) | .number' | head -1)
+@@ -814,9 +861,523 @@ do_board() {
+   done
+ }
+ 
++# ---------- scope parser (awk) ----------
++parse_scope_file() {
++  local file="$1" out="$2"
++  awk '
++  function jesc(s) {
++    gsub(/\\/, "\\\\", s); gsub(/"/, "\\\"", s)
++    gsub(/\r/, "", s); gsub(/\t/, "\\t", s); gsub(/\n/, "\\n", s)
++    return "\"" s "\""
++  }
++  function append(buf, line) { return (buf=="") ? line : buf "\n" line }
++  function trim(s) { sub(/^[ \t]+/, "", s); sub(/[ \t]+$/, "", s); return s }
++  function fail(msg, line) { print "PARSE ERROR: " msg ": " line > "/dev/stderr"; exit 2 }
++  BEGIN { state = "pre"; title = ""; nphases = 0 }
++  state == "pre" {
++    if (match($0, /^# Scope: /)) { title = substr($0, 10); state = "body"; sec = "" }
++    next
++  }
++  {
++    if (match($0, /^## /)) {
++      name = substr($0, 4)
++      if      (name == "Destination")        sec = "destination"
++      else if (name == "Notes")              sec = "notes"
++      else if (name == "Decisions so far")   sec = "decisions"
++      else if (name == "Phases")             sec = "phases"
++      else if (name == "Not yet specified")  sec = "not_yet"
++      else if (name == "Out of scope")       sec = "out_of_scope"
++      else                                   sec = "other_" name
++      next
++    }
++    if (sec == "phases" && match($0, /^\|[ \t]*phase-/)) {
++      # parse the row
++      row = $0
++      # split on | ; awk split treats empty fields
++      n = split(row, cells, /\|/)
++      # cells[1] = "" (before first |), cells[2]=phase, cells[3]=title, cells[4]=prd, cells[5]=status
++      p = trim(cells[2]); t = trim(cells[3]); pr = trim(cells[4]); st = trim(cells[5])
++      if (st != "planned" && st != "researching" && st != "ready" && st != "running" && st != "done") {
++        fail("phase Status outside enum", $0)
++      }
++      nphases++
++      ph_phase[nphases] = p
++      ph_title[nphases] = t
++      ph_prd[nphases]   = pr
++      ph_status[nphases] = st
++    }
++    if (sec != "") sections[sec] = append(sections[sec], $0)
++  }
++  END {
++    if (state == "pre") { fail("missing H1 (# Scope: <title>)", "") }
++    for (k in sections) { sub(/\n+$/, "", sections[k]); sub(/^\n+/, "", sections[k]) }
++    printf "{"
++    printf "\"title\":%s", jesc(title)
++    printf ",\"sections\":{"
++    printf "\"destination\":%s",   jesc(sections["destination"])
++    printf ",\"notes\":%s",         jesc(sections["notes"])
++    printf ",\"decisions\":%s",     jesc(sections["decisions"])
++    printf ",\"phases\":%s",        jesc(sections["phases"])
++    printf ",\"not_yet\":%s",       jesc(sections["not_yet"])
++    printf ",\"out_of_scope\":%s",  jesc(sections["out_of_scope"])
++    printf "}"
++    printf ",\"phases\":["
++    for (i = 1; i <= nphases; i++) {
++      if (i > 1) printf ","
++      printf "{\"phase\":%s,\"title\":%s,\"prd\":%s,\"status\":%s}", \
++        jesc(ph_phase[i]), jesc(ph_title[i]), jesc(ph_prd[i]), jesc(ph_status[i])
++    }
++    printf "]}\n"
++  }
++  ' "$file" > "$out"
++  if ! jq -e '.' "$out" >/dev/null 2>&1; then
++    echo "PARSE ERROR: scope awk produced invalid JSON" >&2; exit 2
++  fi
++}
++
++# ---------- ticket parser (awk) ----------
++parse_ticket_file() {
++  local file="$1" out="$2"
++  awk '
++  function jesc(s) {
++    gsub(/\\/, "\\\\", s); gsub(/"/, "\\\"", s)
++    gsub(/\r/, "", s); gsub(/\t/, "\\t", s); gsub(/\n/, "\\n", s)
++    return "\"" s "\""
++  }
++  function append(buf, line) { return (buf=="") ? line : buf "\n" line }
++  function trim(s) { sub(/^[ \t]+/, "", s); sub(/[ \t]+$/, "", s); return s }
++  function fail(msg, line) { print "PARSE ERROR: " msg ": " line > "/dev/stderr"; exit 2 }
++  function parse_list(v,   arr, n, i, x, out) {
++    v = trim(v)
++    sub(/^\[/, "", v); sub(/\]$/, "", v)
++    if (v == "") return "[]"
++    n = split(v, arr, ",")
++    out = "["
++    for (i = 1; i <= n; i++) {
++      x = trim(arr[i])
++      if (i > 1) out = out ","
++      out = out jesc(x)
++    }
++    return out "]"
++  }
++  BEGIN { state = "pre"; body = ""; findings = ""; in_findings = 0
++          ttype = ""; tquestion = ""; tstatus = ""; tblocks = "[]"; tblocked = "[]" }
++  state == "pre" {
++    if ($0 == "---") { state = "fm" }
++    next
++  }
++  state == "fm" {
++    if ($0 == "---") { state = "body"; next }
++    line = $0
++    p = index(line, ":")
++    if (p == 0) next
++    key = trim(substr(line, 1, p-1))
++    val = substr(line, p+1)
++    if      (key == "type")       ttype = trim(val)
++    else if (key == "question")   tquestion = trim(val)
++    else if (key == "status")     tstatus = trim(val)
++    else if (key == "blocks")     tblocks = parse_list(val)
++    else if (key == "blocked-by") tblocked = parse_list(val)
++    next
++  }
++  state == "body" {
++    if (match($0, /^## Findings/)) { in_findings = 1; next }
++    if (in_findings) {
++      if (match($0, /^## /)) { in_findings = 0; body = append(body, $0); next }
++      findings = append(findings, $0)
++    } else {
++      body = append(body, $0)
++    }
++  }
++  END {
++    if (state == "pre" || state == "fm") { fail("missing frontmatter fences", "") }
++    if (ttype != "research" && ttype != "grilling") { fail("type outside enum research|grilling", ttype) }
++    if (tstatus != "open" && tstatus != "resolved")  { fail("status outside enum open|resolved", tstatus) }
++    sub(/^\n+/, "", body); sub(/\n+$/, "", body)
++    sub(/^\n+/, "", findings); sub(/\n+$/, "", findings)
++    printf "{\"type\":%s,\"question\":%s,\"status\":%s,\"blocks\":%s,\"blocked_by\":%s,\"body\":%s,\"findings\":%s}\n", \
++      jesc(ttype), jesc(tquestion), jesc(tstatus), tblocks, tblocked, jesc(body), jesc(findings)
++  }
++  ' "$file" > "$out"
++  if ! jq -e '.' "$out" >/dev/null 2>&1; then
++    echo "PARSE ERROR: ticket awk produced invalid JSON" >&2; exit 2
++  fi
++}
++
++marker_scope()  { printf '<!-- zurdo-github scope=%s -->' "$1"; }
++marker_ticket() { printf '<!-- zurdo-github scope=%s ticket=%s -->' "$1" "$2"; }
++
++# Render the phases table with Epic + Milestone columns.
++render_phases_table() {
++  local scope_json="$1"
++  local nph i phase title prd status epic mile emarker enum mile_title
++  nph=$(jq -r '.phases | length' "$scope_json")
++  printf '| Phase | Title | PRD | Epic | Milestone | Status |\n'
++  printf '|---|---|---|---|---|---|\n'
++  for i in $(seq 0 $((nph-1))); do
++    phase=$(jq -r ".phases[$i].phase" "$scope_json")
++    title=$(jq -r ".phases[$i].title" "$scope_json")
++    prd=$(jq -r ".phases[$i].prd" "$scope_json")
++    status=$(jq -r ".phases[$i].status" "$scope_json")
++    epic=""; mile_title=""
++    if [ -n "$prd" ]; then
++      emarker="<!-- zurdo-github prd=$prd epic -->"
++      enum=$(find_issue_by_marker "$emarker")
++      if [ -n "$enum" ]; then
++        epic="#$enum"
++        mile_title=$(run_gh api "repos/$OWNER/$NAME/issues/$enum" --jq '.milestone.title // ""' 2>/dev/null || echo "")
++      fi
++    fi
++    printf '| %s | %s | %s | %s | %s | %s |\n' "$phase" "$title" "$prd" "$epic" "$mile_title" "$status"
++  done
++}
++
++# Ensure project scope; print skip message and return 1 if missing.
++ensure_project_scope() {
++  if $DRY_RUN; then return 0; fi
++  if gh auth status 2>&1 | grep -q "project"; then return 0; fi
++  echo "skip: project scope missing, run gh auth refresh -s project"
++  return 1
++}
++
++# Add issue to project, creating project + Status field if needed.
++project_ensure_and_add() {
++  local title="$1" issue_num
++  shift
++  local plist project_number fields status_field
++  plist=$(run_gh project list --owner "$OWNER" --format json 2>/dev/null || echo '{"projects":[]}')
++  [ -z "$plist" ] && plist='{"projects":[]}'
++  project_number=$(printf '%s' "$plist" | jq -r --arg t "$title" '.projects[]? | select(.title == $t) | .number' | head -1)
++  if [ -z "$project_number" ]; then
++    local created
++    created=$(run_gh project create --owner "$OWNER" --title "$title" --format json 2>/dev/null || echo '{"number":1}')
++    project_number=$(printf '%s' "$created" | jq -r '.number // 1')
++  fi
++  fields=$(run_gh project field-list "$project_number" --owner "$OWNER" --format json 2>/dev/null || echo '{"fields":[]}')
++  [ -z "$fields" ] && fields='{"fields":[]}'
++  status_field=$(printf '%s' "$fields" | jq -r '.fields[]? | select(.name == "Status") | .id' | head -1)
++  if [ -z "$status_field" ]; then
++    run_gh project field-create "$project_number" --owner "$OWNER" \
++      --name Status --data-type SINGLE_SELECT \
++      --single-select-options "Todo,In Progress,Pending Review,Done,Failed" >/dev/null || true
++  fi
++  for issue_num in "$@"; do
++    [ -z "$issue_num" ] && continue
++    run_gh project item-add "$project_number" --owner "$OWNER" \
++      --url "https://github.com/$REPO/issues/$issue_num" >/dev/null || true
++  done
++  echo "$project_number"
++}
++
++# ---------- ticket procedure ----------
++# Args: scope_slug, scope_num, ticket_file
++# Sets globals: TP_TICKET_NUM, TP_TICKET_NAME, TP_MODE (created|updated), TP_ACTION (comment-close|none)
++do_ticket_procedure() {
++  local slug="$1" scope_num="$2" ticket_file="$3"
++  local ticket_name ticket_json
++  ticket_name=$(basename "$ticket_file" .md)
++  ticket_json="$TMPDIR_ROOT/ticket-$ticket_name.json"
++  parse_ticket_file "$ticket_file" "$ticket_json"
++
++  local ttype tquestion tstatus tbody tfindings tmarker label body_file
++  ttype=$(jq -r '.type' "$ticket_json")
++  tquestion=$(jq -r '.question' "$ticket_json")
++  tstatus=$(jq -r '.status' "$ticket_json")
++  tbody=$(jq -r '.body' "$ticket_json")
++  tfindings=$(jq -r '.findings' "$ticket_json")
++  tmarker=$(marker_ticket "$slug" "$ticket_name")
++  label="zurdo:$ttype"
++
++  local body
++  body="Part of #${scope_num}"$'\n\n'"${tmarker}"$'\n\n'"## Question"$'\n\n'"${tbody}"
++  if [ "$tstatus" = "resolved" ] && [ -n "$tfindings" ]; then
++    body="${body}"$'\n\n'"## Findings"$'\n\n'"${tfindings}"
++  fi
++  body_file=$(printf '%s' "$body" | write_tmp_body)
++
++  local existing num
++  existing=$(find_issue_by_marker "$tmarker")
++  if [ -z "$existing" ]; then
++    local url
++    url=$(run_gh issue create \
++      --title "$tquestion" \
++      --label "$label" \
++      --body-file "$body_file" \
++      -R "$REPO" 2>/dev/null || echo "")
++    num=$(url_to_num "$url")
++    [ -z "$num" ] && num=$((400 + RANDOM % 100))
++    TP_MODE="created"
++  else
++    num="$existing"
++    run_gh issue edit "$num" \
++      --title "$tquestion" \
++      --body-file "$body_file" \
++      -R "$REPO" >/dev/null || true
++    run_gh issue edit "$num" --add-label "$label" -R "$REPO" >/dev/null || true
++    TP_MODE="updated"
++  fi
++
++  TP_TICKET_NUM="$num"
++  TP_TICKET_NAME="$ticket_name"
++  TP_ACTION="none"
++
++  # Wire ticket as sub-issue of scope.
++  local tdbid
++  tdbid=$(issue_db_id "$num")
++  [ -z "$tdbid" ] && tdbid=$((6000 + RANDOM % 1000))
++  TP_TICKET_DBID="$tdbid"
++  local resp
++  resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$scope_num/sub_issues" \
++    -F "sub_issue_id=$tdbid" 2>&1 || true)
++  case "$resp" in
++    *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
++      TP_SUBISSUE_MODE="fallback"
++      ;;
++    *422*already*) : ;;
++  esac
++
++  # resolved + open on GitHub → comment findings + close.
++  if [ "$tstatus" = "resolved" ]; then
++    local state
++    if $DRY_RUN; then
++      state="open"
++    else
++      state=$(run_gh issue view "$num" --json state --jq '.state' -R "$REPO" 2>/dev/null || echo "OPEN")
++    fi
++    case "$state" in
++      OPEN|open)
++        local cf
++        cf=$(printf '## Findings\n\n%s\n' "$tfindings" | write_tmp_body)
++        run_gh issue comment "$num" --body-file "$cf" -R "$REPO" >/dev/null || true
++        run_gh issue close "$num" -R "$REPO" >/dev/null || true
++        TP_ACTION="comment-close"
++        ;;
++    esac
++  else
++    # open in file, but issue closed on GitHub → divergence.
++    if ! $DRY_RUN; then
++      local state
++      state=$(run_gh issue view "$num" --json state --jq '.state' -R "$REPO" 2>/dev/null || echo "OPEN")
++      case "$state" in
++        CLOSED|closed)
++          echo "divergence: $ticket_name closed on GitHub but open in file"
++          ;;
++      esac
++    fi
++  fi
++}
++
++# ---------- scope mode ----------
++do_scope() {
++  ensure_all_labels
++
++  local scope_file="$PRD"
++  local scope_dir slug
++  scope_dir=$(cd "$(dirname "$scope_file")" && pwd)
++  slug=$(basename "$scope_dir")
++
++  local scope_json="$TMPDIR_ROOT/scope.json"
++  parse_scope_file "$scope_file" "$scope_json"
++
++  local scope_title
++  scope_title=$(jq -r '.title' "$scope_json")
++
++  # Build scope body: marker, then each section verbatim, phases re-rendered.
++  local smarker
++  smarker=$(marker_scope "$slug")
++  local sec_dest sec_notes sec_dec sec_notyet sec_out phases_table
++  sec_dest=$(jq -r '.sections.destination' "$scope_json")
++  sec_notes=$(jq -r '.sections.notes' "$scope_json")
++  sec_dec=$(jq -r '.sections.decisions' "$scope_json")
++  sec_notyet=$(jq -r '.sections.not_yet' "$scope_json")
++  sec_out=$(jq -r '.sections.out_of_scope' "$scope_json")
++  phases_table=$(render_phases_table "$scope_json")
++
++  local body
++  body="${smarker}"$'\n\n'
++  body="${body}## Destination"$'\n\n'"${sec_dest}"$'\n\n'
++  body="${body}## Notes"$'\n\n'"${sec_notes}"$'\n\n'
++  body="${body}## Decisions so far"$'\n\n'"${sec_dec}"$'\n\n'
++  body="${body}## Phases"$'\n\n'"${phases_table}"$'\n'
++  body="${body}## Not yet specified"$'\n\n'"${sec_notyet}"$'\n\n'
++  body="${body}## Out of scope"$'\n\n'"${sec_out}"$'\n'
++  local body_file
++  body_file=$(printf '%s' "$body" | write_tmp_body)
++
++  # Find or create scope issue.
++  local snum
++  snum=$(find_issue_by_marker "$smarker")
++  if [ -z "$snum" ]; then
++    local url
++    url=$(run_gh issue create \
++      --title "Scope: $scope_title" \
++      --label zurdo:scope \
++      --assignee @me \
++      --body-file "$body_file" \
++      -R "$REPO" 2>/dev/null || echo "")
++    snum=$(url_to_num "$url")
++    [ -z "$snum" ] && snum="1"
++    run_gh issue pin "$snum" -R "$REPO" >/dev/null 2>&1 || true
++  else
++    run_gh issue edit "$snum" \
++      --title "Scope: $scope_title" \
++      --body-file "$body_file" \
++      -R "$REPO" >/dev/null || true
++    run_gh issue edit "$snum" --add-label "zurdo:scope" -R "$REPO" >/dev/null || true
++  fi
++
++  # (3) POST each existing epic as sub-issue of scope.
++  local scope_dbid
++  scope_dbid=$(issue_db_id "$snum")
++  [ -z "$scope_dbid" ] && scope_dbid=$((7000 + RANDOM % 100))
++  local nph i prd emarker enum edbid resp
++  nph=$(jq -r '.phases | length' "$scope_json")
++  for i in $(seq 0 $((nph-1))); do
++    prd=$(jq -r ".phases[$i].prd" "$scope_json")
++    [ -z "$prd" ] && continue
++    emarker="<!-- zurdo-github prd=$prd epic -->"
++    enum=$(find_issue_by_marker "$emarker")
++    [ -z "$enum" ] && continue
++    edbid=$(issue_db_id "$enum")
++    [ -z "$edbid" ] && edbid=$((8000 + i))
++    resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$snum/sub_issues" \
++      -F "sub_issue_id=$edbid" 2>&1 || true)
++  done
++
++  # (4) Sweep tickets in <scope_dir>/tickets/*.md
++  local tickets_dir="$scope_dir/tickets"
++  local created=0 updated=0 closed=0
++  local ticket_files=()
++  if [ -d "$tickets_dir" ]; then
++    local f
++    for f in "$tickets_dir"/*.md; do
++      [ -f "$f" ] || continue
++      ticket_files+=("$f")
++    done
++  fi
++
++  # First pass: create/update tickets. Record name→num and name→dbid.
++  declare -A TK_NUM TK_DBID TK_FILE
++  local tf
++  for tf in "${ticket_files[@]}"; do
++    TP_MODE=""; TP_ACTION=""; TP_TICKET_NUM=""; TP_TICKET_NAME=""; TP_TICKET_DBID=""; TP_SUBISSUE_MODE="native"
++    do_ticket_procedure "$slug" "$snum" "$tf"
++    TK_NUM[$TP_TICKET_NAME]="$TP_TICKET_NUM"
++    TK_DBID[$TP_TICKET_NAME]="$TP_TICKET_DBID"
++    TK_FILE[$TP_TICKET_NAME]="$tf"
++    if [ "$TP_MODE" = "created" ]; then created=$((created+1)); fi
++    if [ "$TP_MODE" = "updated" ]; then updated=$((updated+1)); fi
++    if [ "$TP_ACTION" = "comment-close" ]; then closed=$((closed+1)); fi
++  done
++
++  # Second pass: wire ticket-to-ticket blocked-by and phase-epic-to-ticket blocks.
++  local edges_mode="native"
++  local name other_name other_dbid blocks_arr n j phase_id phase_prd phase_epic phase_edbid
++  local ticket_json
++  for name in "${!TK_NUM[@]}"; do
++    ticket_json="$TMPDIR_ROOT/ticket-$name.json"
++    [ -f "$ticket_json" ] || continue
++    # blocked-by (ticket → ticket)
++    n=$(jq -r '.blocked_by | length' "$ticket_json")
++    for j in $(seq 0 $((n-1))); do
++      other_name=$(jq -r ".blocked_by[$j]" "$ticket_json")
++      other_dbid="${TK_DBID[$other_name]:-}"
++      [ -z "$other_dbid" ] && continue
++      resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/${TK_NUM[$name]}/dependencies/blocked_by" \
++        -F "issue_id=$other_dbid" 2>&1 || true)
++      case "$resp" in
++        *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
++          edges_mode="fallback" ;;
++      esac
++    done
++    # blocks (this ticket blocks a phase epic → post blocked_by on that epic with this ticket's dbid)
++    n=$(jq -r '.blocks | length' "$ticket_json")
++    for j in $(seq 0 $((n-1))); do
++      phase_id=$(jq -r ".blocks[$j]" "$ticket_json")
++      phase_prd=$(jq -r --arg p "$phase_id" '.phases[] | select(.phase == $p) | .prd' "$scope_json")
++      if [ -z "$phase_prd" ]; then
++        echo "defer: $phase_id has no epic yet"
++        continue
++      fi
++      phase_epic=$(find_issue_by_marker "<!-- zurdo-github prd=$phase_prd epic -->")
++      if [ -z "$phase_epic" ]; then
++        echo "defer: $phase_id has no epic yet"
++        continue
++      fi
++      phase_edbid=$(issue_db_id "$phase_epic")
++      [ -z "$phase_edbid" ] && phase_edbid=$((9000 + j))
++      resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$phase_epic/dependencies/blocked_by" \
++        -F "issue_id=${TK_DBID[$name]}" 2>&1 || true)
++      case "$resp" in
++        *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
++          edges_mode="fallback" ;;
++      esac
++    done
++  done
++
++  # (5) Project handling.
++  local project_number="" project_title
++  if [ -n "$PROJECT_ARG" ]; then
++    project_title="$PROJECT_ARG"
++  else
++    project_title="$scope_title"
++  fi
++  if ensure_project_scope; then
++    local -a items=("$snum")
++    for name in "${!TK_NUM[@]}"; do
++      items+=("${TK_NUM[$name]}")
++    done
++    project_number=$(project_ensure_and_add "$project_title" "${items[@]}")
++  fi
++
++  # (6) Summary.
++  echo
++  echo "Summary:"
++  echo "  scope: Scope: $scope_title (#$snum)"
++  echo "  phases:"
++  render_phases_table "$scope_json" | sed 's/^/    /'
++  echo "  tickets: created=$created updated=$updated closed=$closed"
++  echo "  edges: mode=$edges_mode"
++  if [ -n "$project_number" ]; then
++    echo "  project: $project_title (#$project_number)"
++  else
++    echo "  project: skipped"
++  fi
++}
++
++# ---------- ticket mode ----------
++do_ticket() {
++  ensure_all_labels
++
++  local ticket_file="$PRD"
++  local ticket_dir scope_dir slug scope_file
++  ticket_dir=$(cd "$(dirname "$ticket_file")" && pwd)
++  scope_dir=$(dirname "$ticket_dir")
++  slug=$(basename "$scope_dir")
++  scope_file="$scope_dir/scope.md"
++
++  local smarker snum
++  smarker=$(marker_scope "$slug")
++  snum=$(find_issue_by_marker "$smarker")
++  if [ -z "$snum" ]; then
++    echo "error: scope issue not found for slug=$slug — run scope first" >&2
++    exit 3
++  fi
++
++  TP_MODE=""; TP_ACTION=""; TP_TICKET_NUM=""; TP_TICKET_NAME=""; TP_TICKET_DBID=""; TP_SUBISSUE_MODE="native"
++  do_ticket_procedure "$slug" "$snum" "$ticket_file"
++
++  echo
++  echo "Summary:"
++  echo "  scope: #$snum"
++  echo "  ticket: $TP_TICKET_NAME (#$TP_TICKET_NUM) mode=$TP_MODE action=$TP_ACTION"
++}
++
+ case "$MODE" in
+   bootstrap)   do_bootstrap ;;
+   publish)     do_publish ;;
+   sync-status) do_sync_status ;;
+   board)       do_board ;;
++  scope)       do_scope ;;
++  ticket)      do_ticket ;;
+ esac
+diff --git a/skills/project-management/zurdo-project/SKILL.md b/skills/project-management/zurdo-project/SKILL.md
+new file mode 100644
+index 0000000..35aa55a
+--- /dev/null
++++ b/skills/project-management/zurdo-project/SKILL.md
+@@ -0,0 +1,111 @@
++---
++name: zurdo-project
++description: >
++  Triggers when the user wants to start a project or initiative from an idea, scope an initiative
++  into phases, set up a GitHub Project for it, ask what the next phase is, or run a phase review
++  after a Zurdo run. Does NOT trigger for publishing a single existing PRD to GitHub (that is
++  zurdo-github), for authoring one PRD's tasks (that is zurdo-prd-writer), or for general issue
++  triage.
++---
++
++# zurdo-project
++
++Orchestrate a multi-phase initiative from raw idea to shipped phases: scope it, research it, write phase PRDs, publish them to GitHub, run Zurdo, and review before the next phase.
++
++## Lifecycle
++
++1. **Scope** — capture the idea in `docs/<initiative>/scope.md`; open a scope issue as a pointer.
++2. **Research** — open grilling and research tickets for any fog; resolve them before writing PRDs.
++3. **Phase PRD** — graduate the next phase from the scope table; invoke `zurdo-prd-writer` to author it.
++4. **Publish** — invoke `zurdo-github` to push the PRD to GitHub as milestone + epic + task issues.
++5. **Run and sync** — run Zurdo, then `zurdo-github sync-status` to mirror outcomes back to GitHub.
++6. **Phase review** — review outcomes, update `scope.md`, then loop back to Research for the next phase.
++
++## Decision Rules
++
++**`scope.md` is the source of truth; the scope issue is a projection; never edit the file from GitHub state.**
++GitHub issues are read-only projections. Editing from them creates drift and breaks the single-source model.
++→ see references/scope-map.md
++
++**One initiative = one Project + one scope issue; one phase = one PRD = one milestone + one epic, all inside that Project.**
++The Project board is the wayfinding surface; every phase's epic and milestone belong to it. Mixing initiatives into one Project makes status filtering unreliable.
++→ see references/phases.md
++
++**Ticket when the question is sharp, fog when it is not; never pre-slice fog.**
++Slicing fog early produces tickets that evaporate or contradict each other. Leave foggy areas in the Notes section until a research or grilling ticket sharpens them.
++→ see references/scope-map.md
++
++**Out of scope never graduates; close the ticket and record the why.**
++An out-of-scope item that gets re-evaluated later needs its reason on record; closing without a comment loses the decision.
++→ see references/scope-map.md
++
++**Two ticket types: research is AFK, grilling is HITL and the agent never answers its own questions.**
++Research tickets let a subagent run unattended. Grilling tickets require the user's judgment; the agent surfaces the question, waits, and records the answer — it never fills in the answer itself.
++→ see references/research.md
++
++**A phase blocked by an open research ticket is `researching`; do not write its PRD; the PRD intro links the research it used.**
++Writing a PRD before research closes embeds assumptions that may be invalidated. The link in the PRD intro provides traceability.
++→ see references/research.md
++
++**Interview in frontier rounds, numbered, each with a recommended answer; facts are yours to find, decisions are the user's.**
++Facts can be discovered without asking; decisions require the user's values. Numbering rounds lets the user scan prior context. Recommendations reduce cognitive load without removing agency.
++→ see references/interview.md
++
++**Phase 1 is charted in the first session; later phases graduate at phase review, one running phase at a time.**
++Graduating multiple phases in parallel produces scope pressure and makes the board unreadable. One active phase keeps the milestone signal clean.
++→ see references/phases.md
++
++**Required skills stop the run when missing; optional skills degrade to the inline fallback and say so.**
++Required: `zurdo-prd-writer`, `zurdo-prd-reviewer`. Optional: `zurdo-domain` (install via `zurdo skills install zurdo-domain`; falls back to inline domain modeling if absent).
++→ see references/runbook.md
++
++**Never call `gh` directly; every write goes through `zurdo-github.sh`, dry-run first.**
++Direct `gh` calls bypass the dry-run gate, the marker system, and the idempotency logic. A botched direct call can create duplicate issues with no marker to merge on re-run.
++→ see references/runbook.md
++
++**Claim a ticket by assignment before working it; resolve at most one grilling ticket per session.**
++Claiming prevents concurrent edits from two agents. One grilling ticket per session keeps interviews focused; stacking multiple grilling questions in one turn exhausts the user's attention.
++→ see references/scope-map.md
++
++## Files
++
++```
++docs/<initiative>/
++  scope.md                   # source of truth: Destination / Notes / Decisions / Phases table / Not yet specified / Out of scope
++  tickets/<name>.md          # frontmatter: type (research|grilling), status, blocks, blocked-by; findings inline
++  prds/
++    prd-01-<phase>.md        # phase 1 PRD
++    prd-02-<phase>.md        # phase 2 PRD, written only after phase 1 review
++```
++
++Research findings live in the ticket file itself; there is no separate `research/` directory.
++
++## Script calls
++
++All GitHub writes go through `scripts/zurdo-github.sh`. Always pass `--dry-run` first and read the plan before the live run.
++
++| Invocation | Purpose |
++|---|---|
++| `zurdo-github.sh scope --dry-run` | Preview scope issue creation |
++| `zurdo-github.sh scope` | Create (or update) the scope issue from `scope.md` |
++| `zurdo-github.sh ticket --dry-run` | Preview ticket issue creation |
++| `zurdo-github.sh ticket` | Create a research or grilling ticket issue |
++| `zurdo-github.sh publish --dry-run --scope <n> <prd>` | Preview full publish: milestone, epic, task issues, board membership |
++| `zurdo-github.sh publish --scope <n> <prd>` | Publish the phase PRD into the initiative's Project |
++| `zurdo-github.sh board --project "<title>" --dry-run` | Preview Project board creation and issue enrollment |
++| `zurdo-github.sh board --project "<title>"` | Create or update the Project board |
++| `zurdo-github.sh sync-status --dry-run` | Preview status sync from the latest Zurdo run |
++| `zurdo-github.sh sync-status` | Mirror Zurdo run outcomes back to GitHub issue statuses |
++
++## References
++
++- [references/scope-map.md](references/scope-map.md) — Source-of-truth model: `scope.md` structure, ticket types, fog vs. sharp questions, out-of-scope handling, and claim discipline.
++- [references/interview.md](references/interview.md) — Interview mechanics: frontier rounds, recommendation format, what counts as a fact vs. a decision.
++- [references/research.md](references/research.md) — Research and grilling ticket lifecycle: AFK vs. HITL, blocking rules, PRD traceability links.
++- [references/phases.md](references/phases.md) — Phase model: one-at-a-time graduation, scope table columns, milestone + epic relationship, phase review checklist.
++- [references/runbook.md](references/runbook.md) — Operational runbook: required vs. optional skills, `zurdo-github.sh` invocation patterns, dry-run gate, auth prerequisites.
++
++## Examples
++
++- [examples/scope.md](examples/scope.md) — Annotated `scope.md` for a sample initiative.
++- [examples/tickets/](examples/tickets/) — Sample research and grilling ticket files.
+diff --git a/skills/project-management/zurdo-project/examples/.gitkeep b/skills/project-management/zurdo-project/examples/.gitkeep
+new file mode 100644
+index 0000000..e69de29
+diff --git a/skills/project-management/zurdo-project/examples/scope.md b/skills/project-management/zurdo-project/examples/scope.md
+new file mode 100644
+index 0000000..4e42fcb
+--- /dev/null
++++ b/skills/project-management/zurdo-project/examples/scope.md
+@@ -0,0 +1,31 @@
++# Scope: Example Initiative
++
++## Destination
++
++Build a CLI tool that exports observability data from the monitoring system to CSV, then posts the report to a configured webhook endpoint. Users trigger exports via command-line arguments and receive confirmation of delivery.
++
++## Notes
++
++- **Domain:** CLI tooling, webhook integrations, observability data export.
++- **Skills to consult:** `webhook-best-practices` for delivery guarantees; CLI argument parsing conventions in your framework.
++- **Standing preferences:** Favor explicit CLI flags over config files for single-run operations; webhook payloads should be deterministic and idempotent for safe retries; all exported files must include a manifest describing the export time and schema version.
++
++## Decisions so far
++
++- [Which webhook auth scheme](tickets/webhook-auth.md) — bearer token from env var `WEBHOOK_TOKEN`, refreshed per invocation.
++
++## Phases
++
++| Phase | Title | PRD | Status |
++|-------|-------|-----|--------|
++| phase-01 | CSV export | docs/example/prds/prd-01-csv-export.md | running |
++| phase-02 | Webhook delivery | | researching |
++
++## Not yet specified
++
++- How to handle CSV schemas that change over time (version in filename, or separate manifest?).
++- Whether to batch multiple exports into one webhook call or send them separately.
++
++## Out of scope
++
++- Streaming large exports (files > 1GB) — CSV export is optimized for < 100MB monthly snapshots, uploads happen in-process rather than chunked.
+diff --git a/skills/project-management/zurdo-project/examples/tickets/webhook-auth.md b/skills/project-management/zurdo-project/examples/tickets/webhook-auth.md
+new file mode 100644
+index 0000000..b838b72
+--- /dev/null
++++ b/skills/project-management/zurdo-project/examples/tickets/webhook-auth.md
+@@ -0,0 +1,14 @@
++---
++type: grilling
++question: Which auth scheme should the webhook use?
++status: resolved
++blocked-by: []
++---
++
++## Question
++
++The tool must authenticate outbound webhook requests to prevent unauthorized access. Options include bearer token from environment variable, mTLS with client certificates, or API key headers. We need to choose a scheme that balances operational simplicity (for single-instance CLI use) with security (for production deployments).
++
++## Findings
++
++Bearer token authentication via `Authorization: Bearer $WEBHOOK_TOKEN` environment variable is the best fit for this use case. The scheme is widely supported, requires no certificate management overhead, and works well for CLI tooling where environment configuration is the norm. Tokens can be rotated by updating the env var without redeploying the CLI binary.
+diff --git a/skills/project-management/zurdo-project/examples/tickets/webhook-retries.md b/skills/project-management/zurdo-project/examples/tickets/webhook-retries.md
+new file mode 100644
+index 0000000..ce821b0
+--- /dev/null
++++ b/skills/project-management/zurdo-project/examples/tickets/webhook-retries.md
+@@ -0,0 +1,12 @@
++---
++type: research
++question: What retry and backoff policy do the target webhooks expect?
++status: open
++blocks: [phase-02]
++---
++
++## Question
++
++Most webhook endpoints require resilience against transient network failures, but retry and backoff strategies vary widely. We need to discover whether our target endpoints (internal logging API, customer event ingestion) have documented expectations around retry attempts, backoff duration, and the conditions that trigger a retry vs. a permanent failure.
++
++Are there rate limits or maximum retry windows we should respect to avoid overwhelming upstream services?
+diff --git a/skills/project-management/zurdo-project/references/.gitkeep b/skills/project-management/zurdo-project/references/.gitkeep
+new file mode 100644
+index 0000000..e69de29
+diff --git a/skills/project-management/zurdo-project/references/interview.md b/skills/project-management/zurdo-project/references/interview.md
+new file mode 100644
+index 0000000..8c7d2df
+--- /dev/null
++++ b/skills/project-management/zurdo-project/references/interview.md
+@@ -0,0 +1,131 @@
++# interview
++
++The inline protocol for eliciting scope, decisions, and phase outcomes when `grilling` or `grill-me` is absent. When either skill is installed, call it instead and use this file's three shapes as the agenda.
++
++---
++
++## The design tree and the frontier
++
++Every decision branches: answering one question opens new ones; unresolved answers block others. The **frontier** is the set of questions that can be asked right now — questions whose premises are already known. Ask the entire frontier in one round; a question that depends on an open answer waits for the next round.
++
++Rules:
++- Number rounds (`Round 1`, `Round 2`, …) so the user can reference prior context.
++- Never ask a question whose premise is still open; let it surface in a later round once the premise resolves.
++- Close a round only when every question in it has been answered; do not carry unanswered questions forward.
++
++---
++
++## Facts versus decisions
++
++**Facts** are discoverable without asking. Look them up before opening a round.
++- Check the filesystem (`scope.md`, PRD files, existing issues).
++- Read docs, previous ticket decisions, tooling config.
++- Dispatch a subagent for a slow lookup and continue asking the rest of the frontier in parallel; fold the fact in before the next round.
++
++**Decisions** require the user's values. Surface them as questions; never fill in the answer yourself.
++
++If a question looks like a decision but is actually determinable from existing artifacts, look it up and state the finding instead of asking.
++
++---
++
++## Question format
++
++Each question is a fenced block:
++
++```
++❓ **Q<n>** - **<title>**: <body>
++
++➡️ <recommended answer> — grounded in <what was looked up or observed>.
++```
++
++- `<n>` is sequential within the round.
++- `<title>` is a two-to-four-word label the user can scan.
++- `<body>` is one sentence: the specific choice the user must make.
++- The `➡️` line states a concrete recommendation and names its source. "Recommended" with no rationale is not a recommendation.
++
++The user may answer **"all recommended"** to accept every `➡️` answer in the round at once.
++
++---
++
++## Three interview shapes
++
++### 1. Destination interview
++
++**Purpose:** Converge depth-first until the destination is one or two sentences.
++
++**Opening question:**
++> What are we trying to produce or change, and how will we know it's done?
++
++**Protocol:**
++- Each answer narrows the space; the next round tests the narrowed answer.
++- Continue until the destination statement can be written as a spec to hand off, a decision to lock, or a change made in place (→ see references/scope-map.md).
++- Do not fan out to phases or tickets until the destination is locked.
++
++**Stop condition:** The destination fits in one or two sentences and names what done looks like from the outside, with no implementation detail required to understand it.
++
++---
++
++### 2. Breadth interview
++
++**Purpose:** Fan out across the whole initiative in a single session to list phases, open tickets, and fog. Do not attempt to resolve fog here.
++
++**Opening question:**
++> Starting from the destination, what are the major phases of work, and what do you already know is unclear or risky?
++
++**Protocol:**
++- Ask one frontier round to surface all areas of known unknowing.
++- For each area: is it sharp enough to write a ticket, or is it fog that needs research first?
++- Sharp → open a grilling or research ticket. Fog → record in `scope.md` Notes.
++- Do not recurse into any single phase; record it and move on.
++
++**Stop condition:** Every area the user can name has been classified as a phase, a ticket, or fog. No further threads are dangling. Stop; do not resolve any open ticket in this session.
++
++---
++
++### 3. Phase review interview
++
++**Purpose:** Close the completed phase by recording what was learned, what surprised, what is now sharp, and what is out.
++
++**Opening question:**
++> Now that this phase is done, what actually happened — what did you learn, and what would you do differently?
++
++**Protocol:**
++- Round 1: outcomes vs. plan (what finished, what did not, what changed mid-phase).
++- Round 2: sharpened knowledge (what was foggy that is now clear; what new fog appeared).
++- Round 3: scope changes (what is now in scope that was not, what is out, and why).
++- Do not open tickets for the next phase here; record decisions and fog in `scope.md` first; graduate the next phase separately.
++
++**Stop condition:** `scope.md` reflects the phase's outcomes, the Decisions so far section is current, and the Notes section records any new fog. No unresolved surprise is left without a ticket or a fog entry.
++
++---
++
++## When grilling or grill-me is installed
++
++Call the installed skill instead of running this protocol inline. Pass the three shapes above as the agenda:
++1. Which shape applies? (destination / breadth / phase review)
++2. Hand the opening question for that shape to the skill as the first prompt.
++3. Let the skill drive; record the outcome using the write-file-first rule below.
++
++Do not run this protocol in parallel with the installed skill; hand off completely.
++
++---
++
++## Grilling tickets
++
++A **grilling ticket** records a question that requires the user's live judgment. It is resolved only by running this protocol (or the installed skill) live with the user in a session. Rules:
++
++- The agent never answers a grilling ticket on the user's behalf.
++- The agent never marks a grilling ticket resolved without a recorded user answer.
++- If the user is absent, leave the ticket open and block dependent work.
++- When the user answers, record the answer in `scope.md` Decisions before closing the ticket.
++
++---
++
++## Recording
++
++At the end of any interview — regardless of shape — write in this order:
++
++1. **Write `scope.md` first.** Add the new decision(s) to `## Decisions so far`, update `## Notes` for any new fog, and revise `## Destination` if the session sharpened it.
++2. **Refresh the scope issue.** Update the issue body to reflect the current `scope.md` state. The issue is a projection; `scope.md` is the source.
++
++Never update the GitHub issue before the file. Drift originates from reversing this order.
+diff --git a/skills/project-management/zurdo-project/references/phases.md b/skills/project-management/zurdo-project/references/phases.md
+new file mode 100644
+index 0000000..af7e2ff
+--- /dev/null
++++ b/skills/project-management/zurdo-project/references/phases.md
+@@ -0,0 +1,218 @@
++# phases
++
++Phase lifecycle: definition, status transitions, PRD authoring, publishing, running, reviewing, and the worked timeline.
++
++---
++
++## What a phase is
++
++A phase is one unit of deliverable work inside an initiative:
++
++- One PRD file at `docs/<initiative>/prds/prd-NN-<phase>.md`.
++- One GitHub milestone and one GitHub epic, both inside the initiative's Project.
++- One row in the `## Phases` table in `scope.md` with id `phase-NN`, where `NN` matches the PRD number.
++
++Only one phase is `running` at a time. Milestones and epics for later phases are created when those phases' PRDs are published, not when the phases are first charted.
++
++---
++
++## Status transitions
++
++```
++planned → researching → ready → running → done
++```
++
++| Status | Meaning | Who sets it |
++|---|---|---|
++| `planned` | Charted in scope; no PRD written; no blocking tickets. | Agent, during breadth interview. |
++| `researching` | At least one open ticket has `blocks: [phase-NN]`. | Agent, when the blocking ticket is opened. |
++| `ready` | No open blocking tickets; PRD may be written. | Agent, when the last blocking ticket resolves. |
++| `running` | PRD published; `zurdo run` is in progress. | Agent, after `publish --scope <n>` succeeds. |
++| `done` | Every Zurdo task is `passed`; `sync-status` completed; phase review done. | Agent, after phase review closes. |
++
++**Only one phase may be `running` at a time.** If a phase is `running`, do not advance any other phase to `running` until the current one reaches `done`.
++
++**`researching` requires an open ticket.** A phase with no blocking tickets is never `researching`. When the last blocker resolves, flip the status to `ready` immediately.
++
++**`ready` does not mean the PRD is written.** It means the preconditions for writing it are satisfied. The status moves to `running` only after the PRD is published, not when it is authored.
++
++---
++
++## Writing the phase PRD
++
++### Preconditions
++
++Before invoking `zurdo-prd-writer`:
++
++1. The phase row in `scope.md` has `Status: ready`.
++2. `zurdo-prd-writer` is present (required skill; stop the run if missing).
++3. `zurdo-prd-reviewer` is present (required skill; stop the run if missing).
++4. All research tickets whose `blocks:` list includes this phase are `resolved`.
++
++### Sequence
++
++1. **Decomposer (optional)** — if the phase scope is ambiguous, run `zurdo-prd-decomposer` to split it into tasks before writing. Skip if the task list is already clear from the scope.
++2. **Writer** — invoke `zurdo-prd-writer`. The writer reads every research ticket linked in the `## Background` section; confirm those links are present before invoking.
++3. **Reviewer** — invoke `zurdo-prd-reviewer`. The reviewer reads the same linked tickets to verify claims match findings.
++4. **Validate** — run `zurdo validate` against the authored PRD. Fix any schema errors before proceeding.
++
++### Required PRD content
++
++- **Intro / Background**: links every research ticket the PRD relied on (repo-relative paths); names the destination this phase advances.
++- **Tasks**: each task that touches a skill-covered area carries a `Skills:` line naming the applicable skill(s).
++
++---
++
++## Publishing a phase
++
++Run these commands in order. Always `--dry-run` first.
++
++```bash
++# One-time per repo (skip if already bootstrapped)
++zurdo-github.sh bootstrap
++
++# Preview the publish
++zurdo-github.sh publish --dry-run --scope <n>
++
++# Live publish: creates milestone, epic, task issues, enrolls them in the Project
++zurdo-github.sh publish --scope <n>
++
++# Create or update the Project board
++zurdo-github.sh board --project "<initiative title>"
++
++# Refresh the scope issue to reflect the new running phase
++zurdo-github.sh scope --dry-run
++zurdo-github.sh scope
++```
++
++After `publish --scope <n>` succeeds, flip the phase row to `Status: running` in `scope.md`.
++
++`bootstrap` runs once per repo; it initializes the marker database. Calling it again on an already-bootstrapped repo is safe — it is idempotent.
++
++---
++
++## Running and syncing
++
++```bash
++# Execute the phase
++zurdo run
++
++# Preview the status sync
++zurdo-github.sh sync-status --dry-run
++
++# Mirror outcomes to GitHub issue statuses
++zurdo-github.sh sync-status
++```
++
++After `zurdo review` (the post-run narrative review built into Zurdo), run `sync-status` again to catch any status changes the review step produced.
++
++Then refresh the scope issue:
++
++```bash
++zurdo-github.sh scope --dry-run
++zurdo-github.sh scope
++```
++
++**Do not declare the phase `done` until every task is `passed`.** If any task is not `passed` after `sync-status`, investigate before closing; do not manually flip the scope row.
++
++---
++
++## Phase review
++
++### Trigger
++
++A phase review begins when every Zurdo task for the running phase is `passed` after `sync-status`.
++
++### Interview agenda
++
++Run the phase review interview from `references/interview.md` (shape 3: Phase review interview). The agenda has three rounds:
++
++- **Round 1** — outcomes vs. plan: what finished, what did not, what changed mid-phase.
++- **Round 2** — sharpened knowledge: what was foggy that is now clear; what new fog appeared.
++- **Round 3** — scope changes: what is now in scope, what is out, and why.
++
++### What gets written
++
++After the interview, update `scope.md` in this order:
++
++1. **Decisions so far** — add one line per decision the phase produced that was not already recorded.
++2. **Phases table** — flip the completed phase to `Status: done`; graduate the next `ready` phase if one exists.
++3. **Out of scope** — add any item the review explicitly excluded, with its reason.
++4. **Not yet specified** — rewrite any fog entry that the phase sharpened into a tighter question; remove any fog entry that the phase resolved.
++
++Then refresh the scope issue:
++
++```bash
++zurdo-github.sh scope --dry-run
++zurdo-github.sh scope
++```
++
++### End condition
++
++The review ends in one of two ways:
++
++- **Next phase named** — the review identifies a phase in `ready` status (or a phase that can now move to `ready` because its blockers resolved). Name it explicitly as the next phase to run.
++- **Initiative done** — the destination is reached and no fog remains in "Not yet specified." Close the scope issue. Do not graduate a next phase.
++
++The review is not complete until one of these two conditions is met.
++
++---
++
++## Specifying ahead
++
++A later phase whose scope is already sharp gets its row in the `## Phases` table with `Status: ready` at the time it is first charted. This signals it is ready to write when the current phase finishes.
++
++Its milestone and epic appear in GitHub **only when its own PRD is published** (via `publish --scope <n>`). Do not create the milestone or epic as placeholders. The row in `scope.md` is the only artifact that exists until then.
++
++---
++
++## Worked timeline
++
++A three-phase initiative: **CSV export** → **Webhook delivery** → **Observability dashboard**.
++
++### After charting (breadth interview complete, no PRDs written yet)
++
++```
++| Phase | Title                  | PRD                                        | Status       |
++|-------|------------------------|--------------------------------------------|--------------|
++| phase-01 | CSV export          |                                            | ready        |
++| phase-02 | Webhook delivery    |                                            | researching  |
++| phase-03 | Observability dash  |                                            | planned      |
++```
++
++- phase-01 has no blockers → `ready`.
++- phase-02 is blocked by an open research ticket (`webhook-retries.md`) → `researching`.
++- phase-03 scope is not yet sharp → `planned`.
++
++### After phase-01 review
++
++phase-01 PRD was published, run completed, every task passed, review done.
++The webhook-retries ticket resolved during phase-01 execution.
++
++```
++| Phase | Title                  | PRD                                        | Status       |
++|-------|------------------------|--------------------------------------------|--------------|
++| phase-01 | CSV export          | docs/example/prds/prd-01-csv-export.md     | done         |
++| phase-02 | Webhook delivery    |                                            | ready        |
++| phase-03 | Observability dash  |                                            | planned      |
++```
++
++- phase-01 review produced one new decision (schema version in manifest); one fog item sharpened into a ticket for phase-02.
++- phase-02 blocker resolved; status flipped to `ready`.
++- phase-03 still fog; no change.
++
++### After phase-02 review
++
++phase-02 PRD published, run completed, review done.
++The review sharpened the observability phase scope sufficiently.
++
++```
++| Phase | Title                  | PRD                                        | Status       |
++|-------|------------------------|--------------------------------------------|--------------|
++| phase-01 | CSV export          | docs/example/prds/prd-01-csv-export.md     | done         |
++| phase-02 | Webhook delivery    | docs/example/prds/prd-02-webhook.md        | done         |
++| phase-03 | Observability dash  |                                            | ready        |
++```
++
++- phase-03 fog resolved by the webhook delivery findings; status promoted to `ready`.
++- No remaining fog; if phase-03 completes the destination, the initiative will close after its review.
+diff --git a/skills/project-management/zurdo-project/references/research.md b/skills/project-management/zurdo-project/references/research.md
+new file mode 100644
+index 0000000..49b7eff
+--- /dev/null
++++ b/skills/project-management/zurdo-project/references/research.md
+@@ -0,0 +1,124 @@
++# research
++
++Lifecycle for research tickets: how they are written, run unattended, and consumed by phase PRDs.
++
++---
++
++## Ticket file format
++
++A research ticket is a Markdown file in `docs/<initiative>/tickets/`. Name it after its question, kebab-cased:
++
++```
++docs/<initiative>/tickets/<question-slug>.md
++```
++
++Full template:
++
++```markdown
++---
++type: research
++question: <one sentence: the specific unknown>
++status: open          # open | resolved
++blocks: [phase-NN]    # phases that cannot proceed until this resolves; empty if none
++blocked-by: []        # other ticket slugs this ticket depends on
++---
++
++## Question
++
++<Body paragraph. Explain what is unknown, why it matters, and what shape the answer needs to take. Include enough context that a subagent can run with no further instructions.>
++
++## Findings
++
++<Populated by the subagent when research runs. Leave blank when opening the ticket.>
++```
++
++`status: resolved` is written by the subagent after findings are recorded. `blocks` drives phase gating; a phase listed here is set to `researching` until this ticket resolves.
++
++---
++
++## When to open a research ticket
++
++Open one when a decision waits on a fact that cannot be discovered by reading the working directory:
++
++- Third-party API behavior or rate limits not covered by local docs
++- Library guarantees or version-specific limits
++- Prior art or ecosystem conventions the team has not audited
++- Data shapes from an external system the code will consume
++
++Do **not** open a research ticket for a fact a `grep` or file read answers. Look it up inline and state the finding. Research tickets pay for themselves only when the lookup is slow, external, or requires synthesis across multiple sources.
++
++---
++
++## Running research AFK
++
++Spin one subagent per open research ticket. Do not wait for one to finish before launching the next — all open tickets run in parallel.
++
++Each subagent's brief contains three things:
++1. The `## Question` body from the ticket file (verbatim).
++2. The destination file: `docs/<initiative>/tickets/<slug>.md`.
++3. The instruction to write `## Findings` there, flip `status: resolved`, and run `zurdo-github.sh ticket <file>` when done.
++
++The subagent:
++- Writes findings directly into the ticket file under `## Findings`.
++- Sets `status: resolved` in the frontmatter.
++- Runs `zurdo-github.sh ticket <file>` (dry-run first) to push the resolved ticket to GitHub.
++- Never edits `scope.md`. Scope is the reviewer's domain.
++
++---
++
++## Findings quality bar
++
++Every `## Findings` section must meet these four standards:
++
++**Cite sources.** Every factual claim names its source: a URL for external material, a repo-relative path for local material. Uncited claims are not findings.
++
++**Separate observed facts from recommendations.** State what is true, then separately state what to do about it. Label each section: "Observed:" and "Recommendation:" or equivalent.
++
++**End with the one line the PRD should carry.** The last paragraph (or a labeled `PRD line:` entry) is the specific statement the phase PRD's intro will quote or paraphrase. One sentence. Actionable.
++
++**List new questions under `## Follow-ups`.** If research surfaces an unknown the ticket did not anticipate, list it there. The reviewer decides whether to open a new ticket or record the question as fog in `scope.md`. Do not resolve follow-ups inline.
++
++---
++
++## Blocking a phase
++
++Set `blocks: [phase-NN]` in the ticket frontmatter. The script reads this field when the epic exists and sets the phase status to `researching`. If the epic does not yet exist (research runs before the PRD is published), the script defers the edge — it records the intent but cannot wire the GitHub relationship until the epic is created during `zurdo-github.sh publish`.
++
++A phase in `researching` status:
++- Does not graduate to PRD authoring.
++- Does not allow `zurdo-prd-writer` to run.
++- Remains blocked until every ticket in its `blocks` chain is `resolved`.
++
++When the last blocking ticket resolves, the phase status returns to `planned` and PRD authoring can proceed.
++
++---
++
++## Consumption: linking research in the PRD
++
++The phase PRD's intro section links every research ticket it relied on by repo-relative path:
++
++```markdown
++## Background
++
++This phase was informed by the following research:
++- [Webhook retry expectations](../../tickets/webhook-retries.md)
++- [Auth scheme survey](../../tickets/webhook-auth.md)
++```
++
++`zurdo-prd-writer` reads those linked files as context before drafting. `zurdo-prd-reviewer` reads them to verify the PRD's claims are consistent with the findings. The links provide traceability: anyone reading the PRD can follow the citation back to the sources that justified its decisions.
++
++---
++
++## Grilling tickets: the contrast
++
++Grilling tickets share the same file format and directory but differ in every operational respect.
++
++| | Research | Grilling |
++|---|---|---|
++| `type:` | `research` | `grilling` |
++| Resolved by | subagent, AFK | user, live HITL session |
++| Agent autonomy | runs and writes findings | surfaces the question, waits, records the answer |
++| Parallelism | all open tickets at once | one ticket per session |
++| Protocol | this file | references/interview.md |
++
++A grilling ticket is never answered by the agent on the user's behalf. If the user is absent, leave the ticket open and hold dependent work. When the user answers, record the answer in `scope.md` Decisions before closing the ticket.
+diff --git a/skills/project-management/zurdo-project/references/runbook.md b/skills/project-management/zurdo-project/references/runbook.md
+new file mode 100644
+index 0000000..b8c8655
+--- /dev/null
++++ b/skills/project-management/zurdo-project/references/runbook.md
+@@ -0,0 +1,234 @@
++# runbook
++
++Preconditions, dependency detection, and the operator's sequence for running a zurdo-project lifecycle end-to-end.
++
++---
++
++## Dependency table
++
++Verify every row before the first command. Required dependencies that are missing stop the run immediately with the error described below. Optional dependencies degrade gracefully.
++
++| Skill or tool | Required or optional | How detected | Fallback |
++|---|---|---|---|
++| `gh` (GitHub CLI) with `repo` scope | Required — stop | `command -v gh` + `gh auth status` | None. Install from <https://cli.github.com> and run `gh auth login --scopes repo`. |
++| `gh` with `project` scope | Optional — needed for board commands | `gh auth status` output lists `project` | Skip `board` commands; track milestones by label instead. |
++| `jq` | Required — stop | `command -v jq` | None. Install via the system package manager. |
++| `zurdo` | Required — stop | `command -v zurdo` | None. See the Zurdo install docs for your environment. |
++| `zurdo-github` skill and script | Required — stop | Skill present in agent's skill list **and** `scripts/zurdo-github.sh` exists at repo root | None. Run `zurdo skills install zurdo-github`. |
++| `zurdo-prd-writer` | Required — stop | Skill present in agent's skill list | None. Run `zurdo skills install zurdo-prd-writer`. Cannot write a phase PRD without it. |
++| `zurdo-prd-reviewer` | Required — stop | Skill present in agent's skill list | None. Run `zurdo skills install zurdo-prd-reviewer`. Cannot review a phase PRD without it. |
++| `zurdo-prd-decomposer` | Optional | Skill present in agent's skill list | Decompose phase tasks by hand before calling `zurdo-prd-writer`. |
++| `zurdo-domain` | Optional | Skill present in agent's skill list | Run `zurdo skills install zurdo-domain` to add it. Without it, skip the glossary step and note the omission in `scope.md` Notes. |
++| `grilling` or `grill-me` | Optional | Skill present in agent's skill list (either name) | Use the inline interview protocol from `references/interview.md`. |
++
++### Stop message for a missing required skill
++
++When a required skill is missing, output exactly this (substituting the skill name) and exit:
++
++```
++Required skill `zurdo-prd-writer` is not installed. Run:
++  zurdo skills install zurdo-prd-writer
++Then restart this session.
++```
++
++Do not proceed past the dependency check when any required item is absent.
++
++---
++
++## First session — charting
++
++Run these steps once, at initiative start. Stop after step 9 even if more work is visible.
++
++1. **Destination interview** — ask the opening question: "What are we trying to produce or change, and how will we know it's done?" Run frontier rounds until the destination fits in one or two sentences naming what done looks like from the outside. Write nothing to disk until the destination is locked.
++
++2. **Breadth interview** — ask: "Starting from the destination, what are the major phases of work, and what do you already know is unclear or risky?" Classify every named area as a phase, a sharp ticket, or fog. Do not recurse into any single phase. Do not resolve any open ticket in this session.
++
++3. **Write `scope.md`** — create `docs/<initiative>/scope.md` with all six sections: Destination, Notes, Decisions so far (empty), Phases table (phase-01 and any sharply-scoped later phases), Not yet specified (fog items), Out of scope. Set each phase status: `ready` if no blockers, `researching` if a ticket blocks it, `planned` if scope is still foggy.
++
++4. **Open tickets** — for each sharp question, create the ticket file at `docs/<initiative>/tickets/<name>.md` with frontmatter `type`, `status: open`, and `blocks` list. Open one grilling ticket maximum per session.
++
++5. **Preview the scope issue**:
++
++   ```bash
++   zurdo-github.sh scope --dry-run
++   ```
++
++   Read the full plan. Confirm the initiative title, the Phases table, and the ticket list are correct.
++
++6. **Create the scope issue**:
++
++   ```bash
++   zurdo-github.sh scope
++   ```
++
++7. **Preview ticket issues**:
++
++   ```bash
++   zurdo-github.sh ticket --dry-run
++   ```
++
++8. **Create ticket issues**:
++
++   ```bash
++   zurdo-github.sh ticket
++   ```
++
++9. **Fire research subagents** — for each open research ticket, dispatch a subagent to fetch and synthesize. Research tickets may run in parallel. Do not wait for them to finish before stopping the session; they resolve asynchronously and their findings are written into the ticket file.
++
++10. **If phase-01 is `ready`** — invoke `zurdo-prd-writer` to author the PRD, then invoke `zurdo-prd-reviewer` to review it, then publish (see the publish sequence in the later-session section). Stop after publishing; do not start Zurdo in this same session.
++
++**Stop here.** One session's worth of work is: scoped, researched, one PRD authored and published (if phase-01 was ready). Do not graduate additional phases in the first session.
++
++---
++
++## Every later session
++
++At the start of each subsequent session, orient before acting.
++
++1. **Read `scope.md`** — check current phase statuses and open tickets.
++
++2. **Preview divergence**:
++
++   ```bash
++   zurdo-github.sh scope --dry-run
++   ```
++
++   Read the full plan output before picking the next action.
++
++3. **Pick the next action** in this priority order:
++
++   | Priority | Condition | Action |
++   |---|---|---|
++   | 1 | An open grilling ticket exists | Resolve it: interview the user, write `## Findings`, flip `status: resolved`, run `zurdo-github.sh ticket`, update `scope.md`, run `scope`. |
++   | 2 | An open research ticket has new findings from a subagent | Write `## Findings` in the ticket file, flip `status: resolved`, run `zurdo-github.sh ticket`, update `scope.md`. |
++   | 3 | A phase is `ready` and no PRD exists for it | Write the PRD (invoke `zurdo-prd-writer`), then review (invoke `zurdo-prd-reviewer`). |
++   | 4 | A PRD exists and the phase is `ready` | Publish (see sequence below), flip phase to `running` in `scope.md`. |
++   | 5 | A phase is `running` and `zurdo run` is complete | Run `sync-status`, refresh scope issue, begin phase review interview. |
++   | 6 | Phase review is in progress | Complete the review; update `scope.md`; graduate the next phase if one becomes ready. |
++
++### Publish sequence
++
++Run in order; always `--dry-run` first.
++
++```bash
++# One-time per repo — safe to repeat; idempotent
++zurdo-github.sh bootstrap
++
++zurdo-github.sh publish --dry-run --scope <n>
++zurdo-github.sh publish --scope <n>
++
++# Refresh the scope issue to show the new running phase
++zurdo-github.sh scope --dry-run
++zurdo-github.sh scope
++```
++
++After `publish --scope <n>` succeeds, flip the phase row to `Status: running` in `scope.md`.
++
++### Sync-status sequence
++
++```bash
++zurdo run
++
++zurdo-github.sh sync-status --dry-run
++zurdo-github.sh sync-status
++
++# After sync, also refresh the scope issue
++zurdo-github.sh scope --dry-run
++zurdo-github.sh scope
++```
++
++---
++
++## Reading a scope dry-run plan
++
++Before any live run, read the full dry-run output and check these items:
++
++| Item | What to check |
++|---|---|
++| Ticket count | The number of ticket issues to create matches the ticket files you expect. A mismatch means a ticket file was added or removed since the last run. |
++| Resolved tickets planned to close | Each resolved ticket appears in the "close issue" list. If a resolved ticket is absent, its `status:` frontmatter was not flipped — fix it before the live run. |
++| Deferred edges named | Any ticket that `blocks` a phase not yet in the Phases table appears as a warning. Either add the phase row or update the ticket's `blocks` list. |
++| Project step present or skipped | If the `project` scope is absent from `gh auth status`, the plan should show the board step as skipped, not attempted. If the step appears in a required position, the scope is missing — re-authenticate. |
++
++Stop and investigate any unexpected line in the plan before proceeding to the live run.
++
++---
++
++## Board step
++
++The board step is optional and runs last in each publish sequence.
++
++```bash
++zurdo-github.sh board --project "<initiative title>" --dry-run
++zurdo-github.sh board --project "<initiative title>"
++```
++
++**Requires the `project` scope** on the `gh` auth token. If the scope is absent, skip the board step and note it in the session summary. The board is a convenience surface; its absence does not block Zurdo execution.
++
++Run the board command after each successful publish, not before. The board enrolls already-published milestones and epics — running it before publish leaves gaps.
++
++---
++
++## Failure handling
++
++`zurdo-github.sh` exits with one of four codes.
++
++| Exit code | Meaning | What to do |
++|---|---|---|
++| `0` | Success; plan applied without errors. | Continue to the next step. |
++| `1` | User error — bad arguments, missing required flag, unknown subcommand. | Read the error message, correct the invocation, re-run. |
++| `2` | Precondition not met — a marker is absent, the repo is not bootstrapped, or an expected issue cannot be found. | Run `zurdo-github.sh bootstrap` if the repo has not been bootstrapped. Otherwise inspect the marker database and the error message; resolve the missing precondition before re-running. |
++| `3` | GitHub API error — rate limit, auth failure, network. | Check `gh auth status` for token validity and scope. For rate limits, wait and retry. For auth failure, run `gh auth login` with the required scopes. |
++
++### Divergence lines in dry-run output
++
++A divergence line names a GitHub issue whose state differs from what `scope.md` or the ticket file says. Do not ignore divergence lines. Before the live run:
++
++- If the divergence is expected (another session already applied the change), update `scope.md` to match and re-run `--dry-run` until the line disappears.
++- If the divergence is unexpected, investigate the GitHub issue history before proceeding; do not overwrite state you did not create.
++
++### Missing required skill discovered mid-lifecycle
++
++If a required skill disappears after the lifecycle has started (e.g. `zurdo-prd-writer` is uninstalled between sessions):
++
++1. Stop all in-progress work immediately.
++2. Do not write any PRD file or run any publish command.
++3. Output the stop message (see Dependency table) naming the missing skill and its install command.
++4. Reinstall the skill, verify it appears in the skill list, and re-enter the session from step 1 of the current session's sequence.
++
++---
++
++## Sandbox verification
++
++Use a throwaway repository to rehearse the full first-session sequence before running against a real initiative.
++
++### Setup
++
++```bash
++# Create a scratch repo
++gh repo create <username>/zurdo-project-sandbox --private --clone
++cd zurdo-project-sandbox
++zurdo-github.sh bootstrap
++```
++
++### Run the first session
++
++Follow the first-session sequence verbatim. Use a minimal initiative: one destination, two phases (phase-01 ready, phase-02 researching), one grilling ticket, one research ticket.
++
++### What to inspect in the GitHub UI
++
++| Surface | What to verify |
++|---|---|
++| Scope issue | Pinned to the repository (or top of the Issues list). Body renders all six sections. Phases table shows correct statuses. |
++| Ticket sub-issues | Each ticket issue appears as a sub-issue under the scope issue, labeled `research` or `grilling`. |
++| Epic sub-issue | After publishing phase-01, its epic issue appears as a sub-issue under the scope issue, labeled with the phase title. |
++| Blocked-by badge | On the phase-02 epic (after it is published), a `blocked-by` relationship points to the open research ticket. The badge is visible in the issue sidebar. |
++| Project board | Grouped by milestone. Phase-01 milestone contains the epic and its task issues. Phase-02 milestone is absent until its PRD is published. |
++
++### Teardown
++
++```bash
++gh repo delete <username>/zurdo-project-sandbox --yes
++```
++
++Delete the scratch repo immediately after verification. Never leave sandbox repos open; they appear in search results and can confuse future sessions.
+diff --git a/skills/project-management/zurdo-project/references/scope-map.md b/skills/project-management/zurdo-project/references/scope-map.md
+new file mode 100644
+index 0000000..298f916
+--- /dev/null
++++ b/skills/project-management/zurdo-project/references/scope-map.md
+@@ -0,0 +1,191 @@
++# scope-map
++
++Wayfinding mechanics: source-of-truth model, ticket discipline, fog vs. sharp questions, and concurrency rules.
++
++---
++
++## The destination
++
++State the destination first — before phases, before tickets. It anchors the entire scope and is the standard against which every later decision is measured. A well-formed destination fixes scope because it names what done looks like, not how to get there.
++
++Three shapes a destination can take:
++
++- **A spec to hand off** — "Produce a webhook delivery library with retry, backoff, and an observable events contract, documented so a separate team can integrate it without consultation."
++- **A decision to lock** — "Choose and document the auth scheme for outbound webhook calls so all phases can depend on a single answer."
++- **A change made in place** — "Migrate the CSV exporter to streaming output so files larger than 100 MB succeed without buffering the entire payload in memory."
++
++The destination belongs in `docs/<initiative>/scope.md` under `## Destination`. Write it once, refine it when a research or grilling ticket changes your understanding, and treat every other section as downstream of it.
++
++---
++
++## The scope file
++
++`docs/<initiative>/scope.md` is the source of truth. GitHub issues and the scope issue are projections. Never update `scope.md` from GitHub state — edits flow the other way.
++
++### Section order
++
++```markdown
++# Scope: <Initiative Title>
++
++## Destination
++
++<One or two sentences: what done looks like, from the outside. No implementation detail.>
++
++## Notes
++
++<Bullet list of domain context, standing preferences, and skills to consult. Not decisions — things that inform decisions.>
++
++## Decisions so far
++
++<One line per resolved ticket: gist + link. Empty until the first ticket resolves.>
++
++## Phases
++
++| Phase | Title | PRD | Status |
++|-------|-------|-----|--------|
++| phase-01 | <Title> | <path or blank> | <status> |
++
++## Not yet specified
++
++<Bullet list of open questions that are not yet sharp enough to ticket. Fog lives here.>
++
++## Out of scope
++
++<Bullet list of items explicitly excluded. One line each, with the reason.>
++```
++
++### What each section holds
++
++**Destination** — the single fixed outcome. Rewrite it only when a fundamental assumption changes.
++
++**Notes** — domain facts, standing preferences, skills to consult. Anything that informs decisions but is not itself a decision. Never use this section to park deferred choices; those belong in "Not yet specified."
++
++**Decisions so far** — one line per resolved ticket: the gist of the answer plus a link to the ticket file. The map is an index, not a store. Full reasoning lives in the ticket's `## Findings`.
++
++**Phases** — a table. The Phases table has five status values:
++
++| Status | Meaning |
++|---|---|
++| `planned` | Not yet started; no PRD written. |
++| `researching` | Blocked by at least one open research or grilling ticket. |
++| `running` | PRD written and published; Zurdo is executing tasks. |
++| `review` | Zurdo run complete; awaiting phase review before the next phase graduates. |
++| `done` | Phase review passed; outcomes absorbed into scope; phase closed. |
++
++**Not yet specified** — fog. Open questions that cannot yet be stated precisely enough to ticket. Items graduate out of here when a research or grilling ticket sharpens them into a decision or a new phase row.
++
++**Out of scope** — explicit exclusions with a one-line reason each. Items land here because they are outside the destination's scope, not because they are hard or deferred.
++
++### The scope issue is a projection
++
++The scope issue on GitHub is a rendered view of `scope.md`. Refresh it with:
++
++```bash
++zurdo-github.sh scope --dry-run   # preview
++zurdo-github.sh scope             # live refresh
++```
++
++Always run `--dry-run` first and read the plan. Never edit the scope issue body directly.
++
++---
++
++## Refer by name
++
++In every surface a human reads — scope.md, ticket files, PRD intros, phase review notes — name tickets and phases by their title. Let the issue number ride inside the link, not in the surrounding prose.
++
++Correct:
++> Blocked by [Webhook retry policy](tickets/webhook-retries.md).
++> Phase [CSV export](docs/example/prds/prd-01-csv-export.md) is `running`.
++
++Wrong:
++> Blocked by ticket #14.
++> Phase 1 is running.
++
++The title is the stable identifier. Numbers are routing; titles are meaning.
++
++---
++
++## Fog or ticket
++
++**The test:** can the question be stated precisely right now — not answered, just stated?
++
++- If yes → open a ticket.
++- If no → leave it in "Not yet specified" as fog.
++
++**Examples of fog** (leave in "Not yet specified"):
++
++- "Something about CSV schema versioning" — no question formed yet.
++- "Performance concerns with large payloads" — unclear what dimension matters or what threshold triggers action.
++
++**Examples of sharp questions** (open a ticket):
++
++- "Should we embed the schema version in the filename or in a separate manifest file?" — two concrete options, one answer needed.
++- "What retry and backoff policy do the target webhook endpoints expect?" — answerable by reading their documentation.
++
++**No pre-slicing.** Do not decompose fog into multiple tickets based on guesses about what sub-questions exist. Pre-slicing produces tickets that evaporate or contradict each other when the fog clears. One fog item stays one fog item until a single sharp question emerges from it.
++
++**Graduating fog.** When a research or grilling ticket resolves, move the fog item out of "Not yet specified":
++
++- If the answer locks a decision → remove the fog item; add one line to "Decisions so far" linking the resolved ticket.
++- If the answer reveals a new phase is needed → add a row to the Phases table; remove the fog item.
++- If the answer narrows the question but does not resolve it → rewrite the fog item with the tighter phrasing; open a new ticket if it is now sharp.
++
++---
++
++## Out of scope
++
++An item lands in "Out of scope" because it is outside the destination's scope — not because it is too hard, too slow, or deferred to later.
++
++- Write one line with the explicit reason: "Streaming large exports (> 1 GB) — the destination targets monthly snapshots under 100 MB."
++- Close the corresponding ticket if one exists. One-line comment in the ticket: "Closed as out of scope — outside the destination's target payload size."
++- Never put out-of-scope items in "Decisions so far." Decisions record what was chosen; out-of-scope records what was excluded. They are different facts.
++- An out-of-scope item returns only as a fresh initiative with its own destination. It does not graduate back into the current scope.
++
++---
++
++## Decisions so far
++
++One line per resolved ticket. Format: gist of the answer, then a link to the ticket file.
++
++```markdown
++## Decisions so far
++
++- [Which webhook auth scheme](tickets/webhook-auth.md) — bearer token from env var `WEBHOOK_TOKEN`, refreshed per invocation.
++- [Retry policy for webhook delivery](tickets/webhook-retries.md) — exponential backoff, three attempts, 2s/4s/8s delays.
++```
++
++The map is an index, not a store. Full reasoning, options considered, and findings live in the ticket file itself under `## Findings`. Keep each decision line to one sentence. If the gist requires more than one sentence, the ticket's Findings section needs to be clearer.
++
++---
++
++## Claim and resolve
++
++**Claim before work.** Assign yourself to the ticket issue before touching the ticket file. Claiming prevents two agents from working the same ticket concurrently.
++
++```bash
++gh issue edit <number> --add-assignee @me -R owner/repo
++```
++
++**At most one grilling ticket per session.** A grilling ticket requires the user's judgment. Opening more than one per session stacks multiple open questions in the user's attention at once. Open one, wait for it to resolve, then open the next.
++
++**Research tickets may run in parallel.** Research is AFK — a subagent fetches and synthesizes without user input. Multiple research tickets can be in flight simultaneously, provided each blocks a different phase or sub-question.
++
++**Resolve a ticket** in three steps:
++
++1. Write `## Findings` in the ticket file with the answer. For grilling tickets, record the user's answer verbatim; do not paraphrase or reinterpret.
++2. Flip `status: resolved` in the frontmatter.
++3. Run `zurdo-github.sh ticket` to post the findings as a comment and close the issue.
++
++After resolving, update `scope.md`: add the decision to "Decisions so far" or graduate the fog item, then run `zurdo-github.sh scope` to refresh the scope issue.
++
++---
++
++## Concurrency
++
++Other sessions may be editing `scope.md`, ticket files, or the scope issue simultaneously. Before any live refresh:
++
++```bash
++zurdo-github.sh scope --dry-run
++```
++
++Read the full dry-run output. Confirm no other session has already applied the same change. Then run the live command. Never skip the dry-run gate.

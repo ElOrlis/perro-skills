@@ -1,0 +1,8 @@
+{
+  "run_tree": "17af52a89723214efe928de1fd41909a2188d1ba",
+  "dirty": true,
+  "captured_at": "2026-09-10T07:20:50.743311Z",
+  "git_version": "git version 2.55.0",
+  "task_tree": "fb74621ee473fc224a2156d06424aaad723f9a2f",
+  "task_id": "task-integrate-verify"
+}

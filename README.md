@@ -12,8 +12,19 @@ skills/                      Published skills, organized by category
     golang/                  Go authoring skill
       SKILL.md               Standalone spine — inline decision rules
       references/            On-demand depth files
+  project-management/
+    zurdo-github/            Publish Zurdo PRDs to GitHub
+      SKILL.md               Standalone spine — inline decision rules
+      references/            On-demand depth files
+      scripts/               zurdo-github.sh — the publishing/sync script
+    zurdo-project/           Orchestrate a multi-phase initiative end-to-end
+      SKILL.md               Standalone spine — inline decision rules
+      references/            On-demand depth files
+      examples/              Annotated scope.md and sample ticket files
 docs/                        Design docs / PRDs, one folder per skill
   golang/prds/
+  zurdo-github/prds/
+  zurdo-project/prds/
 skills-lock.json             Lockfile for vendored external skills
 .zurdo/                      Zurdo task-runner state (skill build pipeline)
 .claude/, .agents/           Installed authoring tooling (see below)
@@ -24,6 +35,8 @@ skills-lock.json             Lockfile for vendored external skills
 | Skill | Path | Triggers on |
 |-------|------|-------------|
 | `golang` | `skills/programing-languages/golang/` | Writing or modifying Go source — idioms, naming/style, concurrency correctness, testing patterns |
+| `zurdo-github` | `skills/project-management/zurdo-github/` | Publishing a Zurdo PRD to GitHub as milestones, epics, issues, labels, or a project board; syncing Zurdo run status back to GitHub issues |
+| `zurdo-project` | `skills/project-management/zurdo-project/` | Starting a new initiative from an idea, scoping it into phases, setting up a GitHub Project, asking what the next phase is, or running a phase review after a Zurdo run |
 
 ### `golang`
 
@@ -34,6 +47,27 @@ An authoring-first Go skill. The `SKILL.md` spine carries the high-frequency dec
 - **testing.md** — table-driven tests, `t.Run` subtests, testing observable state, avoiding change-detector tests
 - **concurrency-and-memory.md** — channel discipline, `sync` primitives, the race detector (`-race`), goroutine lifecycle, context cancellation
 - **philosophy.md** — when to break style rules, simplicity over cleverness, avoiding `regexp` for structured input
+
+### `zurdo-github`
+
+A publishing and sync skill. The `SKILL.md` spine carries the high-frequency decision rules for creating and updating GitHub structure from a Zurdo PRD. Three `references/*.md` files provide depth, and a shell script implements the operations:
+
+- **github-model.md** — Data model: how PRD concepts map to GitHub milestones, epics, task issues, labels, markers, and dependency edges
+- **status-sync.md** — Status mapping: how each Zurdo task outcome translates to GitHub label swaps, issue state, and comments
+- **runbook.md** — Operational runbook: auth prerequisites, invocation examples, re-run safety, rollback, and troubleshooting
+- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags
+
+### `zurdo-project`
+
+An initiative orchestration skill. The `SKILL.md` spine carries the high-frequency decision rules for the full lifecycle — scope, research, PRD authoring, publish, run, phase review — with all mechanics inline. Five `references/*.md` files provide depth, and the shared `zurdo-github.sh` script handles every GitHub write:
+
+- **scope-map.md** — Source-of-truth model: `scope.md` structure, ticket types, fog vs. sharp questions, out-of-scope handling, and claim discipline
+- **interview.md** — Interview mechanics: frontier rounds, recommendation format, what counts as a fact vs. a decision
+- **research.md** — Research and grilling ticket lifecycle: AFK vs. HITL, blocking rules, PRD traceability links
+- **phases.md** — Phase model: one-at-a-time graduation, scope table columns, milestone + epic relationship, phase review checklist
+- **runbook.md** — Operational runbook: required vs. optional skills, `zurdo-github.sh` invocation patterns, dry-run gate, auth prerequisites
+- **examples/scope.md** — Annotated `scope.md` for a sample initiative
+- **examples/tickets/** — Sample research and grilling ticket files
 
 ## How skills are built
 

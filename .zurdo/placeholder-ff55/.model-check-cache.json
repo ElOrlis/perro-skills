@@ -1,13 +1,19 @@
 {
   "entries": {
+    "anthropic:claude-haiku-4-5": {
+      "recorded_at": 1789067012,
+      "result": {
+        "kind": "Ok"
+      }
+    },
     "anthropic:claude-opus-4-7": {
-      "recorded_at": 1781807415,
+      "recorded_at": 1789067021,
       "result": {
         "kind": "Ok"
       }
     },
     "anthropic:claude-sonnet-4-6": {
-      "recorded_at": 1781807421,
+      "recorded_at": 1789067029,
       "result": {
         "kind": "Ok"
       }

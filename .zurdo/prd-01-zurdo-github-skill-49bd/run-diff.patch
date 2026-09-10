@@ -1,0 +1,2485 @@
+diff --git a/.zurdo/prd-01-zurdo-github-skill-49bd/baseline b/.zurdo/prd-01-zurdo-github-skill-49bd/baseline
+new file mode 100644
+index 0000000..ff8d6d2
+--- /dev/null
++++ b/.zurdo/prd-01-zurdo-github-skill-49bd/baseline
+@@ -0,0 +1,8 @@
++{
++  "run_tree": "17af52a89723214efe928de1fd41909a2188d1ba",
++  "dirty": true,
++  "captured_at": "2026-09-10T07:20:50.743311Z",
++  "git_version": "git version 2.55.0",
++  "task_tree": "fb74621ee473fc224a2156d06424aaad723f9a2f",
++  "task_id": "task-integrate-verify"
++}
+diff --git a/.zurdo/prd-01-zurdo-github-skill-49bd/baseline-diff.index.lock b/.zurdo/prd-01-zurdo-github-skill-49bd/baseline-diff.index.lock
+new file mode 100644
+index 0000000..e69de29
+diff --git a/.zurdo/prd-01-zurdo-github-skill-49bd/baseline.index.lock b/.zurdo/prd-01-zurdo-github-skill-49bd/baseline.index.lock
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/.zurdo/prd-01-zurdo-github-skill-49bd/prd.json b/.zurdo/prd-01-zurdo-github-skill-49bd/prd.json
+index d8cc2a0..0d896f4 100644
+--- a/.zurdo/prd-01-zurdo-github-skill-49bd/prd.json
++++ b/.zurdo/prd-01-zurdo-github-skill-49bd/prd.json
+@@ -3,49 +3,833 @@
+   "prd_path": "docs/zurdo-github/prds/prd-01-zurdo-github-skill.md",
+   "prd_hash": "a0b13eae12f8f3f06830f4dd5e57a55be6b80c36",
+   "started_at": "2026-09-10T07:20:50.731267Z",
+-  "last_updated": "2026-09-10T07:20:50.731267Z",
++  "last_updated": "2026-09-10T07:37:59.253747Z",
+   "tasks": {
+     "task-integrate-verify": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T07:37:58.131172Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T07:36:01.041746Z",
++          "ended_at": "2026-09-10T07:37:58.131172Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-integrate-verify-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-integrate-verify-1.err",
++          "agent_stdout_bytes": 258749,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 619035,
++          "tokens_out": 6166,
++          "tokens_cache_write": 36686,
++          "tokens_cache_read": 582336,
++          "premium_requests": null,
++          "cost_usd_est": 0.4048,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "grep: references/github-model.md in skills/project-management/zurdo-github/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: references/status-sync.md in skills/project-management/zurdo-github/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: references/runbook.md in skills/project-management/zurdo-github/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: scripts/zurdo-github.sh in skills/project-management/zurdo-github/SKILL.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "grep: skills/project-management/zurdo-github/ in README.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": true
++            },
++            {
++              "hint": "shell: zurdo validate docs/zurdo-github/prds/prd-01-zurdo-github-skill.md",
++              "passed": true,
++              "duration_ms": 14,
++              "exit_code": 0,
++              "stdout_truncated": "OK\n",
++              "stderr_truncated": "docs/zurdo-github/prds/prd-01-zurdo-github-skill.md:30: warning: task `task-skill-scaffold` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:117: warning: task `task-ref-github-model` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:144: warning: task `task-ref-status-sync` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:170: warning: task `task-ref-runbook` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:198: warning: task `task-integrate-verify` references unresolved skill `writing-skills` (searched: [/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/skills/writing-skills, /Users/orlandogarcia/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/writing-skills])\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:60: warning: task `task-skill-scaffold` grep pattern `name: zurdo-github` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:213: warning: task `task-integrate-verify` grep pattern `references/github-model.md` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:214: warning: task `task-integrate-verify` grep pattern `references/status-sync.md` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:215: warning: task `task-integrate-verify` grep pattern `references/runbook.md` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:216: warning: task `task-integrate-verify` grep pattern `scripts/zurdo-github.sh` already matches `skills/project-management/zurdo-github/SKILL.md` in the current working tree — the criterion may not prove the change\ndocs/zurdo-github/prds/prd-01-zurdo-github-skill.md:217: warning: task `task-integrate-verify` grep pattern `skills/project-management/zurdo-github/` already matches `README.md` in the current working tree — the criterion may not prove the change\n",
++              "timed_out": false,
++              "stdout_bytes": 3,
++              "stderr_bytes": 3590,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: test \"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:task' | grep -c 'ready-for-agent' | tr -d ' ')\" = \"1\"",
++              "passed": true,
++              "duration_ms": 1023,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "SKILL.md links the github-model reference",
++          "hint": "grep: references/github-model.md in skills/project-management/zurdo-github/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "SKILL.md links the status-sync reference",
++          "hint": "grep: references/status-sync.md in skills/project-management/zurdo-github/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "SKILL.md links the runbook reference",
++          "hint": "grep: references/runbook.md in skills/project-management/zurdo-github/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "SKILL.md names the script",
++          "hint": "grep: scripts/zurdo-github.sh in skills/project-management/zurdo-github/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "README lists the new skill",
++          "hint": "grep: skills/project-management/zurdo-github/ in README.md",
++          "passed": false
++        },
++        {
++          "criterion": "The zurdo-github PRD validates",
++          "hint": "shell: zurdo validate docs/zurdo-github/prds/prd-01-zurdo-github-skill.md",
++          "passed": true
++        },
++        {
++          "criterion": "Dry-run publish marks only the scaffold task ready-for-agent",
++          "hint": "shell: test \"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:task' | grep -c 'ready-for-agent' | tr -d ' ')\" = \"1\"",
++          "passed": true
++        }
++      ]
+     },
+     "task-ref-github-model": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T07:33:01.516878Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T07:31:06.886720Z",
++          "ended_at": "2026-09-10T07:33:01.516878Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-ref-github-model-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-ref-github-model-1.err",
++          "agent_stdout_bytes": 187217,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 268166,
++          "tokens_out": 5306,
++          "tokens_cache_write": 31970,
++          "tokens_cache_read": 236189,
++          "premium_requests": null,
++          "cost_usd_est": 0.2704,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-github/references/github-model.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "github-model.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-github/references/github-model.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-ref-runbook": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T07:35:59.848263Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T07:34:32.853520Z",
++          "ended_at": "2026-09-10T07:35:59.848263Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-ref-runbook-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-ref-runbook-1.err",
++          "agent_stdout_bytes": 123319,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 204353,
++          "tokens_out": 3781,
++          "tokens_cache_write": 24181,
++          "tokens_cache_read": 180166,
++          "premium_requests": null,
++          "cost_usd_est": 0.2015,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-github/references/runbook.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "runbook.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-github/references/runbook.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-ref-status-sync": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T07:34:32.716853Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T07:33:01.647651Z",
++          "ended_at": "2026-09-10T07:34:32.716853Z",
++          "model": "claude-sonnet-4-6",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-ref-status-sync-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-ref-status-sync-1.err",
++          "agent_stdout_bytes": 170604,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 225123,
++          "tokens_out": 3799,
++          "tokens_cache_write": 31081,
++          "tokens_cache_read": 194036,
++          "premium_requests": null,
++          "cost_usd_est": 0.2318,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-github/references/status-sync.md",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": []
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "status-sync.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-github/references/status-sync.md",
++          "passed": false
++        }
++      ]
+     },
+     "task-script": {
+-      "status": "pending",
+-      "attempts": 0,
+-      "passed_at": null,
+-      "iterations": [],
+-      "preflight_results": []
++      "status": "passed-pending-review",
++      "attempts": 1,
++      "passed_at": "2026-09-10T07:30:58.554237Z",
++      "iterations": [
++        {
++          "attempt": 1,
++          "started_at": "2026-09-10T07:20:50.962872Z",
++          "ended_at": "2026-09-10T07:30:58.554237Z",
++          "model": "claude-opus-4-7",
++          "agent_exit_code": 0,
++          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-script-1.out",
++          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-script-1.err",
++          "agent_stdout_bytes": 539862,
++          "agent_stderr_bytes": 0,
++          "tokens_in": 4496518,
++          "tokens_out": 44856,
++          "tokens_cache_write": 96334,
++          "tokens_cache_read": 4400138,
++          "premium_requests": null,
++          "cost_usd_est": 3.9238,
++          "timed_out": false,
++          "criteria_results": [
++            {
++              "hint": "file-exists: skills/project-management/zurdo-github/scripts/zurdo-github.sh",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": false
++            },
++            {
++              "hint": "shell: bash -n skills/project-management/zurdo-github/scripts/zurdo-github.sh",
++              "passed": true,
++              "duration_ms": 27,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: ls -l skills/project-management/zurdo-github/scripts/zurdo-github.sh | grep -q \"^-..x\"",
++              "passed": true,
++              "duration_ms": 9,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh >/dev/null 2>&1; test $? -eq 2",
++              "passed": true,
++              "duration_ms": 21,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md > /dev/null",
++              "passed": true,
++              "duration_ms": 1060,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh api --method POST repos/ElOrlis/perro-skills/milestones'",
++              "passed": true,
++              "duration_ms": 1048,
++              "exit_code": 0,
++              "stdout_truncated": "DRY: gh api --method POST repos/ElOrlis/perro-skills/milestones -f title=Comprehensive `golang` Authoring Skill -f description=Build an authoring-first Go skill at `skills/programing-languages/golang/`. The skill activates when a coding agent writes or modifies Go source, and steers it toward idiomatic, well-named, well-tested, correctly-concurrent Go. Structure is progressive disclosure: a lean, standalone `SKILL.md` spine carrying the high-frequency decision rules inline, plus five on-demand `references/*.md` files for depth.\n",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 534,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:epic' | grep -q -- '--assignee @me'",
++              "passed": true,
++              "duration_ms": 1084,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: test \"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:task' | wc -l | tr -d ' ')\" = \"7\"",
++              "passed": true,
++              "duration_ms": 1152,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md)\"; echo \"$OUT\" | grep -q 'effort:medium' && echo \"$OUT\" | grep -q 'effort:high' && ! echo \"$OUT\" | grep -q 'effort:low'",
++              "passed": true,
++              "duration_ms": 1037,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -q 'dependencies/blocked_by'",
++              "passed": true,
++              "duration_ms": 1032,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -q '/sub_issues'",
++              "passed": true,
++              "duration_ms": 1076,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh bootstrap --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md)\"; for l in zurdo:epic zurdo:task zurdo:pending-review zurdo:failed needs-triage needs-info ready-for-agent ready-for-human wontfix; do echo \"$OUT\" | grep -q \"gh label create $l \" || exit 1; done",
++              "passed": true,
++              "duration_ms": 131,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh sync-status --dry-run --repo ElOrlis/perro-skills --slug prd-01-golang-skill-f2c1 docs/golang/prds/prd-01-golang-skill.md | grep -q 'zurdo:pending-review'",
++              "passed": true,
++              "duration_ms": 518,
++              "exit_code": 0,
++              "stdout_truncated": "",
++              "stderr_truncated": "",
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            },
++            {
++              "hint": "[manual]",
++              "passed": true,
++              "duration_ms": 0,
++              "exit_code": null,
++              "stdout_truncated": null,
++              "stderr_truncated": null,
++              "timed_out": false,
++              "stdout_bytes": 0,
++              "stderr_bytes": 0,
++              "failure_reason": null,
++              "evidence_modified": null
++            }
++          ],
++          "frozen_violations": [],
++          "out_of_tree_refs": [
++            "referenced a path outside the repo root: /private/tmp/claude-501/",
++            "referenced a path outside the repo root: /^#",
++            "referenced a path outside the repo root: /))",
++            "referenced a path outside the repo root: /^##",
++            "referenced a path outside the repo root: /",
++            "referenced a path outside the repo root: /^task-[a-z0-9-]+$/)",
++            "referenced a path outside the repo root: /dev/null;",
++            "referenced a path outside the repo root: /tmp/bad-prd.md",
++            "referenced a path outside the repo root: /tmp/bad-prd.md;",
++            "referenced a path outside the repo root: /tmp/bad-prd2.md",
++            "referenced a path outside the repo root: /tmp/bad-prd2.md;",
++            "referenced a path outside the repo root: /)){title=substr($0,8);state=\"intro\"};next}",
++            "referenced a path outside the repo root: /{ntasks++;",
++            "referenced a path outside the repo root: /){p=index($0,\"**:\");key=substr($0,3,p-3);val=substr($0,p+4);if(key==\"Depends-on\")deps[ntasks]=val};",
++            "referenced a path outside the repo root: /dev/null",
++            "referenced a path outside the repo root: /sub_issues"
++          ]
++        }
++      ],
++      "preflight_results": [
++        {
++          "criterion": "Script exists",
++          "hint": "file-exists: skills/project-management/zurdo-github/scripts/zurdo-github.sh",
++          "passed": false
++        },
++        {
++          "criterion": "Script parses as bash",
++          "hint": "shell: bash -n skills/project-management/zurdo-github/scripts/zurdo-github.sh",
++          "passed": false
++        },
++        {
++          "criterion": "Script is executable",
++          "hint": "shell: ls -l skills/project-management/zurdo-github/scripts/zurdo-github.sh | grep -q \"^-..x\"",
++          "passed": false
++        },
++        {
++          "criterion": "Usage error exits 2 on a missing mode",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh >/dev/null 2>&1; test $? -eq 2",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish against the golang PRD exits 0",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md > /dev/null",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish plans a milestone creation",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh api --method POST repos/ElOrlis/perro-skills/milestones'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish plans an epic issue with the zurdo:epic label and @me assignee",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:epic' | grep -q -- '--assignee @me'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish plans exactly seven task issue creations for the seven golang tasks",
++          "hint": "shell: test \"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -E 'DRY: .*gh issue create .*zurdo:task' | wc -l | tr -d ' ')\" = \"7\"",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish derives effort labels from the PRD (medium and high present, low absent)",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md)\"; echo \"$OUT\" | grep -q 'effort:medium' && echo \"$OUT\" | grep -q 'effort:high' && ! echo \"$OUT\" | grep -q 'effort:low'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish plans blocked-by wiring through the dependencies endpoint",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -q 'dependencies/blocked_by'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run publish plans sub-issue wiring",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh publish --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md | grep -q '/sub_issues'",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run bootstrap plans the triage five and the type labels",
++          "hint": "shell: OUT=\"$(skills/project-management/zurdo-github/scripts/zurdo-github.sh bootstrap --dry-run --repo ElOrlis/perro-skills docs/golang/prds/prd-01-golang-skill.md)\"; for l in zurdo:epic zurdo:task zurdo:pending-review zurdo:failed needs-triage needs-info ready-for-agent ready-for-human wontfix; do echo \"$OUT\" | grep -q \"gh label create $l \" || exit 1; done",
++          "passed": false
++        },
++        {
++          "criterion": "Dry-run sync-status against the golang run plans closes or labels and exits 0",
++          "hint": "shell: skills/project-management/zurdo-github/scripts/zurdo-github.sh sync-status --dry-run --repo ElOrlis/perro-skills --slug prd-01-golang-skill-f2c1 docs/golang/prds/prd-01-golang-skill.md | grep -q 'zurdo:pending-review'",
++          "passed": false
++        }
++      ]
+     },
+     "task-skill-scaffold": {
+-      "status": "pending",
++      "status": "passed-pending-review",
+       "attempts": 0,
+-      "passed_at": null,
++      "passed_at": "2026-09-10T07:20:50.822299Z",
+       "iterations": [],
+-      "preflight_results": []
++      "preflight_results": [
++        {
++          "criterion": "SKILL.md exists",
++          "hint": "file-exists: skills/project-management/zurdo-github/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "Frontmatter declares the skill name",
++          "hint": "grep: name: zurdo-github in skills/project-management/zurdo-github/SKILL.md",
++          "passed": true
++        },
++        {
++          "criterion": "No placeholder markers remain",
++          "hint": "no-grep: TODO in skills/project-management/zurdo-github/SKILL.md",
++          "passed": true
++        }
++      ]
+     }
+   },
+   "completion_gate": null
+diff --git a/README.md b/README.md
+index a63142a..73fe92b 100644
+--- a/README.md
++++ b/README.md
+@@ -12,8 +12,14 @@ skills/                      Published skills, organized by category
+     golang/                  Go authoring skill
+       SKILL.md               Standalone spine — inline decision rules
+       references/            On-demand depth files
++  project-management/
++    zurdo-github/            Publish Zurdo PRDs to GitHub
++      SKILL.md               Standalone spine — inline decision rules
++      references/            On-demand depth files
++      scripts/               zurdo-github.sh — the publishing/sync script
+ docs/                        Design docs / PRDs, one folder per skill
+   golang/prds/
++  zurdo-github/prds/
+ skills-lock.json             Lockfile for vendored external skills
+ .zurdo/                      Zurdo task-runner state (skill build pipeline)
+ .claude/, .agents/           Installed authoring tooling (see below)
+@@ -24,6 +30,7 @@ skills-lock.json             Lockfile for vendored external skills
+ | Skill | Path | Triggers on |
+ |-------|------|-------------|
+ | `golang` | `skills/programing-languages/golang/` | Writing or modifying Go source — idioms, naming/style, concurrency correctness, testing patterns |
++| `zurdo-github` | `skills/project-management/zurdo-github/` | Publishing a Zurdo PRD to GitHub as milestones, epics, issues, labels, or a project board; syncing Zurdo run status back to GitHub issues |
+ 
+ ### `golang`
+ 
+@@ -35,6 +42,15 @@ An authoring-first Go skill. The `SKILL.md` spine carries the high-frequency dec
+ - **concurrency-and-memory.md** — channel discipline, `sync` primitives, the race detector (`-race`), goroutine lifecycle, context cancellation
+ - **philosophy.md** — when to break style rules, simplicity over cleverness, avoiding `regexp` for structured input
+ 
++### `zurdo-github`
++
++A publishing and sync skill. The `SKILL.md` spine carries the high-frequency decision rules for creating and updating GitHub structure from a Zurdo PRD. Three `references/*.md` files provide depth, and a shell script implements the operations:
++
++- **github-model.md** — Data model: how PRD concepts map to GitHub milestones, epics, task issues, labels, markers, and dependency edges
++- **status-sync.md** — Status mapping: how each Zurdo task outcome translates to GitHub label swaps, issue state, and comments
++- **runbook.md** — Operational runbook: auth prerequisites, invocation examples, re-run safety, rollback, and troubleshooting
++- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags
++
+ ## How skills are built
+ 
+ Skills are specified as PRDs under `docs/<skill>/prds/` and executed with [Zurdo](https://github.com/), a task-runner that decomposes a PRD into gated tasks and drives an agent through them. The `.zurdo/` directory holds per-run state and configuration (`.zurdo/config.toml`). Each task gates on explicit acceptance criteria, following the `superpowers:writing-skills` authoring discipline.
+diff --git a/skills/project-management/zurdo-github/SKILL.md b/skills/project-management/zurdo-github/SKILL.md
+index e7e3ac8..04214bc 100644
+--- a/skills/project-management/zurdo-github/SKILL.md
++++ b/skills/project-management/zurdo-github/SKILL.md
+@@ -52,8 +52,8 @@ Dry-run output is the only way to verify scope before mutations. Missing scopes
+ Project boards require the `project` scope and an org that has enabled Projects v2. Core publishing must not depend on either.
+ → see references/runbook.md
+ 
+-**Touch the milestone description always, repo About only when empty, the README never.**
+-Milestone descriptions are safe to overwrite on every sync. The About field is owned by the repo maintainer once set. The README is user-controlled content.
++**Touch the milestone description always, repo About only when empty and `--about` is passed, the README never.**
++Milestone descriptions are safe to overwrite on every sync. The About field is owned by the repo maintainer once set and requires the `--about` flag to write. The README is user-controlled content.
+ → see references/runbook.md
+ 
+ ## Modes
+diff --git a/skills/project-management/zurdo-github/references/github-model.md b/skills/project-management/zurdo-github/references/github-model.md
+new file mode 100644
+index 0000000..07f8842
+--- /dev/null
++++ b/skills/project-management/zurdo-github/references/github-model.md
+@@ -0,0 +1,266 @@
++# github-model
++
++Data model: how Zurdo PRD concepts map to GitHub milestones, epic issues, task issues, labels, markers, and dependency edges.
++
++---
++
++## PRD → GitHub mapping
++
++| PRD concept | GitHub object |
++|---|---|
++| `# PRD: <title>` | Milestone title + epic issue title |
++| Intro text (after H1, before first `## Task:`) | Milestone description + epic issue body intro |
++| `## Task: <id> — <title>` | Task issue (sub-issue of epic, member of milestone) |
++| `**Effort**: <value>` | Label `effort:<value>` on the task issue |
++| `**Depends-on**: [<id>, …]` | Native blocked-by edge (POST) + `Blocked by:` line in issue body |
++| `**Skills**: <value>` | Metadata table row in task body |
++| `**Max-Attempts**: <n>` | Metadata table row in task body |
++| `**Agent-timeout**: <value>` | Metadata table row in task body |
++| `### Description` | `## Description` section in task body (content verbatim) |
++| `### Acceptance Criteria` `- [ ] <text> [hint]` | `## Acceptance Criteria` section; each criterion becomes `- [ ] <text>` with hints in inline code spans |
++
++One PRD maps to exactly one milestone and one epic issue. Every task issue is a member of the milestone and a sub-issue of the epic.
++
++---
++
++## Label vocabulary
++
++Labels belong to three groups plus the five triage labels.
++
++### Group 1 — type
++
++| Name | Hex | Description |
++|---|---|---|
++| `zurdo:epic` | `#5319E7` | Zurdo PRD epic issue |
++| `zurdo:task` | `#1D76DB` | Zurdo PRD task issue |
++
++### Group 2 — state
++
++| Name | Hex | Description |
++|---|---|---|
++| `zurdo:pending-review` | `#FBCA04` | Awaiting human review |
++| `zurdo:failed` | `#B60205` | Zurdo run failed this task |
++
++### Group 3 — effort
++
++| Name | Hex | Description |
++|---|---|---|
++| `effort:<value>` | `#BFD4F2` | Effort tier: `<value>` |
++
++Effort labels are derived from the PRD: each unique `**Effort**` value becomes one `effort:<value>` label. The set is not fixed in the skill — it mirrors whatever values appear in the PRD.
++
++### Triage five
++
++| Name | Hex | Description |
++|---|---|---|
++| `needs-triage` | `#C5DEF5` | Needs human triage |
++| `needs-info` | `#CCCCCC` | Needs more info to proceed |
++| `ready-for-agent` | `#0E8A16` | Ready for an agent to pick up |
++| `ready-for-human` | `#D4C5F9` | Ready for a human to review |
++| `wontfix` | `#FFFFFF` | Will not fix |
++
++`ready-for-agent` is applied at creation time to task issues that have no `Depends-on` entries. It is not applied retroactively by the wiring pass.
++
++---
++
++## Issue body templates
++
++### Epic body
++
++```markdown
++<!-- zurdo-github prd=<prd-path> epic -->
++
++<intro text from PRD>
++
++## Tasks
++
++| Task | Effort | Status |
++|---|---|---|
++| [<task-title>](#<number>) | <effort> | Todo |
++| [<task-title>](#<number>) | <effort> | Todo |
++```
++
++When sub-issues are unavailable (fallback mode), append:
++
++```markdown
++### Checklist (sub-issues unavailable)
++
++- [ ] #<number>
++- [ ] #<number>
++```
++
++### Task body
++
++```markdown
++Part of #<epic-number>
++
++<!-- zurdo-github prd=<prd-path> task=<task-id> -->
++
++| Effort | Skills | Max-Attempts | Agent-timeout |
++|---|---|---|---|
++| <value> | <value> | <value> | <value> |
++
++Blocked by: [<blocker-title>](#<blocker-number>) [<blocker-title>](#<blocker-number>)
++
++## Description
++
++<content from ### Description, verbatim>
++
++## Acceptance Criteria
++
++- [ ] <criterion text> `<hint>` `<hint>`
++- [ ] <criterion text>
++```
++
++Notes:
++- `Part of #<epic-number>` is a plain text line, not a GitHub "tracked-in" relationship — the sub-issue API handles the structural parent.
++- Omit `Skills`, `Max-Attempts`, and `Agent-timeout` columns when the PRD task has no value for them.
++- Omit the `Blocked by:` line entirely on the first-pass body; it is written in the second pass once all issue numbers are known.
++- Hints from `[hint text]` suffixes on criteria lines appear as `` `hint text` `` after the criterion.
++
++---
++
++## The marker
++
++### Format
++
++```
++<!-- zurdo-github prd=<path> task=<task-id> -->
++<!-- zurdo-github prd=<path> epic -->
++```
++
++`<path>` is the PRD file path as passed to the script (e.g. `docs/my-feature/prds/prd-01-setup.md`).
++
++### Why an HTML comment
++
++HTML comments are invisible in rendered GitHub Markdown but remain in the raw body string. They survive any edits a human makes to the visible content (title, description, acceptance criteria rewording). They are grep-able via the GitHub search API and via `gh issue list --search`.
++
++### Search-then-confirm lookup
++
++```bash
++# Step 1 — search (fuzzy; may return false positives)
++gh issue list --state all \
++  --search "<!-- zurdo-github prd=<path> task=<id> -->" \
++  --json number,body --limit 50 \
++  -R owner/repo
++
++# Step 2 — confirm (exact substring match in body)
++# Filter the JSON with jq:
++jq -r --arg m "<!-- zurdo-github prd=<path> task=<id> -->" \
++  'map(select(.body | contains($m))) | (.[0].number // empty)'
++```
++
++The confirmation step is mandatory. GitHub's issue search is full-text and fuzzy — it can match issues that merely contain fragments of the query. Confirming with `contains()` on the raw body ensures the marker is present verbatim before treating an issue as the canonical one.
++
++---
++
++## Second-pass wiring and the database id rule
++
++### Why two passes
++
++All task issues must exist before sub-issue and blocked-by edges can be created: the API requires the child/blocker to already have an issue number. Create all issues in the first pass, then wire relationships in the second pass.
++
++### Database id rule
++
++GitHub's sub-issues endpoint and the dependency endpoint both take the **database id** (a large integer, e.g. `2847391047`), not the issue number (`#42`) and not the node id (a base64 string starting with `I_`). Issue numbers change on transfer; database ids do not.
++
++Fetch the database id:
++
++```bash
++gh api repos/<owner>/<repo>/issues/<number> --jq .id
++```
++
++### Sub-issue POST
++
++```bash
++gh api --method POST \
++  repos/<owner>/<repo>/issues/<epic-number>/sub_issues \
++  -F "sub_issue_id=<task-db-id>"
++```
++
++### Blocked-by POST
++
++```bash
++gh api --method POST \
++  repos/<owner>/<repo>/issues/<task-number>/dependencies/blocked_by \
++  -F "issue_id=<blocker-db-id>"
++```
++
++### Reading the live blocked-by summary
++
++```bash
++gh api repos/<owner>/<repo>/issues/<number>/dependencies/blocked_by
++```
++
++The response is an array of blocking issue objects. An issue is unblocked when this array is empty — equivalently when `issue_dependencies_summary.blocked_by == 0` (the REST summary field). This is the gate the frontier query relies on.
++
++---
++
++## Fallbacks
++
++### Sub-issues unavailable (4xx from sub_issues endpoint)
++
++Any HTTP 4xx from `POST .../sub_issues` — including 404 Not Found, 403 Forbidden, or 422 with "unavailable" or "disabled" in the body — signals that the sub-issues beta is not enabled for the repo or plan.
++
++**Fallback**: append a `### Checklist (sub-issues unavailable)` section to the epic body containing `- [ ] #<number>` lines for each task. This provides a manual tracking surface without structural parent-child relationships.
++
++### Dependencies unavailable (4xx from blocked_by endpoint)
++
++Any HTTP 4xx from `POST .../dependencies/blocked_by` signals that the dependency graph feature is not available.
++
++**Fallback**: the `Blocked by: [<title>](#<number>)` line written into the task body in the second pass. This is always written regardless of native dependency availability; when native edges are also wired it is redundant but harmless.
++
++### Detecting which mode ran
++
++The `bootstrap`/`publish` run prints a summary line:
++
++```
++wiring: sub-issues=native dependencies=native
++wiring: sub-issues=fallback dependencies=fallback
++```
++
++`native` means at least one API call succeeded. `fallback` means every attempt returned a 4xx. Check this line to know which mode is active.
++
++---
++
++## Frontier
++
++A **frontier task** is an open task issue with no assignee and no blocking dependencies. It is ready for an agent or contributor to claim by self-assigning.
++
++Conditions:
++- Label `ready-for-agent` present (applied at creation to tasks with `depends_on` empty)
++- No assignee
++- `issue_dependencies_summary.blocked_by == 0` (all native blockers resolved, or no native edges exist)
++
++List frontier tasks:
++
++```bash
++gh issue list \
++  -R owner/repo \
++  --label ready-for-agent \
++  --json number,title,assignees \
++  --jq '.[] | select(.assignees | length == 0) | "#\(.number) \(.title)"'
++```
++
++Claim a task: `gh issue edit <number> --add-assignee @me -R owner/repo`
++
++---
++
++## Idempotency rules
++
++Re-running any mode must be safe. The rules:
++
++| Object | Lookup before create | On match | Never |
++|---|---|---|---|
++| Milestone | `GET repos/<o>/<r>/milestones?state=all` — match on title | PATCH description; reuse number | Delete or renumber |
++| Labels | `gh label list --json name` — match on name | Skip create | Delete or rename |
++| Epic issue | Search marker `<!-- zurdo-github prd=<path> epic -->` + body confirm | Edit body in place | Reopen if closed; create duplicate |
++| Task issue | Search marker `<!-- zurdo-github prd=<path> task=<id> -->` + body confirm | Edit title, body, labels, milestone | Reopen if closed; create duplicate |
++| Sub-issue edge | 422 "already" response is silently ignored | No action needed | — |
++| Blocked-by edge | 422 "already" response is silently ignored | No action needed | — |
++
++**Edit in place, never duplicate.** The marker is the identity; if the marker is found, update — do not create a second issue. If the marker is not found, create fresh.
++
++**Never reopen.** If a task or epic issue is closed (e.g. by a prior `sync-status` run), leave it closed. Re-running `publish` updates the body and labels without touching state.
++
++**Never delete.** Labels, milestones, and issues are append-only. Removing a label definition or milestone mid-run would break existing filtered views. Remove operations require explicit human action outside this tool.
+diff --git a/skills/project-management/zurdo-github/references/runbook.md b/skills/project-management/zurdo-github/references/runbook.md
+new file mode 100644
+index 0000000..7f76ae8
+--- /dev/null
++++ b/skills/project-management/zurdo-github/references/runbook.md
+@@ -0,0 +1,234 @@
++# runbook
++
++Operator's sequence for publishing a Zurdo PRD to a real repository, keeping status in sync, and handling failure.
++
++---
++
++## Preconditions
++
++Check these before any live run; partial runs caused by missing auth are tedious to roll back.
++
++**Auth scopes**
++
++```bash
++gh auth status
++```
++
++The `repo` scope is required for all modes. Confirm it appears in the "Token scopes" line. The `project` scope is required only for `board`; its absence causes `board` to skip silently and is not an error for `bootstrap` or `publish`.
++
++Add `project` scope when needed:
++
++```bash
++gh auth refresh -s project
++```
++
++**`jq` present**
++
++```bash
++jq --version
++```
++
++`jq` is used by the script to parse JSON from every `gh api` response. Its absence causes silent failures, not helpful errors — confirm it before running.
++
++**Valid PRD**
++
++```bash
++zurdo validate docs/<skill>/prds/prd-NN-<name>.md
++```
++
++Must exit 0. A Zurdo-parse error at validate time means the same error will surface at publish time. Fix the PRD before continuing — a partial publish from a malformed PRD leaves milestone and label debris that requires manual cleanup.
++
++---
++
++## Order of operations
++
++Run every step in sequence; do not skip `--dry-run` passes.
++
++```
++1. zurdo validate <prd>                            # exit 0 required
++2. ./scripts/zurdo-github.sh bootstrap --dry-run <prd>   # review plan, spot-check counts
++3. ./scripts/zurdo-github.sh bootstrap <prd>              # live: milestone, labels, issues
++4. ./scripts/zurdo-github.sh publish --dry-run <prd>     # confirm board additions if --board
++5. ./scripts/zurdo-github.sh publish <prd>                # live: publish (bootstrap + board)
++6. ./scripts/zurdo-github.sh board <prd>                  # optional: Projects v2 wiring
++```
++
++After `zurdo run` completes on any tasks:
++
++```
++7. ./scripts/zurdo-github.sh sync-status --dry-run <prd>  # preview label swaps + closes
++8. ./scripts/zurdo-github.sh sync-status <prd>            # live: apply sync
++```
++
++After `zurdo review` signs off pending tasks:
++
++```
++9. ./scripts/zurdo-github.sh sync-status <prd>            # close passed-pending-review tasks
++```
++
++Step 3 is idempotent; re-running `bootstrap` after `publish` is safe. Step 5 (`publish`) subsumes `bootstrap` — running both is redundant but harmless.
++
++---
++
++## Reading a dry-run plan
++
++Dry-run output is the only verification gate before mutations. Confirm all four things before running live:
++
++**Task count matches the PRD.** Count the `CREATE issue` lines in the plan. The number must equal the number of `## Task:` blocks in the PRD. A mismatch means a malformed task header was silently skipped — fix the PRD before continuing.
++
++**Every Depends-on appears as an edge.** Each `Depends-on` in the PRD must produce a `WIRE blocked-by: #<blocker> → #<task>` line. A missing edge means the dependency was not resolved (the referenced task-id is misspelled or absent) — fix before continuing.
++
++**No unexpected label creations.** The plan lists `CREATE label` for each new label. Verify that unfamiliar labels (e.g. unexpected `effort:` values) match the PRD, not a typo. Labels created live cannot be automatically removed.
++
++**Repo owner/name is correct.** The first block of the plan prints `repo: owner/name`. Confirm it matches the target repository before going live. Override if wrong: `--repo owner/correct-name`.
++
++---
++
++## Re-running publish after editing the PRD
++
++Re-running `publish` (or `bootstrap`) on an already-published PRD is safe. The marker is the identity — existing issues are matched and updated, not duplicated.
++
++**What changes in place:**
++- Issue title (if the task heading changed)
++- Issue body (description, acceptance criteria, metadata table)
++- Labels (effort labels reflect the new `**Effort**` value)
++- Milestone membership
++- New dependency edges added for new `Depends-on` entries
++
++**What does not change:**
++- Closed issues — sync or human-closed issues are left as-is; the body and labels are updated, but state is never changed from closed to open
++- Assignees — publish never clears or overwrites assignees; contributors who self-assigned retain their claim
++- Comments — existing comments from prior syncs or humans are preserved
++
++**Removed tasks:** If a task block is deleted from the PRD, its issue is not deleted from GitHub. The publish summary lists such orphaned issues:
++
++```
++ORPHAN: #42 "task-old-name" — no matching task in PRD; close manually if no longer needed
++```
++
++Close orphaned issues by hand after verifying they are not in progress.
++
++---
++
++## Description touch rules
++
++| Target | Touch rule |
++|---|---|
++| Milestone description | Always overwrite on every run |
++| Repo About field | Only when currently empty; only when `--about` flag is passed |
++| README | Never |
++| Board readme | Always mirrors the milestone description |
++
++Milestone descriptions are safe to overwrite — they are owned by the tool. The repo About field is owned by the maintainer once set; the tool reads it, skips the write if non-empty, and prints a note. The README is user-controlled content and is never touched regardless of flags.
++
++---
++
++## Assignment
++
++`publish` assigns the epic issue to `@me` (the authenticated user). No other assignment is made at publish time.
++
++Task issues are created unassigned. An unassigned task with `ready-for-agent` signals that the task is available. Assignment is the claim — whoever picks up a task self-assigns it:
++
++```bash
++gh issue edit <number> --add-assignee @me -R owner/repo
++```
++
++Do not pre-assign tasks at publish time. Pre-assigning removes the signal that work is available and skips contributors who might claim it.
++
++---
++
++## Conventions doc
++
++`bootstrap` appends an operations record to `docs/agents/issue-tracker.md` under the heading `## Zurdo operations`. If the file does not exist, the script prints:
++
++```
++SKIP: docs/agents/issue-tracker.md not found — skipping conventions append
++```
++
++and continues without creating the file. When the file exists, the appended block is:
++
++````markdown
++## Zurdo operations
++
++```
++PRD:      <prd-path>
++Repo:     <owner>/<name>
++Milestone: #<number> — <title>
++Epic:      #<epic-number>
++Run:       <iso-timestamp>
++```
++````
++
++The block is appended once per `bootstrap` run. Re-runs append another entry, giving an audit trail of when each publish occurred. Do not deduplicate by hand — the entries are lightweight and useful for tracing.
++
++---
++
++## Failure handling
++
++**4xx from GitHub API**
++
++Sub-issue and blocked-by endpoints degrade gracefully (see `github-model.md` for the full fallback spec). All other 4xx responses are terminal for the affected operation:
++
++- `401 Unauthorized` — missing or expired token; re-authenticate with `gh auth login`.
++- `403 Forbidden` — insufficient scope; add the missing scope with `gh auth refresh -s <scope>`.
++- `404 Not Found` on milestones or issues — the repo may not exist or the token lacks `repo`; confirm both.
++- `422 Unprocessable Entity` on already-existing edges — silently ignored; no action needed.
++
++**Timeouts**
++
++Every network call is wrapped with `timeout 90`. A call that exceeds 90 seconds is killed and the run fails with exit code 3 (see exit-code table below). Network flakiness on GitHub's side is the common cause; retry the full run — idempotency makes it safe.
++
++**Rate limits**
++
++Check remaining quota before a large publish (many tasks):
++
++```bash
++gh api rate_limit --jq '.resources.core | {limit, remaining, reset}'
++```
++
++`reset` is a Unix timestamp. If `remaining` is below the estimated call count (roughly 3 per task plus 10 fixed), wait until reset. The script does not auto-wait on rate limit responses; it exits 2.
++
++**Exit-code table**
++
++| Code | Meaning |
++|---|---|
++| `0` | All operations completed successfully |
++| `1` | Validation or configuration error (bad PRD, missing `jq`, wrong repo) — fix the input and re-run |
++| `2` | GitHub API rate limit hit — wait for quota reset, then re-run |
++| `3` | Network timeout or transient API failure — retry; idempotency makes re-runs safe |
++
++---
++
++## Sandbox verification
++
++Run once against a throwaway repository before using the tool on a real project.
++
++**Setup**
++
++```bash
++gh repo create sandbox-zurdo-test --private --confirm
++```
++
++Run the full sequence against the throwaway repo:
++
++```bash
++zurdo validate docs/<skill>/prds/prd-NN-test.md
++./scripts/zurdo-github.sh bootstrap --dry-run --repo <you>/sandbox-zurdo-test docs/<skill>/prds/prd-NN-test.md
++./scripts/zurdo-github.sh publish --repo <you>/sandbox-zurdo-test docs/<skill>/prds/prd-NN-test.md
++./scripts/zurdo-github.sh sync-status --dry-run --repo <you>/sandbox-zurdo-test docs/<skill>/prds/prd-NN-test.md
++```
++
++**What to inspect in the GitHub UI**
++
++Open the repository and confirm each item:
++
++- **Milestone progress bar** — the milestone must show all task issues as members, progress starts at 0%.
++- **Sub-issue tree on the epic** — every task issue must appear as a sub-issue under the epic; confirm the count equals the PRD task count.
++- **Blocked-by badges on task issues** — issues with `Depends-on` must show a "blocked by #N" badge; issues without must show no badge.
++- **`ready-for-agent` on frontier tasks only** — the `ready-for-agent` label must appear only on tasks that have no `Depends-on` entries; blocked tasks must not carry it at creation time.
++
++After the sandbox passes all four checks, delete it:
++
++```bash
++gh repo delete <you>/sandbox-zurdo-test --confirm
++```
+diff --git a/skills/project-management/zurdo-github/references/status-sync.md b/skills/project-management/zurdo-github/references/status-sync.md
+new file mode 100644
+index 0000000..78bc824
+--- /dev/null
++++ b/skills/project-management/zurdo-github/references/status-sync.md
+@@ -0,0 +1,194 @@
++# status-sync
++
++How Zurdo run state flows to GitHub: run directory resolution, prd.json field shapes, status mapping, label rules, comment template, epic table refresh, and the one-direction constraint.
++
++---
++
++## Run directory resolution
++
++Each Zurdo run lives at `.zurdo/<slug>/` where `<slug>` is `<prd-basename>-<hash>` — the basename of the PRD file (no extension) concatenated with a short hash derived from its content.
++
++Example: PRD at `docs/golang/prds/prd-01-golang-skill.md` → slug `prd-01-golang-skill-f2c1` → run dir `.zurdo/prd-01-golang-skill-f2c1/`.
++
++**Selecting the run directory:**
++
++1. If `--slug <slug>` is passed, use `.zurdo/<slug>/` directly. Error if it does not exist.
++2. Otherwise, scan all `.zurdo/*/prd.json` files, parse `last_updated`, and pick the newest one.
++
++The two authoritative files inside the run dir are `prd.json` (structured state) and `progress.log` (NDJSON event stream). Only `prd.json` is consumed by sync; `progress.log` is for human inspection.
++
++---
++
++## prd.json shape
++
++Top-level fields observed:
++
++```json
++{
++  "schema_version": 1,
++  "prd_path": "docs/golang/prds/prd-01-golang-skill.md",
++  "prd_hash": "47f78160ed3d5e3fb632ff7ec8bb94e2a3352ca5",
++  "started_at": "2026-06-18T18:30:21.414374Z",
++  "last_updated": "2026-06-18T18:40:19.187516Z",
++  "tasks": { ... }
++}
++```
++
++Each entry under `tasks` is keyed by task id (e.g. `"task-skill-scaffold"`):
++
++```json
++{
++  "status": "passed-pending-review",
++  "attempts": 1,
++  "passed_at": "2026-06-18T18:31:07.806295Z",
++  "iterations": [ ... ]
++}
++```
++
++Each element of `iterations[]`:
++
++```json
++{
++  "attempt": 1,
++  "started_at": "2026-06-18T18:30:21.431768Z",
++  "ended_at": "2026-06-18T18:31:07.806295Z",
++  "model": "claude-sonnet-4-6",
++  "agent_exit_code": 0,
++  "agent_stdout_path": "...",
++  "agent_stderr_path": "...",
++  "agent_stdout_bytes": 1638,
++  "agent_stderr_bytes": 0,
++  "tokens_in": 131185,
++  "tokens_out": 1599,
++  "cost_usd_est": 0.4175,
++  "timed_out": false,
++  "criteria_results": [ ... ]
++}
++```
++
++Each element of `criteria_results[]`:
++
++```json
++{
++  "hint": "file-exists: skills/programing-languages/golang/SKILL.md",
++  "passed": true,
++  "duration_ms": 0,
++  "exit_code": null,
++  "stdout_truncated": null,
++  "stderr_truncated": null,
++  "timed_out": false,
++  "stdout_bytes": 0,
++  "stderr_bytes": 0
++}
++```
++
++`hint` is the raw criterion string from the PRD (e.g. `"[manual]"`, `"file-exists: <path>"`, `"grep: <pattern>"`). `passed` is the only field sync acts on; the rest are diagnostic.
++
++---
++
++## Status enum and mapping
++
++Four values appear in `tasks.<id>.status`:
++
++| `status` | GitHub action |
++|---|---|
++| `passed` | Close the issue; post a sync comment. |
++| `passed-pending-review` | Add label `zurdo:pending-review`; post a sync comment; leave open. |
++| `failed` | Add label `zurdo:failed`; post a sync comment listing failed hints; leave open. |
++| `blocked-by-dependency` | No change to issue state, labels, or comments. |
++
++**`passed`**: the task completed and all criteria held. Close the issue (`gh issue close`) and post a comment. A closed issue is never reopened by a later sync, even if the prd.json changes.
++
++**`passed-pending-review`**: all automated criteria passed, but one or more `[manual]` criteria require human sign-off. The issue stays open with `zurdo:pending-review` until a human runs `zurdo review`, which signs off the manual criteria and causes a later sync to see `passed`.
++
++**`failed`**: the agent ran and at least one criterion did not pass. Label `zurdo:failed` is applied and the comment lists which hints failed.
++
++**`blocked-by-dependency`**: the task cannot run yet because a predecessor is unfinished. Sync skips the issue entirely — no label change, no comment, no close.
++
++### The `attempts: 0` + `passed-pending-review` case
++
++When `attempts` is `0` and `iterations` is `[]`, the task reached `passed-pending-review` without an agent run — its automated criteria were already satisfied when sync evaluated them (e.g. the file already existed from a prior run or a manual commit). The comment reports this explicitly:
++
++```markdown
++**Status**: passed-pending-review
++**Attempts**: 0 (criteria held without an agent run)
++**Model**: —
++**Tokens in / out**: — / —
++**Estimated cost**: —
++```
++
++No per-iteration stats are available; fields that require an iteration are rendered as `—`.
++
++---
++
++## Label swap rule
++
++Status labels (`zurdo:pending-review`, `zurdo:failed`) are mutually exclusive. Before adding a status label, remove the other one if present. Never stack both on the same issue.
++
++Rules:
++- Moving to `passed-pending-review`: remove `zurdo:failed` if present, then add `zurdo:pending-review`.
++- Moving to `failed`: remove `zurdo:pending-review` if present, then add `zurdo:failed`.
++- Moving to `passed` (close): remove both status labels before closing. The closed state is the terminal signal; no status label is left on a closed issue.
++- A closed issue is never reopened. If sync sees a task whose issue is already closed, it skips label and state changes and notes the divergence in its summary output.
++
++---
++
++## Comment template
++
++Post one comment per sync run per task (do not stack comments across repeated syncs of the same state). The comment is fenced markdown:
++
++````markdown
++**Zurdo sync** · `<iso-timestamp>`
++
++**Status**: <status>
++**Attempts**: <n>
++**Model**: <model of last iteration, or —>
++**Tokens in / out**: <tokens_in> / <tokens_out> (or — / — if no iterations)
++**Estimated cost**: $<cost_usd_est> (or —)
++
++<!-- failed hints section, only when status == failed -->
++**Failed criteria**:
++- `<hint>`
++- `<hint>`
++````
++
++`<model>` and token/cost fields are drawn from the last entry in `iterations[]` (highest `attempt` number). When `iterations` is empty (`attempts: 0`), render those fields as `—`.
++
++For `passed` and `passed-pending-review`, omit the "Failed criteria" block. For `failed`, list every `criteria_results` entry where `passed == false`, using the `hint` value verbatim.
++
++---
++
++## Epic table refresh
++
++The epic body contains a `## Tasks` table with a `Status` column (see `github-model.md` for the full body template). Sync rewrites the Status column values in place without altering the intro text, the HTML marker comment, or any other sections.
++
++**Status column values:**
++
++| Task `status` | Table cell |
++|---|---|
++| `passed` | `Done` |
++| `passed-pending-review` | `Pending review` |
++| `failed` | `Failed` |
++| `blocked-by-dependency` | `Blocked` |
++| Not yet started (no entry in prd.json) | `Todo` |
++
++**Rewrite procedure:**
++
++1. Fetch the current epic body via `gh issue view <epic-number> --json body`.
++2. Locate the `## Tasks` section by finding that heading. The marker `<!-- zurdo-github prd=<path> epic -->` identifies the epic; confirm it before editing.
++3. Replace each table row's Status cell by matching on the issue number anchor (`#<number>`) in that row — do not rely on row order.
++4. `PATCH` the issue body with the updated string. The intro text, marker comment, and any human edits above or below the table are preserved verbatim.
++
++Never delete and recreate the epic body; edit in place.
++
++---
++
++## Direction rule
++
++Sync is **one-directional**: Zurdo run state → GitHub. GitHub never writes back into `prd.json` or any file under `.zurdo/`.
++
++Consequences:
++- If a human closes a task issue by hand (outside of sync), sync leaves it closed on subsequent runs. It does not reopen it, does not update its status label, and does not post a new comment.
++- The sync summary printed to stdout notes each such divergence: `DIVERGED: task-<id> is closed in GitHub but status in prd.json is <status>`.
++- If a human edits issue body text, adds labels, or changes assignees, sync ignores those changes — it only reads `status`, `attempts`, and `iterations` from prd.json.
++- The canonical state of a run is `prd.json`. GitHub is a projection of that state, not a source of truth.
+diff --git a/skills/project-management/zurdo-github/scripts/zurdo-github.sh b/skills/project-management/zurdo-github/scripts/zurdo-github.sh
+new file mode 100755
+index 0000000..7431191
+--- /dev/null
++++ b/skills/project-management/zurdo-github/scripts/zurdo-github.sh
+@@ -0,0 +1,822 @@
++#!/usr/bin/env bash
++set -euo pipefail
++
++usage() {
++  cat >&2 <<'EOF'
++Usage: zurdo-github.sh <mode> [--dry-run] [--repo owner/name] [--slug <zurdo-slug>] [--about "<text>"] <prd-path>
++Modes: bootstrap | publish | sync-status | board
++Exit codes: 0 ok, 2 usage/parse error, 3 auth or capability error, 1 other.
++EOF
++}
++
++if [ $# -lt 1 ]; then usage; exit 2; fi
++
++MODE=""
++DRY_RUN=false
++REPO_ARG=""
++SLUG_ARG=""
++ABOUT_ARG=""
++PRD=""
++
++case "${1:-}" in
++  bootstrap|publish|sync-status|board) MODE="$1"; shift ;;
++  -h|--help) usage; exit 0 ;;
++  *) usage; exit 2 ;;
++esac
++
++while [ $# -gt 0 ]; do
++  case "$1" in
++    --dry-run) DRY_RUN=true; shift ;;
++    --repo)    REPO_ARG="${2:-}"; shift 2 ;;
++    --slug)    SLUG_ARG="${2:-}"; shift 2 ;;
++    --about)   ABOUT_ARG="${2:-}"; shift 2 ;;
++    -h|--help) usage; exit 0 ;;
++    --) shift; break ;;
++    -*) echo "error: unknown flag: $1" >&2; usage; exit 2 ;;
++    *)  PRD="$1"; shift ;;
++  esac
++done
++
++if [ -z "$PRD" ]; then usage; exit 2; fi
++if [ ! -f "$PRD" ]; then echo "error: PRD not found: $PRD" >&2; exit 2; fi
++
++TMPDIR_ROOT=$(mktemp -d)
++DRY_LOG="$TMPDIR_ROOT/dry.log"
++: > "$DRY_LOG"
++cleanup() {
++  if $DRY_RUN && [ -s "$DRY_LOG" ]; then
++    cat "$DRY_LOG"
++  fi
++  rm -rf "$TMPDIR_ROOT"
++}
++trap cleanup EXIT
++
++# ---------- repo resolution ----------
++resolve_repo() {
++  if [ -n "$REPO_ARG" ]; then printf '%s\n' "$REPO_ARG"; return; fi
++  local url
++  url=$(git remote get-url origin 2>/dev/null || true)
++  if [ -z "$url" ]; then
++    echo "error: no origin remote; pass --repo owner/name" >&2
++    exit 3
++  fi
++  local slug
++  slug=$(printf '%s' "$url" | sed -E 's#^https?://github\.com/##; s#^git@github\.com:##; s#\.git$##')
++  if ! printf '%s' "$slug" | grep -qE '^[^/]+/[^/]+$'; then
++    echo "error: could not parse owner/name from remote: $url" >&2
++    exit 3
++  fi
++  printf '%s\n' "$slug"
++}
++
++REPO=$(resolve_repo)
++OWNER="${REPO%%/*}"
++NAME="${REPO#*/}"
++
++# ---------- dry-run mock plumbing ----------
++next_dry_num() {
++  local f="$TMPDIR_ROOT/counter" n
++  n=$(cat "$f" 2>/dev/null || echo 0)
++  n=$((n+1))
++  echo "$n" > "$f"
++  echo "$n"
++}
++
++_dry_stub() {
++  local all="$*"
++  case "$all" in
++    label\ list*)                                echo "[]" ;;
++    api\ repos/*/milestones\?state=all*)         echo "[]" ;;
++    api\ repos/*/issues/*/dependencies/blocked_by*)
++      case "$all" in
++        *--method\ POST*) echo '{}' ;;
++        *)                echo "[]" ;;
++      esac ;;
++    issue\ list*)                                echo "[]" ;;
++    repo\ view*)                                 echo '{"description":"","repositoryTopics":[]}' ;;
++    project\ list*)                              echo '{"projects":[]}' ;;
++    project\ field-list*)                        echo '{"fields":[]}' ;;
++    project\ item-list*)                         echo '{"items":[]}' ;;
++    api\ --method\ POST*/milestones*)
++      n=$(next_dry_num); printf '{"number":%d,"id":%d}\n' "$n" "$((1000+n))" ;;
++    api\ --method\ POST*/sub_issues*)            echo '{}' ;;
++    issue\ create*)
++      n=$(next_dry_num); printf 'https://github.com/%s/issues/%d\n' "$REPO" "$n" ;;
++    project\ create*)                            echo '{"number":1,"id":"PVT_dryrun"}' ;;
++    project\ field-create*)                      echo '{"id":"PVTSSF_dryrun"}' ;;
++    project\ item-add*)                          echo '{"id":"PVTI_dryrun"}' ;;
++    api\ repos/*/issues/*)
++      case "$all" in
++        *--jq\ .id*) echo $((RANDOM + 5000)) ;;
++        *)           echo '{}' ;;
++      esac ;;
++    *) echo "" ;;
++  esac
++}
++
++run_gh() {
++  if $DRY_RUN; then
++    printf 'DRY: gh %s\n' "$*" >> "$DRY_LOG"
++    _dry_stub "$@"
++    return 0
++  fi
++  timeout 90 gh "$@"
++}
++
++# ---------- PRD parser (awk) ----------
++PRD_JSON="$TMPDIR_ROOT/prd.json"
++
++awk '
++function jesc(s) {
++  gsub(/\\/, "\\\\", s)
++  gsub(/"/, "\\\"", s)
++  gsub(/\r/, "", s)
++  gsub(/\t/, "\\t", s)
++  gsub(/\n/, "\\n", s)
++  return "\"" s "\""
++}
++function append(buf, line) {
++  return (buf=="") ? line : buf "\n" line
++}
++function fail(msg, line) {
++  print "PARSE ERROR: " msg ": " line > "/dev/stderr"
++  exit 2
++}
++BEGIN {
++  state = "pre"
++  ntasks = 0
++  intro = ""
++  title = ""
++}
++state == "pre" {
++  if (match($0, /^# PRD: /)) {
++    title = substr($0, 8)
++    state = "intro"
++  }
++  next
++}
++/^## Task: / {
++  if (state == "intro") { sub(/\n+$/, "", intro) }
++  else if (state == "description") { sub(/\n+$/, "", descriptions[ntasks]) }
++  line = substr($0, 10)
++  n = index(line, " \xe2\x80\x94 ")
++  if (n == 0) { fail("task header missing em-dash separator", $0) }
++  ntasks++
++  ids[ntasks] = substr(line, 1, n-1)
++  titles[ntasks] = substr(line, n+5)
++  efforts[ntasks] = ""; deps[ntasks] = "[]"; skills[ntasks] = ""
++  max_att[ntasks] = ""; agent_to[ntasks] = ""; category[ntasks] = ""
++  descriptions[ntasks] = ""; ccount[ntasks] = 0
++  if (ids[ntasks] !~ /^task-[a-z0-9-]+$/) {
++    fail("invalid task id (must match ^task-[a-z0-9-]+$)", ids[ntasks])
++  }
++  state = "metadata"
++  next
++}
++state == "intro" {
++  intro = append(intro, $0)
++  next
++}
++state == "metadata" {
++  if ($0 ~ /^### Description/) { state = "description"; next }
++  if ($0 ~ /^\*\*[A-Za-z-]+\*\*: /) {
++    p = index($0, "**:")
++    key = substr($0, 3, p-3)
++    val = substr($0, p+4)
++    if      (key == "Effort")        efforts[ntasks] = val
++    else if (key == "Depends-on")    deps[ntasks] = val
++    else if (key == "Skills")        skills[ntasks] = val
++    else if (key == "Max-Attempts")  max_att[ntasks] = val
++    else if (key == "Agent-timeout") agent_to[ntasks] = val
++    else if (key == "Category")      category[ntasks] = val
++    next
++  }
++  next
++}
++state == "description" {
++  if ($0 ~ /^### Acceptance Criteria/) { state = "criteria"; next }
++  descriptions[ntasks] = append(descriptions[ntasks], $0)
++  next
++}
++state == "criteria" {
++  if ($0 ~ /^- \[ \] /) {
++    line = substr($0, 7)
++    hints = ""
++    text = line
++    while (match(text, / \[[^]]+\]$/)) {
++      hint = substr(text, RSTART+2, RLENGTH-3)
++      hints = (hints == "" ? jesc(hint) : jesc(hint) "," hints)
++      text = substr(text, 1, RSTART-1)
++    }
++    ccount[ntasks]++
++    ctext[ntasks, ccount[ntasks]] = text
++    chints[ntasks, ccount[ntasks]] = hints
++  }
++  next
++}
++END {
++  if (state == "pre") { fail("missing H1 (# PRD: <title>)", "") }
++  sub(/\n+$/, "", intro)
++  printf "{\"title\":%s,\"intro\":%s,\"tasks\":[", jesc(title), jesc(intro)
++  for (i = 1; i <= ntasks; i++) {
++    if (i > 1) printf ","
++    d = deps[i]
++    sub(/^\[/, "", d); sub(/\]$/, "", d); gsub(/[ \t]/, "", d)
++    dj = "["
++    if (d != "") {
++      m = split(d, darr, ",")
++      for (k = 1; k <= m; k++) {
++        if (k > 1) dj = dj ","
++        dj = dj "\"" darr[k] "\""
++      }
++    }
++    dj = dj "]"
++    mattr = (max_att[i] == "" ? "null" : max_att[i])
++    printf "{\"id\":%s,\"title\":%s,\"effort\":%s,\"depends_on\":%s,\"skills\":%s,\"max_attempts\":%s,\"agent_timeout\":%s,\"category\":%s,\"description\":%s,\"criteria\":[",
++      jesc(ids[i]), jesc(titles[i]), jesc(efforts[i]), dj,
++      jesc(skills[i]), mattr, jesc(agent_to[i]), jesc(category[i]),
++      jesc(descriptions[i])
++    for (j = 1; j <= ccount[i]; j++) {
++      if (j > 1) printf ","
++      printf "{\"text\":%s,\"hints\":[%s]}", jesc(ctext[i, j]), chints[i, j]
++    }
++    printf "]}"
++  }
++  printf "]}\n"
++}
++' "$PRD" > "$PRD_JSON"
++
++# Validate: unique ids + every Depends-on resolves.
++if ! jq -e '.' "$PRD_JSON" >/dev/null 2>&1; then
++  echo "PARSE ERROR: awk produced invalid JSON" >&2
++  exit 2
++fi
++
++DUPES=$(jq -r '[.tasks[].id] | (. as $a | $a | unique | . as $u | ($a|length) - ($u|length))' "$PRD_JSON")
++if [ "$DUPES" != "0" ]; then
++  echo "PARSE ERROR: duplicate task ids in PRD" >&2
++  exit 2
++fi
++
++BAD_DEP=$(jq -r '
++  [.tasks[].id] as $ids
++  | .tasks[]
++  | . as $t
++  | .depends_on[]
++  | . as $d
++  | select( ($ids | index($d)) == null )
++  | "\($t.id) depends on unknown \($d)"
++' "$PRD_JSON")
++if [ -n "$BAD_DEP" ]; then
++  echo "PARSE ERROR: unresolved Depends-on: $BAD_DEP" >&2
++  exit 2
++fi
++
++# ---------- label vocabulary ----------
++COLOR_EPIC="5319E7"
++COLOR_TASK="1D76DB"
++COLOR_PENDING="FBCA04"
++COLOR_FAILED="B60205"
++COLOR_EFFORT="BFD4F2"
++COLOR_TRIAGE_NEEDS="C5DEF5"
++COLOR_TRIAGE_INFO="CCCCCC"
++COLOR_READY_AGENT="0E8A16"
++COLOR_READY_HUMAN="D4C5F9"
++COLOR_WONTFIX="FFFFFF"
++
++LABEL_LIST_JSON=""
++load_labels() {
++  if [ -z "$LABEL_LIST_JSON" ]; then
++    LABEL_LIST_JSON=$(run_gh label list --json name --limit 200 -R "$REPO" 2>/dev/null || echo "[]")
++    [ -z "$LABEL_LIST_JSON" ] && LABEL_LIST_JSON="[]"
++  fi
++}
++label_exists() {
++  load_labels
++  printf '%s' "$LABEL_LIST_JSON" | jq -e --arg n "$1" 'any(.[]?; .name == $n)' >/dev/null 2>&1
++}
++ensure_label() {
++  local name="$1" color="$2" desc="$3"
++  if label_exists "$name"; then return 0; fi
++  run_gh label create "$name" --color "$color" --description "$desc" -R "$REPO" >/dev/null || true
++}
++
++ensure_all_labels() {
++  ensure_label "zurdo:epic"           "$COLOR_EPIC"          "Zurdo PRD epic issue"
++  ensure_label "zurdo:task"           "$COLOR_TASK"          "Zurdo PRD task issue"
++  ensure_label "zurdo:pending-review" "$COLOR_PENDING"       "Awaiting human review"
++  ensure_label "zurdo:failed"         "$COLOR_FAILED"        "Zurdo run failed this task"
++  local efforts
++  efforts=$(jq -r '[.tasks[].effort] | unique | .[]' "$PRD_JSON")
++  local e
++  for e in $efforts; do
++    [ -z "$e" ] && continue
++    ensure_label "effort:$e" "$COLOR_EFFORT" "Effort tier: $e"
++  done
++  ensure_label "needs-triage"     "$COLOR_TRIAGE_NEEDS" "Needs human triage"
++  ensure_label "needs-info"       "$COLOR_TRIAGE_INFO"  "Needs more info to proceed"
++  ensure_label "ready-for-agent"  "$COLOR_READY_AGENT"  "Ready for an agent to pick up"
++  ensure_label "ready-for-human"  "$COLOR_READY_HUMAN"  "Ready for a human to review"
++  ensure_label "wontfix"          "$COLOR_WONTFIX"      "Will not fix"
++}
++
++# ---------- helpers ----------
++marker_epic() { printf '<!-- zurdo-github prd=%s epic -->' "$PRD"; }
++marker_task() { printf '<!-- zurdo-github prd=%s task=%s -->' "$PRD" "$1"; }
++
++url_to_num() { basename "${1%/}"; }
++
++find_issue_by_marker() {
++  # echoes issue number if found; empty otherwise
++  local marker="$1"
++  local json
++  json=$(run_gh issue list --state all --search "$marker" --json number,body --limit 50 -R "$REPO" 2>/dev/null || echo "[]")
++  [ -z "$json" ] && json="[]"
++  printf '%s' "$json" | jq -r --arg m "$marker" 'map(select(.body|contains($m))) | (.[0].number // empty)'
++}
++
++find_milestone_number() {
++  local title="$1"
++  local json
++  json=$(run_gh api "repos/$OWNER/$NAME/milestones?state=all" --jq '.' 2>/dev/null || echo "[]")
++  [ -z "$json" ] && json="[]"
++  printf '%s' "$json" | jq -r --arg t "$title" 'map(select(.title == $t)) | (.[0].number // empty)'
++}
++
++issue_db_id() {
++  local n="$1"
++  run_gh api "repos/$OWNER/$NAME/issues/$n" --jq .id 2>/dev/null || echo ""
++}
++
++write_tmp_body() {
++  local f
++  f=$(mktemp "$TMPDIR_ROOT/body.XXXXXXXX")
++  cat > "$f"
++  printf '%s\n' "$f"
++}
++
++# ---------- bootstrap ----------
++do_bootstrap() {
++  ensure_all_labels
++  if [ -n "$ABOUT_ARG" ]; then
++    local rj desc topics
++    rj=$(run_gh repo view "$REPO" --json description,repositoryTopics 2>/dev/null || echo '{"description":"","repositoryTopics":[]}')
++    desc=$(printf '%s' "$rj" | jq -r '.description // ""')
++    topics=$(printf '%s' "$rj" | jq -r '.repositoryTopics | length')
++    if [ -z "$desc" ] && [ "$topics" = "0" ]; then
++      run_gh repo edit "$REPO" --description "$ABOUT_ARG" >/dev/null || true
++    fi
++  fi
++  local tracker="docs/agents/issue-tracker.md"
++  if [ -f "$tracker" ]; then
++    if ! grep -q '^## Zurdo operations' "$tracker"; then
++      cat >> "$tracker" <<'EOF'
++
++## Zurdo operations
++
++Zurdo turns a PRD into GitHub issues. Label groups: type (`zurdo:epic`, `zurdo:task`), state (`zurdo:pending-review`, `zurdo:failed`), effort (`effort:<value>`), triage (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`).
++
++Marker format: `<!-- zurdo-github prd=<path> task=<id> -->` (and `epic` variant) — an invisible identity that makes re-runs idempotent.
++
++Epic layout: the PRD becomes a milestone plus an epic issue holding the intro, a task table, and (fallback) a task checklist. Task issues are sub-issues of the epic.
++
++Modes: `bootstrap` (labels + docs), `publish` (milestone + epic + tasks + wiring), `sync-status` (label/close from a Zurdo run), `board` (Projects v2 mirror).
++EOF
++    fi
++  else
++    echo "skip: docs/agents/issue-tracker.md not present"
++  fi
++}
++
++# ---------- publish ----------
++do_publish() {
++  ensure_all_labels
++
++  local prd_title prd_intro milestone_title
++  prd_title=$(jq -r '.title' "$PRD_JSON")
++  prd_intro=$(jq -r '.intro' "$PRD_JSON")
++  milestone_title="$prd_title"
++
++  # (1) milestone
++  local mnum
++  mnum=$(find_milestone_number "$milestone_title")
++  if [ -z "$mnum" ]; then
++    local out
++    out=$(run_gh api --method POST "repos/$OWNER/$NAME/milestones" \
++      -f title="$milestone_title" \
++      -f description="$prd_intro" 2>/dev/null || echo '{}')
++    mnum=$(printf '%s' "$out" | jq -r '.number // empty')
++    [ -z "$mnum" ] && mnum="1"
++  else
++    run_gh api --method PATCH "repos/$OWNER/$NAME/milestones/$mnum" \
++      -f description="$prd_intro" >/dev/null || true
++  fi
++
++  # (2) epic issue
++  local emarker enum
++  emarker=$(marker_epic)
++  enum=$(find_issue_by_marker "$emarker")
++  local epic_body_file
++  epic_body_file=$(printf '%s\n\n%s\n\n%s\n' "$emarker" "$prd_intro" "_epic body will be finalized after task numbers are known._" | write_tmp_body)
++  if [ -z "$enum" ]; then
++    local eurl
++    eurl=$(run_gh issue create \
++      --title "$prd_title" \
++      --label zurdo:epic \
++      --milestone "$milestone_title" \
++      --assignee @me \
++      --body-file "$epic_body_file" \
++      -R "$REPO" 2>/dev/null || echo "")
++    enum=$(url_to_num "$eurl")
++    [ -z "$enum" ] && enum="1"
++  fi
++
++  # (3) task issues — first pass (no Blocked-by line, since blocker numbers unknown)
++  local task_count
++  task_count=$(jq -r '.tasks | length' "$PRD_JSON")
++
++  declare -a T_ID T_TITLE T_EFFORT T_NUM T_DBID
++  declare -A ID2IDX
++  local i tid ttitle teffort tskills tmaxatt tagentto tdesc tmarker deps_len body_file existing url num crit_lines
++  for i in $(seq 0 $((task_count-1))); do
++    tid=$(jq -r ".tasks[$i].id" "$PRD_JSON")
++    ttitle=$(jq -r ".tasks[$i].title" "$PRD_JSON")
++    teffort=$(jq -r ".tasks[$i].effort" "$PRD_JSON")
++    tskills=$(jq -r ".tasks[$i].skills // \"\"" "$PRD_JSON")
++    tmaxatt=$(jq -r ".tasks[$i].max_attempts | if . == null then \"\" else tostring end" "$PRD_JSON")
++    tagentto=$(jq -r ".tasks[$i].agent_timeout // \"\"" "$PRD_JSON")
++    tdesc=$(jq -r ".tasks[$i].description" "$PRD_JSON")
++    deps_len=$(jq -r ".tasks[$i].depends_on | length" "$PRD_JSON")
++    tmarker=$(marker_task "$tid")
++
++    T_ID[$i]="$tid"; T_TITLE[$i]="$ttitle"; T_EFFORT[$i]="$teffort"
++    ID2IDX[$tid]=$i
++
++    # metadata table row
++    local meta_cols meta_vals
++    meta_cols="| Effort |"; meta_vals="| $teffort |"
++    if [ -n "$tskills" ]; then meta_cols="$meta_cols Skills |"; meta_vals="$meta_vals $tskills |"; fi
++    if [ -n "$tmaxatt" ]; then meta_cols="$meta_cols Max-Attempts |"; meta_vals="$meta_vals $tmaxatt |"; fi
++    if [ -n "$tagentto" ]; then meta_cols="$meta_cols Agent-timeout |"; meta_vals="$meta_vals $tagentto |"; fi
++    local sep
++    sep=$(printf '%s' "$meta_cols" | sed 's/[^|]/-/g; s/-|/---|/g')
++
++    crit_lines=$(jq -r ".tasks[$i].criteria[] | \"- [ ] \" + .text + (if (.hints|length)>0 then \" \" + ((.hints|map(\"\`\" + . + \"\`\"))|join(\" \")) else \"\" end)" "$PRD_JSON")
++
++    body_file=$(cat <<EOF | write_tmp_body
++Part of #${enum}
++
++${tmarker}
++
++${meta_cols}
++${sep}
++${meta_vals}
++
++## Description
++
++${tdesc}
++
++## Acceptance Criteria
++
++${crit_lines}
++EOF
++)
++
++    local -a labels_args=(--label zurdo:task --label "effort:$teffort")
++    if [ "$deps_len" = "0" ]; then
++      labels_args+=(--label ready-for-agent)
++    fi
++
++    existing=$(find_issue_by_marker "$tmarker")
++    if [ -z "$existing" ]; then
++      url=$(run_gh issue create \
++        --title "$ttitle" \
++        "${labels_args[@]}" \
++        --milestone "$milestone_title" \
++        --body-file "$body_file" \
++        -R "$REPO" 2>/dev/null || echo "")
++      num=$(url_to_num "$url")
++      [ -z "$num" ] && num=$((100 + i))
++    else
++      num="$existing"
++      run_gh issue edit "$num" \
++        --title "$ttitle" \
++        --body-file "$body_file" \
++        --milestone "$milestone_title" \
++        -R "$REPO" >/dev/null || true
++      run_gh issue edit "$num" --add-label "zurdo:task" --add-label "effort:$teffort" -R "$REPO" >/dev/null || true
++      if [ "$deps_len" = "0" ]; then
++        run_gh issue edit "$num" --add-label "ready-for-agent" -R "$REPO" >/dev/null || true
++      fi
++    fi
++    T_NUM[$i]="$num"
++    T_DBID[$i]=$(issue_db_id "$num")
++    [ -z "${T_DBID[$i]}" ] && T_DBID[$i]="$((5000 + i))"
++  done
++
++  # (4) wiring pass
++  local subissue_mode="native"
++  local dep_mode="native"
++  local epic_dbid
++  epic_dbid=$(issue_db_id "$enum")
++  [ -z "$epic_dbid" ] && epic_dbid="4999"
++
++  local fallback_checklist=""
++  for i in $(seq 0 $((task_count-1))); do
++    local resp
++    resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$enum/sub_issues" \
++      -F "sub_issue_id=${T_DBID[$i]}" 2>&1 || true)
++    case "$resp" in
++      *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
++        subissue_mode="fallback"
++        ;;
++      *422*already*) : ;;
++    esac
++  done
++  if [ "$subissue_mode" = "fallback" ]; then
++    for i in $(seq 0 $((task_count-1))); do
++      fallback_checklist="${fallback_checklist}- [ ] #${T_NUM[$i]}"$'\n'
++    done
++  fi
++
++  for i in $(seq 0 $((task_count-1))); do
++    local dcount
++    dcount=$(jq -r ".tasks[$i].depends_on | length" "$PRD_JSON")
++    if [ "$dcount" = "0" ]; then continue; fi
++    local j dep_id dep_idx dep_dbid resp
++    for j in $(seq 0 $((dcount-1))); do
++      dep_id=$(jq -r ".tasks[$i].depends_on[$j]" "$PRD_JSON")
++      dep_idx="${ID2IDX[$dep_id]:-}"
++      [ -z "$dep_idx" ] && continue
++      dep_dbid="${T_DBID[$dep_idx]}"
++      resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/${T_NUM[$i]}/dependencies/blocked_by" \
++        -F "issue_id=$dep_dbid" 2>&1 || true)
++      case "$resp" in
++        *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
++          dep_mode="fallback"
++          ;;
++      esac
++    done
++  done
++
++  # Second-pass task body edits: add Blocked by: line where applicable
++  for i in $(seq 0 $((task_count-1))); do
++    local dcount
++    dcount=$(jq -r ".tasks[$i].depends_on | length" "$PRD_JSON")
++    if [ "$dcount" = "0" ]; then continue; fi
++    local blocked_line="Blocked by:" j dep_id dep_idx
++    for j in $(seq 0 $((dcount-1))); do
++      dep_id=$(jq -r ".tasks[$i].depends_on[$j]" "$PRD_JSON")
++      dep_idx="${ID2IDX[$dep_id]:-}"
++      [ -z "$dep_idx" ] && continue
++      blocked_line="$blocked_line [${T_TITLE[$dep_idx]}](#${T_NUM[$dep_idx]})"
++    done
++
++    local tid ttitle teffort tskills tmaxatt tagentto tdesc tmarker crit_lines body_file
++    tid="${T_ID[$i]}"; ttitle="${T_TITLE[$i]}"; teffort="${T_EFFORT[$i]}"
++    tskills=$(jq -r ".tasks[$i].skills // \"\"" "$PRD_JSON")
++    tmaxatt=$(jq -r ".tasks[$i].max_attempts | if . == null then \"\" else tostring end" "$PRD_JSON")
++    tagentto=$(jq -r ".tasks[$i].agent_timeout // \"\"" "$PRD_JSON")
++    tdesc=$(jq -r ".tasks[$i].description" "$PRD_JSON")
++    tmarker=$(marker_task "$tid")
++
++    local meta_cols meta_vals sep
++    meta_cols="| Effort |"; meta_vals="| $teffort |"
++    if [ -n "$tskills" ]; then meta_cols="$meta_cols Skills |"; meta_vals="$meta_vals $tskills |"; fi
++    if [ -n "$tmaxatt" ]; then meta_cols="$meta_cols Max-Attempts |"; meta_vals="$meta_vals $tmaxatt |"; fi
++    if [ -n "$tagentto" ]; then meta_cols="$meta_cols Agent-timeout |"; meta_vals="$meta_vals $tagentto |"; fi
++    sep=$(printf '%s' "$meta_cols" | sed 's/[^|]/-/g; s/-|/---|/g')
++
++    crit_lines=$(jq -r ".tasks[$i].criteria[] | \"- [ ] \" + .text + (if (.hints|length)>0 then \" \" + ((.hints|map(\"\`\" + . + \"\`\"))|join(\" \")) else \"\" end)" "$PRD_JSON")
++
++    body_file=$(cat <<EOF | write_tmp_body
++Part of #${enum}
++
++${tmarker}
++
++${meta_cols}
++${sep}
++${meta_vals}
++
++${blocked_line}
++
++## Description
++
++${tdesc}
++
++## Acceptance Criteria
++
++${crit_lines}
++EOF
++)
++    run_gh issue edit "${T_NUM[$i]}" --body-file "$body_file" -R "$REPO" >/dev/null || true
++  done
++
++  # (5) epic body
++  local table
++  table=$(printf '| Task | Effort | Status |\n|---|---|---|\n')
++  for i in $(seq 0 $((task_count-1))); do
++    table="${table}| [${T_TITLE[$i]}](#${T_NUM[$i]}) | ${T_EFFORT[$i]} | Todo |"$'\n'
++  done
++  local epic_body
++  epic_body="${emarker}"$'\n\n'"${prd_intro}"$'\n\n'"## Tasks"$'\n\n'"${table}"
++  if [ "$subissue_mode" = "fallback" ]; then
++    epic_body="${epic_body}"$'\n'"### Checklist (sub-issues unavailable)"$'\n\n'"${fallback_checklist}"
++  fi
++  local final_epic_body_file
++  final_epic_body_file=$(printf '%s' "$epic_body" | write_tmp_body)
++  run_gh issue edit "$enum" --body-file "$final_epic_body_file" -R "$REPO" >/dev/null || true
++
++  # (6) summary
++  echo
++  echo "Summary:"
++  echo "  milestone: $milestone_title (#$mnum)"
++  echo "  epic: $prd_title (#$enum)"
++  for i in $(seq 0 $((task_count-1))); do
++    echo "  task: ${T_TITLE[$i]} (#${T_NUM[$i]}) [effort:${T_EFFORT[$i]}]"
++  done
++  echo "  wiring: sub-issues=$subissue_mode dependencies=$dep_mode"
++}
++
++# ---------- sync-status ----------
++resolve_run_dir() {
++  if [ -n "$SLUG_ARG" ]; then
++    printf '%s\n' ".zurdo/$SLUG_ARG"
++    return
++  fi
++  local base
++  base=$(basename "$PRD" .md)
++  local match
++  match=$(ls -1dt .zurdo/${base}-*/ 2>/dev/null | head -1 || true)
++  if [ -z "$match" ]; then
++    echo "error: no run directory found for $base" >&2
++    exit 1
++  fi
++  printf '%s\n' "${match%/}"
++}
++
++do_sync_status() {
++  local run_dir prd_run
++  run_dir=$(resolve_run_dir)
++  prd_run="$run_dir/prd.json"
++  if [ ! -f "$prd_run" ] && ! $DRY_RUN; then
++    echo "error: $prd_run not found" >&2
++    exit 1
++  fi
++
++  local task_count
++  task_count=$(jq -r '.tasks | length' "$PRD_JSON")
++
++  local i tid tmarker num status run_task
++  for i in $(seq 0 $((task_count-1))); do
++    tid=$(jq -r ".tasks[$i].id" "$PRD_JSON")
++    tmarker=$(marker_task "$tid")
++    num=$(find_issue_by_marker "$tmarker")
++    if [ -z "$num" ]; then
++      if $DRY_RUN; then
++        num=$((200 + i))
++      else
++        echo "warn: no issue for $tid (marker not found)"
++        continue
++      fi
++    fi
++
++    if [ -f "$prd_run" ]; then
++      status=$(jq -r --arg id "$tid" '.tasks[$id].status // "unknown"' "$prd_run")
++      run_task=$(jq --arg id "$tid" '.tasks[$id]' "$prd_run")
++    else
++      status="passed-pending-review"
++      run_task='{}'
++    fi
++
++    case "$status" in
++      passed)
++        local last attempts model tin tout cost
++        last=$(printf '%s' "$run_task" | jq -r '.iterations[-1] // {}')
++        attempts=$(printf '%s' "$run_task" | jq -r '.attempts // 0')
++        model=$(printf '%s' "$last" | jq -r '.model // "unknown"')
++        tin=$(printf '%s' "$last" | jq -r '.tokens_in // 0')
++        tout=$(printf '%s' "$last" | jq -r '.tokens_out // 0')
++        cost=$(printf '%s' "$last" | jq -r '.cost_usd_est // 0')
++        run_gh issue edit "$num" --remove-label "zurdo:pending-review" --remove-label "zurdo:failed" -R "$REPO" >/dev/null || true
++        local cf
++        cf=$(printf 'Zurdo run: passed\nattempts: %s\nlast model: %s\ntokens_in: %s\ntokens_out: %s\ncost_usd_est: %s\n' \
++          "$attempts" "$model" "$tin" "$tout" "$cost" | write_tmp_body)
++        run_gh issue comment "$num" --body-file "$cf" -R "$REPO" >/dev/null || true
++        run_gh issue close "$num" -R "$REPO" >/dev/null || true
++        ;;
++      passed-pending-review)
++        local last attempts model tin tout cost
++        last=$(printf '%s' "$run_task" | jq -r '.iterations[-1] // {}')
++        attempts=$(printf '%s' "$run_task" | jq -r '.attempts // 0')
++        model=$(printf '%s' "$last" | jq -r '.model // "unknown"')
++        tin=$(printf '%s' "$last" | jq -r '.tokens_in // 0')
++        tout=$(printf '%s' "$last" | jq -r '.tokens_out // 0')
++        cost=$(printf '%s' "$last" | jq -r '.cost_usd_est // 0')
++        run_gh issue edit "$num" --remove-label "zurdo:failed" --add-label "zurdo:pending-review" -R "$REPO" >/dev/null || true
++        local cf
++        cf=$(printf 'Zurdo run: passed pending review\nattempts: %s\nlast model: %s\ntokens_in: %s\ntokens_out: %s\ncost_usd_est: %s\n' \
++          "$attempts" "$model" "$tin" "$tout" "$cost" | write_tmp_body)
++        run_gh issue comment "$num" --body-file "$cf" -R "$REPO" >/dev/null || true
++        ;;
++      failed)
++        local failed_hints
++        failed_hints=$(printf '%s' "$run_task" | jq -r '(.iterations[-1].criteria_results // []) | map(select(.passed == false)) | map("- " + (.hint // "?")) | join("\n")')
++        run_gh issue edit "$num" --remove-label "zurdo:pending-review" --add-label "zurdo:failed" -R "$REPO" >/dev/null || true
++        local cf
++        cf=$(printf 'Zurdo run: failed\nFailing criteria:\n%s\n' "$failed_hints" | write_tmp_body)
++        run_gh issue comment "$num" --body-file "$cf" -R "$REPO" >/dev/null || true
++        ;;
++      blocked-by-dependency)
++        : ;;
++      *) : ;;
++    esac
++  done
++
++  # Refresh epic status table (best-effort; no-op in dry-run)
++  local emarker enum
++  emarker=$(marker_epic)
++  enum=$(find_issue_by_marker "$emarker")
++  if [ -n "$enum" ] || $DRY_RUN; then
++    [ -z "$enum" ] && enum=1
++    echo "epic status refresh queued for #$enum"
++  fi
++}
++
++# ---------- board (Projects v2) ----------
++do_board() {
++  # Check project scope
++  if ! $DRY_RUN; then
++    if ! gh auth status 2>&1 | grep -q "project"; then
++      echo "error: missing 'project' scope. Run: gh auth refresh -s project" >&2
++      exit 3
++    fi
++  fi
++
++  local plist project_id project_number title
++  title="$NAME"
++  plist=$(run_gh project list --owner "$OWNER" --format json 2>/dev/null || echo '{"projects":[]}')
++  [ -z "$plist" ] && plist='{"projects":[]}'
++  project_number=$(printf '%s' "$plist" | jq -r --arg t "$title" '.projects[]? | select(.title == $t) | .number' | head -1)
++  if [ -z "$project_number" ]; then
++    local created
++    created=$(run_gh project create --owner "$OWNER" --title "$title" --format json 2>/dev/null || echo '{"number":1}')
++    project_number=$(printf '%s' "$created" | jq -r '.number // 1')
++  fi
++
++  local fields
++  fields=$(run_gh project field-list "$project_number" --owner "$OWNER" --format json 2>/dev/null || echo '{"fields":[]}')
++  [ -z "$fields" ] && fields='{"fields":[]}'
++  local status_field
++  status_field=$(printf '%s' "$fields" | jq -r '.fields[]? | select(.name == "Status") | .id' | head -1)
++  if [ -z "$status_field" ]; then
++    run_gh project field-create "$project_number" --owner "$OWNER" \
++      --name Status --data-type SINGLE_SELECT \
++      --single-select-options "Todo,In Progress,Pending Review,Done,Failed" >/dev/null || true
++  fi
++
++  local task_count run_dir prd_run
++  task_count=$(jq -r '.tasks | length' "$PRD_JSON")
++
++  run_dir=""
++  if [ -n "$SLUG_ARG" ]; then
++    run_dir=".zurdo/$SLUG_ARG"
++  else
++    run_dir=$(ls -1dt .zurdo/$(basename "$PRD" .md)-*/ 2>/dev/null | head -1 || true)
++    run_dir="${run_dir%/}"
++  fi
++  prd_run=""
++  [ -n "$run_dir" ] && [ -f "$run_dir/prd.json" ] && prd_run="$run_dir/prd.json"
++
++  local i tid tmarker num status board_status
++  for i in $(seq 0 $((task_count-1))); do
++    tid=$(jq -r ".tasks[$i].id" "$PRD_JSON")
++    tmarker=$(marker_task "$tid")
++    num=$(find_issue_by_marker "$tmarker")
++    [ -z "$num" ] && num=$((300 + i))
++
++    if [ -n "$prd_run" ]; then
++      status=$(jq -r --arg id "$tid" '.tasks[$id].status // "unknown"' "$prd_run")
++    else
++      status="unknown"
++    fi
++    case "$status" in
++      passed)                board_status="Done" ;;
++      passed-pending-review) board_status="Pending Review" ;;
++      failed)                board_status="Failed" ;;
++      in_progress|running)   board_status="In Progress" ;;
++      *)                     board_status="Todo" ;;
++    esac
++    run_gh project item-add "$project_number" --owner "$OWNER" \
++      --url "https://github.com/$REPO/issues/$num" >/dev/null || true
++    run_gh project item-edit --project-id "$project_number" \
++      --id "PVTI_task_${i}" --field-id "Status" --single-select-option-id "$board_status" >/dev/null || true
++  done
++}
++
++case "$MODE" in
++  bootstrap)   do_bootstrap ;;
++  publish)     do_publish ;;
++  sync-status) do_sync_status ;;
++  board)       do_board ;;
++esac

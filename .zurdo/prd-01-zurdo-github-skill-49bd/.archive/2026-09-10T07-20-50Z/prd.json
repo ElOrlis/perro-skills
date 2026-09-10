@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "prd_path": "docs/zurdo-github/prds/prd-01-zurdo-github-skill.md",
+  "prd_hash": "e8168453f223b2360e864b70108b7c6fc242c22c",
+  "started_at": "2026-09-10T07:18:58.823535Z",
+  "last_updated": "2026-09-10T07:20:11.715862Z",
+  "tasks": {
+    "task-integrate-verify": {
+      "status": "pending",
+      "attempts": 0,
+      "passed_at": null,
+      "iterations": [],
+      "preflight_results": []
+    },
+    "task-ref-github-model": {
+      "status": "pending",
+      "attempts": 0,
+      "passed_at": null,
+      "iterations": [],
+      "preflight_results": []
+    },
+    "task-ref-runbook": {
+      "status": "pending",
+      "attempts": 0,
+      "passed_at": null,
+      "iterations": [],
+      "preflight_results": []
+    },
+    "task-ref-status-sync": {
+      "status": "pending",
+      "attempts": 0,
+      "passed_at": null,
+      "iterations": [],
+      "preflight_results": []
+    },
+    "task-script": {
+      "status": "pending",
+      "attempts": 0,
+      "passed_at": null,
+      "iterations": [],
+      "preflight_results": []
+    },
+    "task-skill-scaffold": {
+      "status": "in-progress",
+      "attempts": 2,
+      "passed_at": null,
+      "iterations": [
+        {
+          "attempt": 1,
+          "started_at": "2026-09-10T07:18:58.983430Z",
+          "ended_at": "2026-09-10T07:19:54.748351Z",
+          "model": "claude-sonnet-4-6",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-skill-scaffold-1.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-skill-scaffold-1.err",
+          "agent_stdout_bytes": 29526,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 147868,
+          "tokens_out": 2030,
+          "tokens_cache_write": 14811,
+          "tokens_cache_read": 133052,
+          "premium_requests": null,
+          "cost_usd_est": 0.1259,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/project-management/zurdo-github/SKILL.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": false
+            },
+            {
+              "hint": "grep: \"name: zurdo-github\" in skills/project-management/zurdo-github/SKILL.md",
+              "passed": false,
+              "duration_ms": 2,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": "pattern not matched",
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": false
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "no-grep: TODO in skills/project-management/zurdo-github/SKILL.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": false
+            }
+          ],
+          "frozen_violations": [],
+          "failure_fingerprint": "sha256:e18bf7c163ba22eb0808f582f3191f68570f1e75525456081958ce93ef18be5b"
+        },
+        {
+          "attempt": 2,
+          "started_at": "2026-09-10T07:19:54.823143Z",
+          "ended_at": "2026-09-10T07:20:11.637821Z",
+          "model": "claude-sonnet-4-6",
+          "agent_exit_code": 0,
+          "agent_stdout_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-skill-scaffold-2.out",
+          "agent_stderr_path": "/Users/orlandogarcia/Workspaces/Dev/Agents/perro-skills/.zurdo/prd-01-zurdo-github-skill-49bd/iterations/task-skill-scaffold-2.err",
+          "agent_stdout_bytes": 34405,
+          "agent_stderr_bytes": 0,
+          "tokens_in": 115823,
+          "tokens_out": 431,
+          "tokens_cache_write": 16312,
+          "tokens_cache_read": 99507,
+          "premium_requests": null,
+          "cost_usd_est": 0.0975,
+          "timed_out": false,
+          "criteria_results": [
+            {
+              "hint": "file-exists: skills/project-management/zurdo-github/SKILL.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": false
+            },
+            {
+              "hint": "grep: \"name: zurdo-github\" in skills/project-management/zurdo-github/SKILL.md",
+              "passed": false,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": "pattern not matched",
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": false
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "[manual]",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": null
+            },
+            {
+              "hint": "no-grep: TODO in skills/project-management/zurdo-github/SKILL.md",
+              "passed": true,
+              "duration_ms": 0,
+              "exit_code": null,
+              "stdout_truncated": null,
+              "stderr_truncated": null,
+              "timed_out": false,
+              "stdout_bytes": 0,
+              "stderr_bytes": 0,
+              "failure_reason": null,
+              "evidence_modified": false
+            }
+          ],
+          "frozen_violations": [],
+          "failure_fingerprint": "sha256:e18bf7c163ba22eb0808f582f3191f68570f1e75525456081958ce93ef18be5b"
+        }
+      ],
+      "preflight_results": [
+        {
+          "criterion": "SKILL.md exists",
+          "hint": "file-exists: skills/project-management/zurdo-github/SKILL.md",
+          "passed": false
+        },
+        {
+          "criterion": "Frontmatter declares the skill name",
+          "hint": "grep: \"name: zurdo-github\" in skills/project-management/zurdo-github/SKILL.md",
+          "passed": false
+        },
+        {
+          "criterion": "No placeholder markers remain",
+          "hint": "no-grep: TODO in skills/project-management/zurdo-github/SKILL.md",
+          "passed": false
+        }
+      ]
+    }
+  },
+  "completion_gate": null
+}
