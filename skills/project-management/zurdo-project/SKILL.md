@@ -4,7 +4,7 @@ description: >
   Triggers when the user wants to start a project or initiative from an idea, scope an initiative
   into phases, set up a GitHub Project for it, ask what the next phase is, or run a phase review
   after a Zurdo run. Does NOT trigger for publishing a single existing PRD to GitHub (that is
-  zurdo-github), for authoring one PRD's tasks (that is zurdo-prd-writer), or for general issue
+  zurdo-github), for authoring one PRD's tasks (that is zurdo-prd-author), or for general issue
   triage.
 ---
 
@@ -16,10 +16,10 @@ Orchestrate a multi-phase initiative from raw idea to shipped phases: scope it, 
 
 1. **Scope** — capture the idea in `docs/<initiative>/scope.md`; open a scope issue as a pointer.
 2. **Research** — open grilling and research tickets for any fog; resolve them before writing PRDs.
-3. **Phase PRD** — graduate the next phase from the scope table; invoke `zurdo-prd-writer` to author it.
-4. **Publish** — invoke `zurdo-github` to push the PRD to GitHub as milestone + epic + task issues.
-5. **Run and sync** — run Zurdo, then `zurdo-github sync-status` to mirror outcomes back to GitHub.
-6. **Phase review** — review outcomes, update `scope.md`, then loop back to Research for the next phase.
+3. **Phase PRD** — graduate the next phase from the scope table; invoke `zurdo-prd-author` to author and review it in one interview. A phase that must adjudicate approaches on evidence gets a design record first (`zurdo-design-author`).
+4. **Publish** — commit the PRD with its `.trail.md` sidecar and any `lessons/` files, then invoke `zurdo-github` to push the PRD to GitHub as milestone + epic + task issues.
+5. **Run and sync** — run Zurdo (`zurdo-state-summary` to check a run, `zurdo-hint-debugger` for a failing criterion), then `zurdo-github sync-status` to mirror outcomes back to GitHub.
+6. **Phase review** — invoke `zurdo-prd-review` for the intent-level verdict, run the review interview, update `scope.md`, then loop back to Research for the next phase.
 
 ## Decision Rules
 
@@ -56,8 +56,16 @@ Graduating multiple phases in parallel produces scope pressure and makes the boa
 → see references/phases.md
 
 **Required skills stop the run when missing; optional skills degrade to the inline fallback and say so.**
-Required: `zurdo-prd-writer`, `zurdo-prd-reviewer`. Optional: `zurdo-domain` (install via `zurdo skills install zurdo-domain`; falls back to inline domain modeling if absent).
+Required: `zurdo-prd-author` (consolidates decomposition, grammar, criteria, and review) plus the peer skills it calls, `zurdo-domain` and `zurdo-lessons`. Install all three at once with `zurdo skills install --all`. Optional: `zurdo-design-author`, `zurdo-prd-review`, `zurdo-state-summary`, `zurdo-hint-debugger`; each has a stated fallback.
 → see references/runbook.md
+
+**Green criteria are necessary, not sufficient; the phase review starts with `zurdo-prd-review`, not with the interview.**
+A hint can pass while the diff misses the point. The intent review binds the run diff to each task's intent, and a gaps verdict yields a follow-up PRD that runs under the same phase before it can be `done`.
+→ see references/phases.md
+
+**Commit the PRD, its `.trail.md` sidecar, and any `lessons/` files in one commit before publishing.**
+That commit is the human review gate the lesson library relies on; `zurdo-prd-review` reads the trail as the best intent source when judging the run.
+→ see references/phases.md
 
 **Never call `gh` directly; every write goes through `zurdo-github.sh`, dry-run first.**
 Direct `gh` calls bypass the dry-run gate, the marker system, and the idempotency logic. A botched direct call can create duplicate issues with no marker to merge on re-run.
@@ -73,9 +81,13 @@ Claiming prevents concurrent edits from two agents. One grilling ticket per sess
 docs/<initiative>/
   scope.md                   # source of truth: Destination / Notes / Decisions / Phases table / Not yet specified / Out of scope
   tickets/<name>.md          # frontmatter: type (research|grilling), status, blocks, blocked-by; findings inline
+  design/<topic>.md          # optional design record (zurdo-design-author) for a phase that needs evidence-based adjudication
   prds/
     prd-01-<phase>.md        # phase 1 PRD
+    prd-01-<phase>.trail.md  # reasoning trail written by zurdo-prd-author; committed with the PRD
+    prd-01-<phase>-followup.md  # only if zurdo-prd-review found gaps; runs under the same phase
     prd-02-<phase>.md        # phase 2 PRD, written only after phase 1 review
+lessons/                     # repo root: cross-PRD corrections written by zurdo-prd-author and zurdo-prd-review
 ```
 
 Research findings live in the ticket file itself; there is no separate `research/` directory.

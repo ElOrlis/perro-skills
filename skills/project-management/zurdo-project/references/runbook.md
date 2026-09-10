@@ -15,10 +15,13 @@ Verify every row before the first command. Required dependencies that are missin
 | `jq` | Required — stop | `command -v jq` | None. Install via the system package manager. |
 | `zurdo` | Required — stop | `command -v zurdo` | None. See the Zurdo install docs for your environment. |
 | `zurdo-github` skill and script | Required — stop | Skill present in agent's skill list **and** `scripts/zurdo-github.sh` exists at repo root | None. Run `zurdo skills install zurdo-github`. |
-| `zurdo-prd-writer` | Required — stop | Skill present in agent's skill list | None. Run `zurdo skills install zurdo-prd-writer`. Cannot write a phase PRD without it. |
-| `zurdo-prd-reviewer` | Required — stop | Skill present in agent's skill list | None. Run `zurdo skills install zurdo-prd-reviewer`. Cannot review a phase PRD without it. |
-| `zurdo-prd-decomposer` | Optional | Skill present in agent's skill list | Decompose phase tasks by hand before calling `zurdo-prd-writer`. |
-| `zurdo-domain` | Optional | Skill present in agent's skill list | Run `zurdo skills install zurdo-domain` to add it. Without it, skip the glossary step and note the omission in `scope.md` Notes. |
+| `zurdo-prd-author` | Required — stop | Skill present in agent's skill list | None. Run `zurdo skills install zurdo-prd-author`. It is the single PRD authoring entry point (decomposition, §2.2 grammar, criteria forcing, and pre-run review in one interview); a phase PRD cannot be written or reviewed without it. |
+| `zurdo-lessons` | Required — stop | Skill present in agent's skill list | None. `zurdo-prd-author` calls it by name in its review phase and stops when it cannot resolve. Run `zurdo skills install --all` (installs every bundled skill). |
+| `zurdo-domain` | Required — stop | Skill present in agent's skill list | None. `zurdo-prd-author` and `zurdo-prd-review` call it by name to word requirements and lessons in the project's governed nouns. Run `zurdo skills install zurdo-domain`. If the project has no `CONTEXT.md` glossary yet, the skill creates one; note that in `scope.md` Notes. |
+| `zurdo-prd-review` | Optional — recommended | Skill present in agent's skill list | Run the phase review interview against `prd.json` statuses and `git diff` alone, and say in the review notes that no intent-level review ran. |
+| `zurdo-design-author` | Optional | Skill present in agent's skill list | Record the adjudication as a research ticket's `## Findings` with the measurements inline; skip the `implementation:` frontmatter. |
+| `zurdo-state-summary` | Optional | Skill present in agent's skill list | Read `.zurdo/<slug>/prd.json` and `progress.log` by hand to tally task statuses before `sync-status`. |
+| `zurdo-hint-debugger` | Optional | Skill present in agent's skill list | Read the failing criterion's `.zurdo/<slug>/iterations/*.out` and `.err` captures by hand. |
 | `grilling` or `grill-me` | Optional | Skill present in agent's skill list (either name) | Use the inline interview protocol from `references/interview.md`. |
 
 ### Stop message for a missing required skill
@@ -26,12 +29,12 @@ Verify every row before the first command. Required dependencies that are missin
 When a required skill is missing, output exactly this (substituting the skill name) and exit:
 
 ```
-Required skill `zurdo-prd-writer` is not installed. Run:
-  zurdo skills install zurdo-prd-writer
+Required skill `zurdo-prd-author` is not installed. Run:
+  zurdo skills install zurdo-prd-author
 Then restart this session.
 ```
 
-Do not proceed past the dependency check when any required item is absent.
+Do not proceed past the dependency check when any required item is absent. `zurdo skills install --all` installs every bundled skill in one shot and is the simplest way to satisfy every `zurdo-*` row.
 
 ---
 
@@ -75,7 +78,7 @@ Run these steps once, at initiative start. Stop after step 9 even if more work i
 
 9. **Fire research subagents** — for each open research ticket, dispatch a subagent to fetch and synthesize. Research tickets may run in parallel. Do not wait for them to finish before stopping the session; they resolve asynchronously and their findings are written into the ticket file.
 
-10. **If phase-01 is `ready`** — invoke `zurdo-prd-writer` to author the PRD, then invoke `zurdo-prd-reviewer` to review it, then publish (see the publish sequence in the later-session section). Stop after publishing; do not start Zurdo in this same session.
+10. **If phase-01 is `ready`** — invoke `zurdo-prd-author` to author the PRD (its interview ends with the review verdict; stop only on `✓ READY TO RUN`), commit the PRD with its `.trail.md` sidecar and any `lessons/` files, then publish (see the publish sequence in the later-session section). Stop after publishing; do not start Zurdo in this same session.
 
 **Stop here.** One session's worth of work is: scoped, researched, one PRD authored and published (if phase-01 was ready). Do not graduate additional phases in the first session.
 
@@ -101,10 +104,12 @@ At the start of each subsequent session, orient before acting.
    |---|---|---|
    | 1 | An open grilling ticket exists | Resolve it: interview the user, write `## Findings`, flip `status: resolved`, run `zurdo-github.sh ticket`, update `scope.md`, run `scope`. |
    | 2 | An open research ticket has new findings from a subagent | Write `## Findings` in the ticket file, flip `status: resolved`, run `zurdo-github.sh ticket`, update `scope.md`. |
-   | 3 | A phase is `ready` and no PRD exists for it | Write the PRD (invoke `zurdo-prd-writer`), then review (invoke `zurdo-prd-reviewer`). |
+   | 3 | A phase is `ready` and no PRD exists for it | Author the PRD (invoke `zurdo-prd-author`; it decomposes, writes, forces criteria, and reviews in one interview), then commit the PRD, its `.trail.md` sidecar, and any `lessons/` files. |
    | 4 | A PRD exists and the phase is `ready` | Publish (see sequence below), flip phase to `running` in `scope.md`. |
-   | 5 | A phase is `running` and `zurdo run` is complete | Run `sync-status`, refresh scope issue, begin phase review interview. |
-   | 6 | Phase review is in progress | Complete the review; update `scope.md`; graduate the next phase if one becomes ready. |
+   | 5 | A phase is `running` and `zurdo run` finished with `failed` or `blocked-by-dependency` tasks | Invoke `zurdo-hint-debugger` on each failing criterion; fix the hint or the code; `zurdo run --resume`. Run `sync-status` so GitHub shows the failures meanwhile. |
+   | 6 | A phase is `running` and `zurdo run` is complete | Invoke `zurdo-state-summary` to confirm the run is settled (no live lock, no in-flight iteration), run `sync-status`, refresh the scope issue, then invoke `zurdo-prd-review`. |
+   | 7 | `zurdo-prd-review` returned a gaps verdict | Commit the follow-up PRD and any `lessons/` files, publish it with `--scope <n>`, run it, `sync-status`; the phase stays `running` until the follow-up is green. |
+   | 8 | `zurdo-prd-review` returned landed-as-intended | Begin the phase review interview; update `scope.md`; graduate the next phase if one becomes ready. |
 
 ### Publish sequence
 
@@ -128,6 +133,8 @@ After `publish --scope <n>` succeeds, flip the phase row to `Status: running` in
 
 ```bash
 zurdo run
+
+# Confirm the run is settled before syncing (invoke zurdo-state-summary, or read prd.json by hand)
 
 zurdo-github.sh sync-status --dry-run
 zurdo-github.sh sync-status
@@ -189,7 +196,7 @@ A divergence line names a GitHub issue whose state differs from what `scope.md` 
 
 ### Missing required skill discovered mid-lifecycle
 
-If a required skill disappears after the lifecycle has started (e.g. `zurdo-prd-writer` is uninstalled between sessions):
+If a required skill disappears after the lifecycle has started (e.g. `zurdo-prd-author` is uninstalled between sessions):
 
 1. Stop all in-progress work immediately.
 2. Do not write any PRD file or run any publish command.

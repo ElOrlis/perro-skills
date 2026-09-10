@@ -86,10 +86,12 @@ Set `blocks: [phase-NN]` in the ticket frontmatter. The script reads this field 
 
 A phase in `researching` status:
 - Does not graduate to PRD authoring.
-- Does not allow `zurdo-prd-writer` to run.
+- Does not allow `zurdo-prd-author` to run.
 - Remains blocked until every ticket in its `blocks` chain is `resolved`.
 
 When the last blocking ticket resolves, the phase status returns to `planned` and PRD authoring can proceed.
+
+A research ticket whose findings compare approaches and must be decided on measurement, not taste, graduates to a design record: invoke `zurdo-design-author` to write `docs/<initiative>/design/<topic>.md`, and link the record from the ticket's `## Findings` and from the phase PRD's `## Background`.
 
 ---
 
@@ -105,7 +107,7 @@ This phase was informed by the following research:
 - [Auth scheme survey](../../tickets/webhook-auth.md)
 ```
 
-`zurdo-prd-writer` reads those linked files as context before drafting. `zurdo-prd-reviewer` reads them to verify the PRD's claims are consistent with the findings. The links provide traceability: anyone reading the PRD can follow the citation back to the sources that justified its decisions.
+`zurdo-prd-author` reads those linked files as context during its evidence-inventory phase and re-reads them in its review phase to verify the PRD's claims are consistent with the findings. The links provide traceability: anyone reading the PRD can follow the citation back to the sources that justified its decisions.
 
 ---
 
