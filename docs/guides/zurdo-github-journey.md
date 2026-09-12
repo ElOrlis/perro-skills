@@ -1,6 +1,6 @@
 # Zurdo GitHub Journey
 
-How `zurdo-project`, `zurdo-github`, and the `zurdo` CLI work together so that GitHub always shows the true state of an initiative without ever becoming the place where that state lives.
+How `zurdo-project`, `zurdo-github`, and the `zurdo` CLI work together so that GitHub always shows the true state of an initiative without ever becoming the place where that state lives. For the short version, which skill to reach for and when, read the [field guide](zurdo-skills-field-guide.md) first.
 
 | Skill | Role |
 |---|---|
@@ -278,9 +278,9 @@ flowchart LR
   J --> F["failed"]
   J --> B["blocked-by-dependency"]
   P --> P1["close the issue<br/>strip both status labels<br/>post sync comment<br/>epic row: Done · board: Done"]
-  R --> R1["add zurdo:pending-review<br/>post sync comment, stay open<br/>epic row: Pending review · board: Pending Review"]
+  R --> R1["add zurdo:pending-review<br/>post sync comment, stay open<br/>epic row: Pending Review · board: Pending Review"]
   F --> F1["add zurdo:failed<br/>comment lists the failed hints<br/>epic row: Failed · board: Failed"]
-  B --> B1["no change to the issue<br/>epic row: Blocked"]
+  B --> B1["no change to the issue<br/>epic row: Todo"]
   classDef ok fill:#DDF1E8,stroke:#0E6B4A,color:#0B2A1E;
   classDef pend fill:#FFF3D6,stroke:#B8860B,color:#3A2E10;
   classDef bad fill:#FBE0DE,stroke:#B60205,color:#3C0A08;
@@ -291,7 +291,9 @@ flowchart LR
   class B,B1 blk;
 ```
 
-One sync comment per task per run, with attempts, model, tokens, and estimated cost drawn from the last iteration. A task at `attempts: 0` passed without an agent run and the comment says so.
+One sync comment per task per run, with attempts, model, tokens, and estimated cost drawn from the last iteration. A task at `attempts: 0` passed without an agent run and the comment says so. After the per-task pass, sync rewrites the Status cell of the epic's task table for every row that links to one of this PRD's task issues, leaves every other line of the body alone, and prints `epic #<n> task table refreshed (<k> rows)`.
+
+> **Sync once per settled run.** Label swaps, closes, and the table refresh are idempotent. The comments are not: every run appends another `Zurdo run: …` comment to each task issue it touches. Re-running sync to pick up a table fix costs one duplicate comment per task; the `zurdo-github` runbook has the cleanup command.
 
 ```bash
 zurdo run
@@ -429,7 +431,7 @@ One script, six modes, one shape. The last argument is a path, and which file yo
 | `scope` | `scope.md`. Slug is its directory name. Also creates and links the board, writes description and README. | `zurdo-github.sh scope [--project "title"] docs/<init>/scope.md` |
 | `ticket` | One ticket file under `tickets/` beside `scope.md`. Needs the scope issue to exist. | `zurdo-github.sh ticket docs/<init>/tickets/<name>.md` |
 | `publish` | The phase PRD. With `--scope n` the epic nests under the scope issue. | `zurdo-github.sh publish --scope <n> docs/<init>/prds/prd-NN-<phase>.md` |
-| `sync-status` | The phase PRD. Reads the newest `.zurdo` run for that basename, or `--slug`. | `zurdo-github.sh sync-status [--slug <slug>] docs/<init>/prds/prd-NN-<phase>.md` |
+| `sync-status` | The phase PRD. Reads the newest `.zurdo` run for that basename, or `--slug`. Refreshes the epic's task table; appends one comment per task per run. | `zurdo-github.sh sync-status [--slug <slug>] docs/<init>/prds/prd-NN-<phase>.md` |
 | `board` | The phase PRD. Needs the `project` scope on `gh auth`. Pass the initiative title. | `zurdo-github.sh board --project "<initiative title>" docs/<init>/prds/prd-NN-<phase>.md` |
 
 ### Preconditions
@@ -458,7 +460,7 @@ zurdo skills install --all  # zurdo-prd-author, zurdo-domain, zurdo-lessons are 
 
 The script itself documents: 0 ok, 2 usage or PRD parse error, 3 auth or capability error, 1 anything else. Exit 3 comes with a hint, such as "run scope first" or the `gh auth refresh -s project` command.
 
-> **Reconciled on 12 September 2026.** Both runbooks now carry the script's exit-code table, every reference uses `planned → researching → ready → running → done`, and every command in the `zurdo-project` references carries its path argument. If a doc and the script disagree again, trust the script.
+> **Reconciled on 12 September 2026.** Both runbooks now carry the script's exit-code table, every reference uses `planned → researching → ready → running → done`, and every command in the `zurdo-project` references carries its path argument. The `sync-status` docs match the script's actual epic table refresh: full issue URLs in the task table, `Todo` for a blocked row, plain-text `Zurdo run:` comments that stack on re-runs. If a doc and the script disagree again, trust the script.
 
 ---
 

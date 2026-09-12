@@ -35,7 +35,7 @@ docs/                        Design docs / PRDs, one folder per skill
   zurdo-handoff/design/      Design record for zurdo-handoff and zurdo-wayfinder
   zurdo-handoff/prds/
   zurdo-wayfinder/prds/
-  guides/                    Cross-skill guides (zurdo-github-journey.md)
+  guides/                    Cross-skill guides: zurdo-skills-field-guide.md (which skill, when) and zurdo-github-journey.md (every station in depth)
 skills-lock.json             Lockfile for vendored external skills
 .zurdo/                      Zurdo task-runner state (skill build pipeline)
 .claude/, .agents/           Installed authoring tooling (see below)
@@ -68,7 +68,7 @@ A publishing and sync skill. The `SKILL.md` spine carries the high-frequency dec
 - **github-model.md** — Data model: how PRD concepts map to GitHub milestones, epics, task issues, labels, markers, and dependency edges
 - **status-sync.md** — Status mapping: how each Zurdo task outcome translates to GitHub label swaps, issue state, and comments
 - **runbook.md** — Operational runbook: auth prerequisites, invocation examples, re-run safety, rollback, and troubleshooting
-- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `scope`, `ticket`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags. `scope` and `board` create the Projects v2 project and link it to the repo; `scope` also sets the Project description and README from `scope.md`
+- **scripts/zurdo-github.sh** — The publishing/sync script; supports `bootstrap`, `scope`, `ticket`, `publish`, `sync-status`, and `board` modes with `--dry-run` and `--repo` flags. `scope` and `board` create the Projects v2 project and link it to the repo; `scope` also sets the Project description and README from `scope.md`. `sync-status` closes, labels, and comments each task issue from the run's `prd.json`, then rewrites the Status column of the epic's task table in place; its comments stack on re-runs, so sync once per settled run
 
 ### `zurdo-project`
 
@@ -103,9 +103,12 @@ A read-only orientation skill. The `SKILL.md` spine carries the authority ladder
 
 The design record that decided both skills, with the incumbents table, the measured gap, and the rejected alternatives, is at [docs/zurdo-handoff/design/handoff-and-wayfinder.md](docs/zurdo-handoff/design/handoff-and-wayfinder.md).
 
-### Using `zurdo-project` and `zurdo-github` together
+### Using the four Zurdo skills together
 
-[docs/guides/zurdo-github-journey.md](docs/guides/zurdo-github-journey.md) walks the full lifecycle station by station — scope, tickets, PRD, publish, run, sync, phase review, and the session's open (`zurdo-wayfinder`) and close (`zurdo-handoff`) — with mermaid diagrams of the source-of-truth model, the GitHub object nesting, the phase state machine, the status-sync mapping, and the per-session decision tree, plus a week of worked stories.
+Every session on an initiative has the same shape: open with `zurdo-wayfinder`, act on the one priority row it names through `zurdo-project`, let `zurdo-github` project each file change to GitHub, and close with `zurdo-handoff`. Two guides cover it:
+
+- [docs/guides/zurdo-skills-field-guide.md](docs/guides/zurdo-skills-field-guide.md) is the short version: a one-line-per-skill table of when to reach for each and what it hands to the next, the rules that pick the skill, a short story of six sessions on one initiative with the row each one runs and why, and the mistakes the story avoids. Read it before a session.
+- [docs/guides/zurdo-github-journey.md](docs/guides/zurdo-github-journey.md) walks the full lifecycle station by station — scope, tickets, PRD, publish, run, sync, phase review, and the session's open (`zurdo-wayfinder`) and close (`zurdo-handoff`) — with mermaid diagrams of the source-of-truth model, the GitHub object nesting, the phase state machine, the status-sync mapping, and the per-session decision tree, plus a week of worked stories.
 
 ## How skills are built
 

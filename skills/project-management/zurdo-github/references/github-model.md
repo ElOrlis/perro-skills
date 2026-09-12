@@ -83,9 +83,11 @@ Effort labels are derived from the PRD: each unique `**Effort**` value becomes o
 
 | Task | Effort | Status |
 |---|---|---|
-| [<task-title>](#<number>) | <effort> | Todo |
-| [<task-title>](#<number>) | <effort> | Todo |
+| [<task-title>](https://github.com/<owner>/<repo>/issues/<number>) | <effort> | Todo |
+| [<task-title>](https://github.com/<owner>/<repo>/issues/<number>) | <effort> | Todo |
 ```
+
+The task link is the full issue URL, not a same-page `#<number>` anchor: an anchor renders as a fragment link to nowhere inside the epic, while the URL is a real cross-reference. `sync-status` reads the issue number from that link to find the row it refreshes, and rewrites any anchor left by an older run.
 
 When sub-issues are unavailable (fallback mode), append:
 

@@ -135,51 +135,58 @@ Rules:
 
 ## Comment template
 
-Post one comment per sync run per task (do not stack comments across repeated syncs of the same state). The comment is fenced markdown:
+Post one comment per task per sync run. The comment is plain text, one field per line, and its first line names the outcome:
 
-````markdown
-**Zurdo sync** · `<iso-timestamp>`
+```
+Zurdo run: passed
+attempts: <n>
+last model: <model of last iteration, or unknown>
+tokens_in: <tokens_in, or 0>
+tokens_out: <tokens_out, or 0>
+cost_usd_est: <cost_usd_est, or 0>
+```
 
-**Status**: <status>
-**Attempts**: <n>
-**Model**: <model of last iteration, or —>
-**Tokens in / out**: <tokens_in> / <tokens_out> (or — / — if no iterations)
-**Estimated cost**: $<cost_usd_est> (or —)
+`passed-pending-review` uses the same body with the first line `Zurdo run: passed pending review`. `failed` drops the metrics and lists the hints instead:
 
-<!-- failed hints section, only when status == failed -->
-**Failed criteria**:
-- `<hint>`
-- `<hint>`
-````
+```
+Zurdo run: failed
+Failing criteria:
+- <hint>
+- <hint>
+```
 
-`<model>` and token/cost fields are drawn from the last entry in `iterations[]` (highest `attempt` number). When `iterations` is empty (`attempts: 0`), render those fields as `—`.
+Model, token, and cost fields are drawn from the last entry in `iterations[]`. When `iterations` is empty (`attempts: 0`), the model renders as `unknown` and the numbers as `0`. For `failed`, list every `criteria_results` entry of the last iteration where `passed == false`, using the `hint` value verbatim.
 
-For `passed` and `passed-pending-review`, omit the "Failed criteria" block. For `failed`, list every `criteria_results` entry where `passed == false`, using the `hint` value verbatim.
+**Comments are not idempotent.** Label swaps, closes, and the epic table refresh are safe to repeat, but every sync run appends a fresh comment to every task issue it touches, even when the status has not changed. Sync once per settled run; re-running to pick up a table fix costs one duplicate comment per task. The cleanup command is in `runbook.md`.
 
 ---
 
 ## Epic table refresh
 
-The epic body contains a `## Tasks` table with a `Status` column (see `github-model.md` for the full body template). Sync rewrites the Status column values in place without altering the intro text, the HTML marker comment, or any other sections.
+The epic body contains a `## Tasks` table with a `Status` column (see `github-model.md` for the full body template). After the per-task pass, sync rewrites the Status cell of each row it can resolve to one of this PRD's task issues, and nothing else: the intro text, the HTML marker comment, the header row, a fallback checklist, and rows belonging to another PRD are left verbatim.
 
 **Status column values:**
 
 | Task `status` | Table cell |
 |---|---|
 | `passed` | `Done` |
-| `passed-pending-review` | `Pending review` |
+| `passed-pending-review` | `Pending Review` |
 | `failed` | `Failed` |
-| `blocked-by-dependency` | `Blocked` |
+| `in_progress` or `running` | `In Progress` |
+| `blocked-by-dependency` | `Todo` |
 | Not yet started (no entry in prd.json) | `Todo` |
+
+A blocked task shows `Todo`, the same as a task that has not started, because the board's `Status` field has no blocked option and the two states mean the same thing to a reader picking work.
 
 **Rewrite procedure:**
 
-1. Fetch the current epic body via `gh issue view <epic-number> --json body`.
-2. Locate the `## Tasks` section by finding that heading. The marker `<!-- zurdo-github prd=<path> epic -->` identifies the epic; confirm it before editing.
-3. Replace each table row's Status cell by matching on the issue number anchor (`#<number>`) in that row — do not rely on row order.
-4. `PATCH` the issue body with the updated string. The intro text, marker comment, and any human edits above or below the table are preserved verbatim.
+1. Collect `issue number → table cell` for every task while the per-task pass runs.
+2. Resolve the epic by its marker `<!-- zurdo-github prd=<path> epic -->` and fetch its body via `gh issue view <epic-number> --json body`.
+3. For each table row, read the issue number from its link. A row written by the current script links to `https://github.com/<owner>/<repo>/issues/<number>`; a row written by an older run links to the same-page anchor `(#<number>)`, and the refresh rewrites that anchor to the full URL in the same pass. Never rely on row order.
+4. Replace the last cell of every matched row. Rows whose number is not in the map are printed unchanged.
+5. Edit the issue body with the rewritten string and print `epic #<n> task table refreshed (<k> rows)`.
 
-Never delete and recreate the epic body; edit in place.
+When the marker does not resolve, the body cannot be read, or no row matches, the table is left alone and a `warn:` line names which case it was; `runbook.md` lists the three warnings and their fixes. Never delete and recreate the epic body; edit in place.
 
 ---
 
