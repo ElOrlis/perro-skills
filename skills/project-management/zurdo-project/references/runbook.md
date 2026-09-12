@@ -23,6 +23,8 @@ Verify every row before the first command. Required dependencies that are missin
 | `zurdo-state-summary` | Optional | Skill present in agent's skill list | Read `.zurdo/<slug>/prd.json` and `progress.log` by hand to tally task statuses before `sync-status`. |
 | `zurdo-hint-debugger` | Optional | Skill present in agent's skill list | Read the failing criterion's `.zurdo/<slug>/iterations/*.out` and `.err` captures by hand. |
 | `grilling` or `grill-me` | Optional | Skill present in agent's skill list (either name) | Use the inline interview protocol from `references/interview.md`. |
+| `zurdo-wayfinder` | Optional — recommended | Skill present in agent's skill list | Run steps 1 to 3 of "Every later session" by hand: read `scope.md`, `scope --dry-run`, pick the row; read `docs/<initiative>/handoff.md` if present and check its `stopped_at` against `git log` and `prd.json` before trusting its next action. |
+| `zurdo-handoff` | Optional — recommended | Skill present in agent's skill list | At every stop, write `docs/<initiative>/handoff.md` by hand with its seven headings (Stopped at, Done this session, In flight, Waiting on a human, Next action, Uncommitted, Watch out) and commit it as the session's last commit. |
 
 ### Stop message for a missing required skill
 
@@ -74,11 +76,15 @@ Run these steps once, at initiative start. Stop after step 9 even if more work i
 
 **Stop here.** One session's worth of work is: scoped, researched, one PRD authored and published (if phase-01 was ready). Do not graduate additional phases in the first session.
 
+10. **Hand off** — invoke `zurdo-handoff` (fallback: the seven headings by hand) to write `docs/<initiative>/handoff.md` naming the station, the dispatched research subagents under In flight, and the next action as its row from the later-session table (row 5, start `zurdo run`, after a publish). Commit it alone as the session's last commit.
+
 ---
 
 ## Every later session
 
 At the start of each subsequent session, orient before acting.
+
+0. **Orient** — invoke `zurdo-wayfinder` when installed. It reads `scope.md`, the tickets, every `prd.json`, git, and `docs/<initiative>/handoff.md`, marks the handoff `fresh`, `stale`, or `none`, and names one row from the table in step 3 with the precondition it checked. Read its report, then continue from the row it names. Without it, run steps 1 to 3 by hand and treat the handoff's Next action as a hint to re-check, never as an instruction.
 
 1. **Read `scope.md`** — check current phase statuses and open tickets.
 
@@ -104,6 +110,8 @@ At the start of each subsequent session, orient before acting.
    | 8 | A phase is `running` and the run is settled with every task `passed` or `passed-pending-review` | Invoke `zurdo-state-summary` to confirm it is settled, run `sync-status`, run `zurdo review` for any `[manual]` criteria and `sync-status` again, refresh `scope`, then invoke `zurdo-prd-review`. |
    | 9 | `zurdo-prd-review` returned a gaps verdict | Commit the follow-up PRD and any `lessons/` files, publish it with `--scope <n>`, run it, `sync-status`; the phase stays `running` until the follow-up is green. |
    | 10 | `zurdo-prd-review` returned landed-as-intended | Begin the phase review interview; update `scope.md`; graduate the next phase if one becomes ready; run `scope`. |
+
+4. **Hand off** — when the row's action is complete, or before waiting on the user or leaving `zurdo run` unattended, invoke `zurdo-handoff` to write `docs/<initiative>/handoff.md` and commit it as the session's last commit. Its Next action is the row this table would pick now.
 
 ### Publish sequence
 
@@ -178,7 +186,7 @@ zurdo-github.sh board --project "<initiative title>" --dry-run docs/<initiative>
 zurdo-github.sh board --project "<initiative title>" docs/<initiative>/prds/prd-NN-<phase>.md
 ```
 
-**Requires the `project` scope** on the `gh` auth token. If the scope is absent, skip the board step and note it in the session summary. The board is a convenience surface; its absence does not block Zurdo execution.
+**Requires the `project` scope** on the `gh` auth token. If the scope is absent, skip the board step and note it under Watch out in the handoff (`zurdo-handoff`), naming `scope.md` Notes as its home. The board is a convenience surface; its absence does not block Zurdo execution.
 
 Run the board command after each successful publish, not before. The board enrolls already-published milestones and epics — running it before publish leaves gaps.
 

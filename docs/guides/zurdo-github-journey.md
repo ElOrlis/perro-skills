@@ -7,6 +7,8 @@ How `zurdo-project`, `zurdo-github`, and the `zurdo` CLI work together so that G
 | `zurdo-project` | The conductor. Scopes an initiative into phases, opens research and grilling tickets, decides what the next session does, and runs the phase review. Owns `scope.md`. |
 | `zurdo-github` | The projector. One shell script with six modes that paints files onto GitHub as issues, milestones, labels, and a Projects v2 board. Never writes back. |
 | `zurdo` | The engine. Runs a PRD task by task, gates each on acceptance criteria, and records everything in `.zurdo/<slug>/prd.json`. |
+| `zurdo-wayfinder` | The reader. Opens a session: reads the files, the run state, git, and the last handoff, verifies the handoff, and names one next action. Never writes. |
+| `zurdo-handoff` | The baton. Closes a session: writes `docs/<initiative>/handoff.md` with seven fixed sections and one next action, committed last. |
 
 Stations:
 
@@ -381,7 +383,9 @@ flowchart TD
   Q3 -- yes --> A3["zurdo-prd-author<br/>commit PRD + trail + lessons"]
   Q3 -- no --> Q4{PRD exists,<br/>phase ready?}
   Q4 -- yes --> A4["bootstrap, publish --scope n,<br/>board, flip to running, scope"]
-  Q4 -- no --> Q5{Run finished with<br/>failed tasks?}
+  Q4 -- no --> Q4b{Phase running,<br/>no run directory?}
+  Q4b -- yes --> A4b["Start zurdo run;<br/>nothing else this session"]
+  Q4b -- no --> Q5{Run finished with<br/>failed tasks?}
   Q5 -- yes --> A5["zurdo-hint-debugger, fix,<br/>zurdo run --resume, sync-status"]
   Q5 -- no --> Q6{Run complete?}
   Q6 -- yes --> A6["zurdo-state-summary, sync-status,<br/>scope, zurdo-prd-review"]
@@ -391,11 +395,27 @@ flowchart TD
   Q6 -- no --> W["Nothing to do here:<br/>zurdo run is in flight"]
   classDef q fill:#E4EBFB,stroke:#1F4FBF,color:#0F1B33;
   classDef a fill:#FFFFFF,stroke:#5B6478,color:#171C28;
-  class Q1,Q2,Q3,Q4,Q5,Q6,Q7 q;
-  class A1,A2,A3,A4,A5,A6,A7,A8,W a;
+  class Q1,Q2,Q3,Q4,Q4b,Q5,Q6,Q7 q;
+  class A1,A2,A3,A4,A4b,A5,A6,A7,A8,W a;
 ```
 
-The priority table from the `zurdo-project` runbook, drawn as a decision tree. Grilling first because it is the only branch that needs you present.
+The ten rows of the priority table from the `zurdo-project` runbook, drawn as a decision tree. Grilling first because it is the only branch that needs you present. When `zurdo-wayfinder` is installed, it walks this tree for you and hands back a situation report: the phase table with run state, whether the last handoff is fresh or stale, what is waiting on a human, what not to do, and the one row to act on.
+
+### Stop: hand off
+
+Every session ends the same way too. When the row's action is done, or the next step needs you, or `zurdo run` is about to be left running, `zurdo-handoff` writes `docs/<initiative>/handoff.md` and commits it alone as the session's last commit.
+
+```markdown
+## Stopped at            the station and the phase, and what is applied
+## Done this session     one bullet per artifact or script mode, with commit hashes
+## In flight             subagents and runs left unattended, and how to check each
+## Waiting on a human    grilling questions, zurdo review, manual checks
+## Next action           exactly one row from the table above, with its precondition
+## Uncommitted           git status --short, or Clean.
+## Watch out             gotchas with no home yet, each naming its home
+```
+
+The file is a hint, not truth. The next session's wayfinder marks it `fresh` when nothing under `docs/<initiative>/` or in any `prd.json` changed after it was written, and `stale` otherwise, re-deriving station and next action from the files. Anything durable in Watch out gets moved to its home (`scope.md`, `lessons/`, a ticket) before the next stop.
 
 ---
 
@@ -487,13 +507,13 @@ Mara names two pieces. The CSV export is clear. Webhook delivery is not, because
 
 Now the first GitHub write. The agent runs `scope --dry-run` and reads the plan aloud: the repo line, the initiative title, the two phase rows, and the payload that will become the Project's description and README. Mara nods. The live run creates scope issue #12, sweeps the two ticket files so #13 and #14 appear as sub-issues under #12, creates a Projects v2 board named after the initiative, links it to the repo, and writes the Destination paragraph into the board's description. The agent dispatches a research subagent for the retry ticket and does not wait for it.
 
-Because phase-01 is `ready`, the session continues into `zurdo-prd-author`. That interview is long and specific: every task gets acceptance criteria, and every criterion gets a hint that the agent tries to break before accepting. It ends on `✓ READY TO RUN`. The agent commits the PRD with its trail sidecar, runs `bootstrap` so the labels exist, then `publish --dry-run --scope 12`. The plan lists one milestone, one epic, five task issues, two blocked-by edges, and no unexpected labels. The live run produces epic #15 nested under #12 and tasks #16 through #20. The three tasks with no dependencies carry `ready-for-agent`. The agent runs `board --project "Observability export"`, flips the phase row to `running`, refreshes `scope`, and stops. Nothing has been executed yet. That is the rule for a first session.
+Because phase-01 is `ready`, the session continues into `zurdo-prd-author`. That interview is long and specific: every task gets acceptance criteria, and every criterion gets a hint that the agent tries to break before accepting. It ends on `✓ READY TO RUN`. The agent commits the PRD with its trail sidecar, runs `bootstrap` so the labels exist, then `publish --dry-run --scope 12`. The plan lists one milestone, one epic, five task issues, two blocked-by edges, and no unexpected labels. The live run produces epic #15 nested under #12 and tasks #16 through #20. The three tasks with no dependencies carry `ready-for-agent`. The agent runs `board --project "Observability export"`, flips the phase row to `running`, refreshes `scope`, and stops. Nothing has been executed yet. That is the rule for a first session. Its last commit is `docs/observability-export/handoff.md`: stopped at Publish, phase-01; the retry subagent under In flight with how to check it; row 5, start `zurdo run`, as the one next action.
 
 ### Tuesday: the run, and a red label
 
 Mara starts `zurdo run` before lunch and goes to a meeting. Zurdo works through the frontier: two tasks pass outright, one passes every automated check but has a `[manual]` criterion, one fails a `grep` hint, and the last is blocked behind the failure. All of that lands in `.zurdo/prd-01-csv-export-a91c/prd.json`. GitHub knows none of it yet.
 
-Back at the desk, the agent invokes `zurdo-state-summary` first. The run is settled, no lock, no iteration in flight, so it is safe to sync. `sync-status --dry-run` shows the plan: close #16 and #17 with a comment each, add `zurdo:pending-review` to #18, add `zurdo:failed` to #19 with the failed hint quoted, leave #20 untouched. The live run does exactly that and rewrites the Status column in the epic's task table. Mara, on their phone, sees the red label on #19 and the hint that failed in the comment. That is the whole point of the sync: the failure is visible to someone who never opened a terminal.
+Back at the desk, the agent opens with `zurdo-wayfinder`. The handoff from Monday is stale: `prd.json` has moved since it was written. The report re-derives the station from the files, marks the retry subagent as still open, and names row 8 with one precondition to check. So the agent invokes `zurdo-state-summary` next. The run is settled, no lock, no iteration in flight, so it is safe to sync. `sync-status --dry-run` shows the plan: close #16 and #17 with a comment each, add `zurdo:pending-review` to #18, add `zurdo:failed` to #19 with the failed hint quoted, leave #20 untouched. The live run does exactly that and rewrites the Status column in the epic's task table. Mara, on their phone, sees the red label on #19 and the hint that failed in the comment. That is the whole point of the sync: the failure is visible to someone who never opened a terminal.
 
 The agent does not touch the hint or the code by hand. It invokes `zurdo-hint-debugger`, which reads the iteration captures and finds that the criterion expected a heading string the manifest writer never emits. The fix is in the code, not the hint. After `zurdo run --resume`, #19 passes and #20 runs and passes. Another sync swaps the failed label away and closes both. Mara runs `zurdo review` in the TUI to sign off the manual criterion on #18, and one more sync closes it. The milestone bar reads 100 percent. The agent refreshes `scope` so the scope issue's phase table shows the epic as complete.
 
@@ -517,7 +537,7 @@ Late in the day Dev closes a task issue by hand, thinking it is finished. The ne
 
 Mara renames a task heading in the phase-02 PRD and deletes another task that turned out to be unnecessary. Re-running `publish --scope 12` finds the renamed task by its hidden marker, updates the title and body in place, and prints an `ORPHAN` line for the deleted one with the issue number to close by hand. No duplicate is created. The marker, not the title, is the identity.
 
-Then the agent runs `board` without `--project`. The script defaults the title to the PRD title, finds no board by that name, and creates a second one. Nothing is broken, but there are now two boards under the Projects tab. The fix is to re-run with `--project "Observability export"`, which enrolls the tasks on the right board, and to delete the stray one in the GitHub UI, since the script never deletes anything. Mara adds the initiative title to the session notes so it is passed every time.
+Then the agent runs `board` without `--project`. The script defaults the title to the PRD title, finds no board by that name, and creates a second one. Nothing is broken, but there are now two boards under the Projects tab. The fix is to re-run with `--project "Observability export"`, which enrolls the tasks on the right board, and to delete the stray one in the GitHub UI, since the script never deletes anything. Mara adds the initiative title to `scope.md` Notes as a standing preference, which is where the handoff's Watch out had been pointing since Monday, and re-runs `scope`.
 
 > **What the week shows.** Files changed, then a mode ran, then GitHub caught up. Nobody edited an issue to change state, and the one time someone did, the next sync said so. That is the whole contract.
 

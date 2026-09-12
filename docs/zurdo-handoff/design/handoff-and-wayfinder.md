@@ -1,14 +1,12 @@
 ---
-implementation: unshipped
-probe: zurdo-handoff
-scope: skills/project-management
+implementation: shipped
 ---
 
 # Design: `zurdo-handoff` and `zurdo-wayfinder` — stop an initiative and resume it without re-deriving it
 
 Two prose-only skills for `skills/project-management/`. `zurdo-handoff` defines what a session leaves behind when it stops before the initiative does: one file, fixed shape, one next action, committed as the session's last act. `zurdo-wayfinder` is the read-only reader that orients a new session from the files, verifies the handoff against them, and names one next action without changing anything. The verdict the user asked for is in §5.2: the wayfinder is needed, and it is narrow.
 
-Placement: this record lives at `docs/zurdo-handoff/design/`; the phase PRDs go to `docs/zurdo-handoff/prds/` and `docs/zurdo-wayfinder/prds/`, one folder per skill as `CLAUDE.md` requires. Nothing in this repository parses the frontmatter above; it is carried for the reader and for the amend discipline (`implementation:` moves to `partial` in the commit that ships phase A, never before).
+Placement: this record lives at `docs/zurdo-handoff/design/`; the phase PRDs are at `docs/zurdo-handoff/prds/` and `docs/zurdo-wayfinder/prds/`, one folder per skill as `CLAUDE.md` requires. Nothing in this repository parses the frontmatter above; it is carried for the reader and for the amend discipline. See the amendment at the end for how the phases were shipped.
 
 ---
 
@@ -327,3 +325,9 @@ Phase C's observable is the one that moves a measured number in §3: undefined s
 3. **Does this repository get a `CONTEXT.md`?** The table in §5.3 would seed it. Answered by `zurdo-domain`'s "every term must be used" test against `README.md` once phases A and B ship the surface that uses the terms.
 4. **Should the wayfinder read GitHub at all?** Claims live only there, but the environments the skill runs in may lack `gh` or its auth. The design says optional with a stated skip; answered by whether the skip is the common case, in which case Claimed leaves the report.
 5. **Where does the handoff live in a repository with several PRD directories and no `scope.md`?** The design says beside the `prds/` directory of the PRD the session stopped on, so this repository could hold one per `docs/<skill>/`. Answered by running the wayfinder against this repository during phase B: if one per directory reads badly, a single `docs/handoff.md` for the no-initiative case is the alternative.
+
+---
+
+## Amendment 2026-09-12
+
+**Strikes** the sentence in §7 "Each phase is one PRD authored with `zurdo-prd-author`" and the frontmatter's `implementation: unshipped` with its `probe`/`scope` pair. **Restates**: the author asked for direct implementation, so phases A, B, and C were built by hand in one change, and the PRDs at `docs/zurdo-handoff/prds/prd-01-zurdo-handoff-skill.md` and `docs/zurdo-wayfinder/prds/prd-01-zurdo-wayfinder-skill.md` were written as the specification records the repository convention requires, not as run inputs; their criteria were checked by grep, not by `zurdo run`. The frontmatter moves to `shipped` in the same commit as the work, per the amend discipline. **Does not reopen**: any decision in §5, the rejected alternatives in §8, or the open questions in §9. The measurements in §3 stand as taken; phase C's observable moved as predicted (undefined session-end artifacts 2 → 0; journey-tree coverage of the runbook table 9 → 10 rows).
