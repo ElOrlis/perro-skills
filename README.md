@@ -21,10 +21,20 @@ skills/                      Published skills, organized by category
       SKILL.md               Standalone spine — inline decision rules
       references/            On-demand depth files
       examples/              Annotated scope.md and sample ticket files
+    zurdo-handoff/           Close a session: write the handoff file
+      SKILL.md               Standalone spine — inline decision rules
+      references/            On-demand depth files
+      examples/              A complete handoff.md
+    zurdo-wayfinder/         Open a session: read-only orientation and one next action
+      SKILL.md               Standalone spine — inline decision rules
+      references/            On-demand depth files
 docs/                        Design docs / PRDs, one folder per skill
   golang/prds/
   zurdo-github/prds/
   zurdo-project/prds/
+  zurdo-handoff/design/      Design record for zurdo-handoff and zurdo-wayfinder
+  zurdo-handoff/prds/
+  zurdo-wayfinder/prds/
   guides/                    Cross-skill guides (zurdo-github-journey.md)
 skills-lock.json             Lockfile for vendored external skills
 .zurdo/                      Zurdo task-runner state (skill build pipeline)
@@ -38,6 +48,8 @@ skills-lock.json             Lockfile for vendored external skills
 | `golang` | `skills/programing-languages/golang/` | Writing or modifying Go source — idioms, naming/style, concurrency correctness, testing patterns |
 | `zurdo-github` | `skills/project-management/zurdo-github/` | Publishing a Zurdo PRD to GitHub as milestones, epics, issues, labels, or a project board; syncing Zurdo run status back to GitHub issues |
 | `zurdo-project` | `skills/project-management/zurdo-project/` | Starting a new initiative from an idea, scoping it into phases, setting up a GitHub Project, asking what the next phase is, or running a phase review after a Zurdo run. Requires the bundled `zurdo-prd-author`, `zurdo-domain`, and `zurdo-lessons` skills (`zurdo skills install --all`) |
+| `zurdo-handoff` | `skills/project-management/zurdo-handoff/` | Ending or pausing a session on a Zurdo initiative or PRD: "hand off", "stop here", "pick this up later"; before waiting on a human or leaving `zurdo run` unattended. Writes `docs/<initiative>/handoff.md` as the session's last commit |
+| `zurdo-wayfinder` | `skills/project-management/zurdo-wayfinder/` | Asking where an initiative stands, what this session should do, or to be caught up; the start of any session resuming an existing initiative. Read-only: reports and names one next action, never acts |
 
 ### `golang`
 
@@ -72,9 +84,28 @@ It orchestrates Zurdo's bundled skills rather than duplicating them: `zurdo-prd-
 - **examples/scope.md** — Annotated `scope.md` for a sample initiative
 - **examples/tickets/** — Sample research and grilling ticket files
 
+### `zurdo-handoff`
+
+A session-closing skill. The `SKILL.md` spine carries the five stop points and the rules for the one file a stopping session leaves behind: `docs/<initiative>/handoff.md`, seven fixed sections, exactly one next action in `zurdo-project`'s priority-row vocabulary, overwritten at every stop and committed alone as the session's last commit. Nothing durable lives only in the handoff; decisions, lessons, and facts are pointed at their homes. Three `references/*.md` files provide depth:
+
+- **record.md** — The template, the per-section table, the graduation rule, what never goes in, placement in a PRD-only repository
+- **stop-points.md** — The five stop points in depth, commit-is-the-last-act, the human-wait and AFK stops, what to tell the user
+- **receivers.md** — What the next session, the user, and a stopped skill chain each need; why the research subagent brief stays in `zurdo-project`
+- **examples/handoff.md** — A complete handoff for the example initiative, stopped at Run and sync with one human wait open
+
+### `zurdo-wayfinder`
+
+A read-only orientation skill. The `SKILL.md` spine carries the authority ladder (files, run state, git, handoff, GitHub), the freshness test that marks the last handoff `fresh`, `stale`, or `none`, and the one-action rule: a row of `zurdo-project`'s priority table when an initiative exists, one of `zurdo-state-summary`'s six verbs in a PRD-only repository, never a third vocabulary. It emits a fixed-shape situation report and ends by naming the skill that acts. Three `references/*.md` files provide depth:
+
+- **inputs.md** — The five inputs with exact commands, what each proves and does not, the freshness test in full, delegation to `zurdo-state-summary`, PRD-only degradation
+- **situation-report.md** — The report shape, with fresh, stale, no-handoff, and PRD-only variants worked
+- **next-action.md** — Every priority row with the check that selects it and the check that blocks it, the six run verbs, the `Do not` catalogue, who acts
+
+The design record that decided both skills, with the incumbents table, the measured gap, and the rejected alternatives, is at [docs/zurdo-handoff/design/handoff-and-wayfinder.md](docs/zurdo-handoff/design/handoff-and-wayfinder.md).
+
 ### Using `zurdo-project` and `zurdo-github` together
 
-[docs/guides/zurdo-github-journey.md](docs/guides/zurdo-github-journey.md) walks the full lifecycle station by station — scope, tickets, PRD, publish, run, sync, phase review — with mermaid diagrams of the source-of-truth model, the GitHub object nesting, the phase state machine, the status-sync mapping, and the per-session decision tree, plus a week of worked stories.
+[docs/guides/zurdo-github-journey.md](docs/guides/zurdo-github-journey.md) walks the full lifecycle station by station — scope, tickets, PRD, publish, run, sync, phase review, and the session's open (`zurdo-wayfinder`) and close (`zurdo-handoff`) — with mermaid diagrams of the source-of-truth model, the GitHub object nesting, the phase state machine, the status-sync mapping, and the per-session decision tree, plus a week of worked stories.
 
 ## How skills are built
 

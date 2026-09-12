@@ -68,7 +68,11 @@ Under `--dry-run` every lookup is assumed not-found, so the plan proves the file
 → see references/runbook.md
 
 **Required skills stop the run when missing; optional skills degrade to the inline fallback and say so.**
-Required: `zurdo-prd-author` (consolidates decomposition, grammar, criteria, and review) plus the peer skills it calls, `zurdo-domain` and `zurdo-lessons`. Install all three at once with `zurdo skills install --all`. Optional: `zurdo-design-author`, `zurdo-prd-review`, `zurdo-state-summary`, `zurdo-hint-debugger`; each has a stated fallback.
+Required: `zurdo-prd-author` (consolidates decomposition, grammar, criteria, and review) plus the peer skills it calls, `zurdo-domain` and `zurdo-lessons`. Install all three at once with `zurdo skills install --all`. Optional: `zurdo-design-author`, `zurdo-prd-review`, `zurdo-state-summary`, `zurdo-hint-debugger`, `zurdo-wayfinder`, `zurdo-handoff`; each has a stated fallback.
+→ see references/runbook.md
+
+**Orient before acting and hand off before stopping; the files are truth and the handoff is a hint.**
+Every later session opens with `zurdo-wayfinder` (fallback: steps 1 to 3 of the later-session sequence by hand) and closes with `zurdo-handoff` writing `docs/<initiative>/handoff.md` as the last commit (fallback: the seven headings by hand). The next session re-checks the handoff against `scope.md`, the ticket files, and `prd.json` before trusting its next action.
 → see references/runbook.md
 
 **Green criteria are necessary, not sufficient; the phase review starts with `zurdo-prd-review`, not with the interview.**
@@ -94,6 +98,7 @@ docs/<initiative>/
   scope.md                   # source of truth: Destination / Notes / Decisions / Phases table / Not yet specified / Out of scope
   tickets/<name>.md          # frontmatter: type (research|grilling), status, blocks, blocked-by; findings inline
   design/<topic>.md          # optional design record (zurdo-design-author) for a phase that needs evidence-based adjudication
+  handoff.md                 # written by zurdo-handoff at every stop; one file, overwritten; read by zurdo-wayfinder
   prds/
     prd-01-<phase>.md        # phase 1 PRD
     prd-01-<phase>.trail.md  # reasoning trail written by zurdo-prd-author; committed with the PRD
