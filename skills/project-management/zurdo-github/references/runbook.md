@@ -227,6 +227,24 @@ Fallback mode is decided by the POST's **exit status**, never by sniffing the re
 - `board Status not settable` — the project node id or the Status field could not be resolved; items are added with no status. Check `gh project view <n> --owner <owner> --format json` returns an `id`.
 - `Status option "<name>" does not exist on this project` — a project created outside the script carries only `Todo`, `In Progress`, `Done`. Add `Pending Review` and `Failed` to the field, then re-run `board`.
 
+**Epic task table refresh**
+
+`sync-status` rewrites the Status column of the epic's task table after the per-task pass. It edits **only** the Status cell of rows whose link resolves to one of this PRD's task issues, so intro prose, the header row, a fallback checklist, and rows belonging to another PRD are left untouched. Rows written as a same-page `(#N)` anchor by an older run are normalized to a full issue URL in the same pass. Success prints `epic #<n> task table refreshed (<k> rows)`; three warnings mean the table was left alone rather than silently mangled:
+
+- `epic issue not found (marker missing); task table not refreshed` — the epic marker did not resolve. Run `publish` first, or confirm the `--repo` is the one holding the epic.
+- `could not read epic #<n> body; task table not refreshed` — the `gh issue view` read failed or returned nothing; check auth and retry.
+- `epic #<n> has no task table rows matching this PRD's issues; not refreshed` — the epic body has no row linking to any of this PRD's task numbers, usually a hand-rewritten table or a fallback checklist in place of a table. Re-run `publish` to rebuild the body.
+
+**`sync-status` comments are not idempotent**
+
+Label swaps, closes, and the table refresh are all safe to repeat, but each run appends a fresh `Zurdo run: …` comment to every task issue. Re-running the mode to pick up a table fix duplicates one comment per task. Delete the extras with:
+
+```bash
+gh api -X DELETE repos/<owner>/<repo>/issues/comments/<comment-id>
+```
+
+Comment ids come from `gh api repos/<owner>/<repo>/issues/<n>/comments --jq '.[].id'`.
+
 **Timeouts**
 
 Every network call is wrapped with `timeout 90`. A call that exceeds 90 seconds is killed. Where the script does not swallow the failure, the run stops with `timeout`'s own status (124), outside the table below; where it does, the summary shows a placeholder number. Network flakiness on GitHub's side is the common cause; retry the full run — idempotency makes it safe.

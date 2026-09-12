@@ -652,7 +652,7 @@ EOF
   # which glued the separator row to the first task row.
   table='| Task | Effort | Status |'$'\n''|---|---|---|'$'\n'
   for i in $(seq 0 $((task_count-1))); do
-    table="${table}| [${T_TITLE[$i]}](#${T_NUM[$i]}) | ${T_EFFORT[$i]} | Todo |"$'\n'
+    table="${table}| [${T_TITLE[$i]}](https://github.com/${REPO}/issues/${T_NUM[$i]}) | ${T_EFFORT[$i]} | Todo |"$'\n'
   done
   local epic_body scope_line=""
   if [ -n "$SCOPE_ARG" ]; then
@@ -725,6 +725,8 @@ do_sync_status() {
   local task_count
   task_count=$(jq -r '.tasks | length' "$PRD_JSON")
 
+  # Rows the epic table refresh will rewrite: issue number -> display status.
+  local -a EPIC_ROW_NUM=() EPIC_ROW_STATUS=()
   local i tid tmarker num status run_task
   for i in $(seq 0 $((task_count-1))); do
     tid=$(jq -r ".tasks[$i].id" "$PRD_JSON")
@@ -746,6 +748,18 @@ do_sync_status() {
       status="passed-pending-review"
       run_task='{}'
     fi
+
+    local row_status
+    case "$status" in
+      passed)                row_status="Done" ;;
+      passed-pending-review) row_status="Pending Review" ;;
+      failed)                row_status="Failed" ;;
+      in_progress|running)   row_status="In Progress" ;;
+      blocked-by-dependency) row_status="Todo" ;;
+      *)                     row_status="Todo" ;;
+    esac
+    EPIC_ROW_NUM+=("$num")
+    EPIC_ROW_STATUS+=("$row_status")
 
     case "$status" in
       passed)
@@ -791,13 +805,87 @@ do_sync_status() {
     esac
   done
 
-  # Refresh epic status table (best-effort; no-op in dry-run)
+  # Refresh the epic's task table. Rewrites only the Status cell of each row it
+  # can resolve to a task issue number, so a hand-edited epic body survives;
+  # same-page `(#N)` anchors left by older runs are normalized to issue URLs.
   local emarker enum
   emarker=$(marker_epic)
   enum=$(find_issue_by_marker "$emarker")
-  if [ -n "$enum" ] || $DRY_RUN; then
-    [ -z "$enum" ] && enum=1
-    echo "epic status refresh queued for #$enum"
+  if [ -z "$enum" ] && ! $DRY_RUN; then
+    echo "warn: epic issue not found (marker missing); task table not refreshed" >&2
+    return 0
+  fi
+  [ -z "$enum" ] && enum=1
+
+  if [ ${#EPIC_ROW_NUM[@]} -eq 0 ]; then
+    echo "warn: no task rows resolved; epic #$enum task table not refreshed" >&2
+    return 0
+  fi
+
+  local map="" k
+  for k in $(seq 0 $((${#EPIC_ROW_NUM[@]}-1))); do
+    map="${map}${EPIC_ROW_NUM[$k]}=${EPIC_ROW_STATUS[$k]};"
+  done
+
+  if $DRY_RUN; then
+    echo "DRY: gh issue edit $enum --body-file <epic body, Status column set to: ${map%;}> -R $REPO"
+    return 0
+  fi
+
+  local epic_body
+  epic_body=$(gh issue view "$enum" --json body --jq .body -R "$REPO" 2>/dev/null || true)
+  if [ -z "$epic_body" ]; then
+    echo "warn: could not read epic #$enum body; task table not refreshed" >&2
+    return 0
+  fi
+
+  # awk writes the rewritten body and the row count to separate files, so the
+  # count never has to be fished back out of an interleaved stream.
+  local body_out count_out rewritten
+  body_out="$TMPDIR_ROOT/epic-body.refreshed"
+  count_out="$TMPDIR_ROOT/epic-rows.count"
+  printf '%s\n' "$epic_body" | awk -v map="$map" -v repo="$REPO" \
+      -v out="$body_out" -v cnt="$count_out" '
+    BEGIN {
+      n = split(map, kv, ";")
+      for (i = 1; i <= n; i++) {
+        if (kv[i] == "") continue
+        split(kv[i], pair, "=")
+        S[pair[1]] = pair[2]
+      }
+      changed = 0
+    }
+    /^\| \[/ {
+      num = ""
+      if (match($0, /\/issues\/[0-9]+\)/)) {
+        num = substr($0, RSTART + 8, RLENGTH - 9)
+      } else if (match($0, /\(#[0-9]+\)/)) {
+        num = substr($0, RSTART + 2, RLENGTH - 3)
+      }
+      if (num != "" && (num in S)) {
+        sub(/\(#[0-9]+\)/, "(https://github.com/" repo "/issues/" num ")")
+        sub(/\|[^|]*\|[ \t]*$/, "| " S[num] " |")
+        changed++
+        print > out
+        next
+      }
+    }
+    { print > out }
+    END { printf "%d\n", changed > cnt }
+  '
+  rewritten=$(cat "$count_out" 2>/dev/null || echo 0)
+
+  if [ "$rewritten" = "0" ] || [ -z "$rewritten" ]; then
+    echo "warn: epic #$enum has no task table rows matching this PRD's issues; not refreshed" >&2
+    return 0
+  fi
+
+  local ebf
+  ebf=$(write_tmp_body < "$body_out")
+  if run_gh issue edit "$enum" --body-file "$ebf" -R "$REPO" >/dev/null; then
+    echo "epic #$enum task table refreshed ($rewritten rows)"
+  else
+    echo "warn: epic #$enum task table edit failed" >&2
   fi
 }
 
