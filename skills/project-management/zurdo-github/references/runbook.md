@@ -218,6 +218,15 @@ Sub-issue and blocked-by endpoints degrade gracefully (see `github-model.md` for
 - `404 Not Found` on milestones or issues — the repo may not exist or the token lacks `repo`; confirm both.
 - `422 Unprocessable Entity` on already-existing edges — silently ignored; no action needed.
 
+Fallback mode is decided by the POST's **exit status**, never by sniffing the response body. A successful POST echoes the issue JSON back, and PRD prose in that body can contain words like "unavailable"; body-sniffing once reported `fallback` while every edge was wired natively.
+
+**Board Status warnings**
+
+`board` sets Status with `gh project item-edit`, which takes the project node id, the item node id, the Status field id, and the option id — never the project number, a synthesized item id, or literal names. Two warnings mean the write was skipped, not silently faked:
+
+- `board Status not settable` — the project node id or the Status field could not be resolved; items are added with no status. Check `gh project view <n> --owner <owner> --format json` returns an `id`.
+- `Status option "<name>" does not exist on this project` — a project created outside the script carries only `Todo`, `In Progress`, `Done`. Add `Pending Review` and `Failed` to the field, then re-run `board`.
+
 **Timeouts**
 
 Every network call is wrapped with `timeout 90`. A call that exceeds 90 seconds is killed and the run fails with exit code 3 (see exit-code table below). Network flakiness on GitHub's side is the common cause; retry the full run — idempotency makes it safe.

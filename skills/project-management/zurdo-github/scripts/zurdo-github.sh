@@ -100,6 +100,7 @@ _dry_stub() {
     issue\ list*)                                echo "[]" ;;
     repo\ view*)                                 echo '{"description":"","repositoryTopics":[]}' ;;
     project\ list*)                              echo '{"projects":[]}' ;;
+    project\ view*)                              echo '{"id":"PVT_dryrun"}' ;;
     project\ field-list*)                        echo '{"fields":[]}' ;;
     project\ item-list*)                         echo '{"items":[]}' ;;
     api\ --method\ POST*/milestones*)
@@ -128,6 +129,22 @@ run_gh() {
     return 0
   fi
   timeout 90 gh "$@"
+}
+
+# POST a relationship edge and classify the outcome **by exit status**, never
+# by reading the response body. A successful POST echoes the issue JSON back,
+# and PRD prose inside it once matched the `*"unavailable"*` / `*"disabled"*`
+# body-sniffing this replaces — so every edge was wired natively while the run
+# reported `fallback`. Prints `ok`, `already` (HTTP 422: the edge exists, which
+# is what an idempotent re-run looks like), or `unavailable`.
+post_edge() {
+  local resp rc=0
+  resp=$(run_gh api --method POST "$@" 2>&1) || rc=$?
+  if [ "$rc" -eq 0 ]; then printf 'ok\n'; return 0; fi
+  case "$resp" in
+    *422*) printf 'already\n' ;;
+    *)     printf 'unavailable\n' ;;
+  esac
 }
 
 # ---------- PRD parser (awk) ----------
@@ -170,11 +187,16 @@ state == "pre" {
   if (state == "intro") { sub(/\n+$/, "", intro) }
   else if (state == "description") { sub(/\n+$/, "", descriptions[ntasks]) }
   line = substr($0, 10)
-  n = index(line, " \xe2\x80\x94 ")
+  sep = " \xe2\x80\x94 "
+  n = index(line, sep)
   if (n == 0) { fail("task header missing em-dash separator", $0) }
   ntasks++
   ids[ntasks] = substr(line, 1, n-1)
-  titles[ntasks] = substr(line, n+5)
+  # length(sep), never a hard-coded 5: `index` and `substr` count characters
+  # under a UTF-8 locale and bytes under a byte-oriented awk, and the em-dash
+  # is 1 character but 3 bytes. Hard-coding the byte width ate the first two
+  # characters of every title under gawk.
+  titles[ntasks] = substr(line, n + length(sep))
   efforts[ntasks] = ""; deps[ntasks] = "[]"; skills[ntasks] = ""
   max_att[ntasks] = ""; agent_to[ntasks] = ""; category[ntasks] = ""
   descriptions[ntasks] = ""; ccount[ntasks] = 0
@@ -543,14 +565,9 @@ EOF
 
   local fallback_checklist=""
   for i in $(seq 0 $((task_count-1))); do
-    local resp
-    resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$enum/sub_issues" \
-      -F "sub_issue_id=${T_DBID[$i]}" 2>&1 || true)
-    case "$resp" in
-      *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
-        subissue_mode="fallback"
-        ;;
-      *422*already*) : ;;
+    case "$(post_edge "repos/$OWNER/$NAME/issues/$enum/sub_issues" \
+      -F "sub_issue_id=${T_DBID[$i]}")" in
+      unavailable) subissue_mode="fallback" ;;
     esac
   done
   if [ "$subissue_mode" = "fallback" ]; then
@@ -569,12 +586,9 @@ EOF
       dep_idx="${ID2IDX[$dep_id]:-}"
       [ -z "$dep_idx" ] && continue
       dep_dbid="${T_DBID[$dep_idx]}"
-      resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/${T_NUM[$i]}/dependencies/blocked_by" \
-        -F "issue_id=$dep_dbid" 2>&1 || true)
-      case "$resp" in
-        *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
-          dep_mode="fallback"
-          ;;
+      case "$(post_edge "repos/$OWNER/$NAME/issues/${T_NUM[$i]}/dependencies/blocked_by" \
+        -F "issue_id=$dep_dbid")" in
+        unavailable) dep_mode="fallback" ;;
       esac
     done
   done
@@ -634,7 +648,9 @@ EOF
 
   # (5) epic body
   local table
-  table=$(printf '| Task | Effort | Status |\n|---|---|---|\n')
+  # Not `$(printf ...)`: command substitution strips the trailing newline,
+  # which glued the separator row to the first task row.
+  table='| Task | Effort | Status |'$'\n''|---|---|---|'$'\n'
   for i in $(seq 0 $((task_count-1))); do
     table="${table}| [${T_TITLE[$i]}](#${T_NUM[$i]}) | ${T_EFFORT[$i]} | Todo |"$'\n'
   done
@@ -654,18 +670,15 @@ EOF
   local scope_mode=""
   if [ -n "$SCOPE_ARG" ]; then
     scope_mode="native"
-    local resp
-    resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$SCOPE_ARG/sub_issues" \
-      -F "sub_issue_id=$epic_dbid" 2>&1 || true)
-    case "$resp" in
-      *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
+    case "$(post_edge "repos/$OWNER/$NAME/issues/$SCOPE_ARG/sub_issues" \
+      -F "sub_issue_id=$epic_dbid")" in
+      unavailable)
         scope_mode="fallback"
         # Append `- [ ] #<epic>` to a ## Phases checklist on the scope issue.
         local sf
         sf=$(printf '## Phases\n\n- [ ] #%s\n' "$enum" | write_tmp_body)
         run_gh issue comment "$SCOPE_ARG" --body-file "$sf" -R "$REPO" >/dev/null || true
         ;;
-      *422*already*) : ;;
     esac
   fi
 
@@ -823,6 +836,21 @@ do_board() {
     run_gh project field-create "$project_number" --owner "$OWNER" \
       --name Status --data-type SINGLE_SELECT \
       --single-select-options "Todo,In Progress,Pending Review,Done,Failed" >/dev/null || true
+    # Re-read: the create returns the field id but not its option ids, and the
+    # option id is what `item-edit` actually needs.
+    fields=$(run_gh project field-list "$project_number" --owner "$OWNER" --format json 2>/dev/null || echo '{"fields":[]}')
+    [ -z "$fields" ] && fields='{"fields":[]}'
+    status_field=$(printf '%s' "$fields" | jq -r '.fields[]? | select(.name == "Status") | .id' | head -1)
+  fi
+
+  # `project item-edit` takes **node ids**, not the project number, not a
+  # synthesized item id, and not the literal field and option names. All three
+  # are resolved here, once, and a missing one downgrades to a warning rather
+  # than a silent no-op.
+  local project_node_id
+  project_node_id=$(run_gh project view "$project_number" --owner "$OWNER" --format json 2>/dev/null | jq -r '.id // empty' || true)
+  if [ -z "$project_node_id" ] || [ -z "$status_field" ]; then
+    echo "warn: board Status not settable (project node id or Status field unresolved); items will be added without a status" >&2
   fi
 
   local task_count run_dir prd_run
@@ -857,10 +885,21 @@ do_board() {
       in_progress|running)   board_status="In Progress" ;;
       *)                     board_status="Todo" ;;
     esac
-    run_gh project item-add "$project_number" --owner "$OWNER" \
-      --url "https://github.com/$REPO/issues/$num" >/dev/null || true
-    run_gh project item-edit --project-id "$project_number" \
-      --id "PVTI_task_${i}" --field-id "Status" --single-select-option-id "$board_status" >/dev/null || true
+    local item_id option_id
+    item_id=$(run_gh project item-add "$project_number" --owner "$OWNER" \
+      --url "https://github.com/$REPO/issues/$num" --format json 2>/dev/null | jq -r '.id // empty' || true)
+    option_id=$(printf '%s' "$fields" | jq -r --arg n "$board_status" \
+      '.fields[]? | select(.name == "Status") | .options[]? | select(.name == $n) | .id' | head -1)
+    if [ -z "$option_id" ]; then
+      # A project created by `gh project create` carries only Todo / In Progress
+      # / Done, so `Pending Review` and `Failed` have no option until the field
+      # is extended. Say so instead of writing nothing.
+      echo "warn: Status option \"$board_status\" does not exist on this project; issue #$num left unset" >&2
+    elif [ -n "$project_node_id" ] && [ -n "$status_field" ] && [ -n "$item_id" ]; then
+      run_gh project item-edit --project-id "$project_node_id" \
+        --id "$item_id" --field-id "$status_field" \
+        --single-select-option-id "$option_id" >/dev/null || true
+    fi
   done
 }
 
@@ -1153,14 +1192,9 @@ do_ticket_procedure() {
   tdbid=$(issue_db_id "$num")
   [ -z "$tdbid" ] && tdbid=$((6000 + RANDOM % 1000))
   TP_TICKET_DBID="$tdbid"
-  local resp
-  resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$scope_num/sub_issues" \
-    -F "sub_issue_id=$tdbid" 2>&1 || true)
-  case "$resp" in
-    *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
-      TP_SUBISSUE_MODE="fallback"
-      ;;
-    *422*already*) : ;;
+  case "$(post_edge "repos/$OWNER/$NAME/issues/$scope_num/sub_issues" \
+    -F "sub_issue_id=$tdbid")" in
+    unavailable) TP_SUBISSUE_MODE="fallback" ;;
   esac
 
   # resolved + open on GitHub → comment findings + close.
@@ -1311,11 +1345,9 @@ do_scope() {
       other_name=$(jq -r ".blocked_by[$j]" "$ticket_json")
       other_dbid="${TK_DBID[$other_name]:-}"
       [ -z "$other_dbid" ] && continue
-      resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/${TK_NUM[$name]}/dependencies/blocked_by" \
-        -F "issue_id=$other_dbid" 2>&1 || true)
-      case "$resp" in
-        *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
-          edges_mode="fallback" ;;
+      case "$(post_edge "repos/$OWNER/$NAME/issues/${TK_NUM[$name]}/dependencies/blocked_by" \
+        -F "issue_id=$other_dbid")" in
+        unavailable) edges_mode="fallback" ;;
       esac
     done
     # blocks (this ticket blocks a phase epic → post blocked_by on that epic with this ticket's dbid)
@@ -1334,11 +1366,9 @@ do_scope() {
       fi
       phase_edbid=$(issue_db_id "$phase_epic")
       [ -z "$phase_edbid" ] && phase_edbid=$((9000 + j))
-      resp=$(run_gh api --method POST "repos/$OWNER/$NAME/issues/$phase_epic/dependencies/blocked_by" \
-        -F "issue_id=${TK_DBID[$name]}" 2>&1 || true)
-      case "$resp" in
-        *HTTP\ 4[0-9][0-9]*|*"Not Found"*|*"not found"*|*"unavailable"*|*"disabled"*)
-          edges_mode="fallback" ;;
+      case "$(post_edge "repos/$OWNER/$NAME/issues/$phase_epic/dependencies/blocked_by" \
+        -F "issue_id=${TK_DBID[$name]}")" in
+        unavailable) edges_mode="fallback" ;;
       esac
     done
   done
