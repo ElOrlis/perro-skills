@@ -78,7 +78,7 @@ It orchestrates Zurdo's bundled skills rather than duplicating them: `zurdo-prd-
 
 ## How skills are built
 
-Skills are specified as PRDs under `docs/<skill>/prds/` and executed with [Zurdo](https://github.com/), a task-runner that decomposes a PRD into gated tasks and drives an agent through them. The `.zurdo/` directory holds per-run state and configuration (`.zurdo/config.toml`). Each task gates on explicit acceptance criteria, following the `superpowers:writing-skills` authoring discipline.
+Skills are specified as PRDs under `docs/<skill>/prds/` and executed with [Zurdo](https://github.com/), a task-runner that decomposes a PRD into gated tasks and drives an agent through them. The `.zurdo/` directory holds per-run state and configuration (`.zurdo/config.toml`). Each task gates on explicit acceptance criteria and follows the authoring conventions below.
 
 ## Authoring conventions
 
