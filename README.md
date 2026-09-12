@@ -25,6 +25,7 @@ docs/                        Design docs / PRDs, one folder per skill
   golang/prds/
   zurdo-github/prds/
   zurdo-project/prds/
+  guides/                    Cross-skill guides (zurdo-github-journey.md)
 skills-lock.json             Lockfile for vendored external skills
 .zurdo/                      Zurdo task-runner state (skill build pipeline)
 .claude/, .agents/           Installed authoring tooling (see below)
@@ -70,6 +71,10 @@ It orchestrates Zurdo's bundled skills rather than duplicating them: `zurdo-prd-
 - **runbook.md** — Operational runbook: required vs. optional zurdo skills with fallbacks, `zurdo-github.sh` invocation patterns, dry-run gate, auth prerequisites, project-to-repo link check
 - **examples/scope.md** — Annotated `scope.md` for a sample initiative
 - **examples/tickets/** — Sample research and grilling ticket files
+
+### Using `zurdo-project` and `zurdo-github` together
+
+[docs/guides/zurdo-github-journey.md](docs/guides/zurdo-github-journey.md) walks the full lifecycle station by station — scope, tickets, PRD, publish, run, sync, phase review — with mermaid diagrams of the source-of-truth model, the GitHub object nesting, the phase state machine, the status-sync mapping, and the per-session decision tree, plus a week of worked stories.
 
 ## How skills are built
 
