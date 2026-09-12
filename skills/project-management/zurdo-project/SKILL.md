@@ -59,6 +59,14 @@ Facts can be discovered without asking; decisions require the user's values. Num
 Graduating multiple phases in parallel produces scope pressure and makes the board unreadable. One active phase keeps the milestone signal clean.
 → see references/phases.md
 
+**Phase status is exactly one of `planned`, `researching`, `ready`, `running`, `done`; the `scope` parser rejects any other word.**
+The script exits 2 on a row whose Status is outside that set, so a stray `review` or `blocked` halts every projection until it is fixed. `ready` means the PRD may be written; `running` starts only after publish.
+→ see references/phases.md
+
+**A dry-run plans the full create path; it does not diff against GitHub.**
+Under `--dry-run` every lookup is assumed not-found, so the plan proves the files parse and lists every command that could run. Create-versus-update decisions, `divergence:` lines, and the project-scope skip appear only in the live run's output, so read that too.
+→ see references/runbook.md
+
 **Required skills stop the run when missing; optional skills degrade to the inline fallback and say so.**
 Required: `zurdo-prd-author` (consolidates decomposition, grammar, criteria, and review) plus the peer skills it calls, `zurdo-domain` and `zurdo-lessons`. Install all three at once with `zurdo skills install --all`. Optional: `zurdo-design-author`, `zurdo-prd-review`, `zurdo-state-summary`, `zurdo-hint-debugger`; each has a stated fallback.
 → see references/runbook.md
@@ -71,8 +79,8 @@ A hint can pass while the diff misses the point. The intent review binds the run
 That commit is the human review gate the lesson library relies on; `zurdo-prd-review` reads the trail as the best intent source when judging the run.
 → see references/phases.md
 
-**Never call `gh` directly; every write goes through `zurdo-github.sh`, dry-run first.**
-Direct `gh` calls bypass the dry-run gate, the marker system, and the idempotency logic. A botched direct call can create duplicate issues with no marker to merge on re-run.
+**Never call `gh` directly; every write goes through `zurdo-github.sh`, dry-run first. The only exceptions are claiming a ticket by assignment and closing the scope issue when the initiative is done.**
+Direct `gh` calls bypass the dry-run gate, the marker system, and the idempotency logic. A botched direct call can create duplicate issues with no marker to merge on re-run. Assignment and the final close are the two writes the script never performs.
 → see references/runbook.md
 
 **Claim a ticket by assignment before working it; resolve at most one grilling ticket per session.**
@@ -98,20 +106,21 @@ Research findings live in the ticket file itself; there is no separate `research
 
 ## Script calls
 
-All GitHub writes go through `scripts/zurdo-github.sh`. Always pass `--dry-run` first and read the plan before the live run.
+All GitHub writes go through `scripts/zurdo-github.sh`. Every mode takes a file path as its last argument: `scope.md` for `scope`, one ticket file for `ticket`, the phase PRD for everything else; a missing path exits 2. Always pass `--dry-run` first and read the plan before the live run.
 
 | Invocation | Purpose |
 |---|---|
-| `zurdo-github.sh scope --dry-run` | Preview scope issue creation |
-| `zurdo-github.sh scope` | Create (or update) the scope issue from `scope.md`; creates the Project, links it to the repo, and sets the Project description and README from `scope.md` |
-| `zurdo-github.sh ticket --dry-run` | Preview ticket issue creation |
-| `zurdo-github.sh ticket` | Create a research or grilling ticket issue |
-| `zurdo-github.sh publish --dry-run --scope <n> <prd>` | Preview full publish: milestone, epic, task issues, board membership |
-| `zurdo-github.sh publish --scope <n> <prd>` | Publish the phase PRD into the initiative's Project |
-| `zurdo-github.sh board --project "<title>" --dry-run` | Preview Project board creation and issue enrollment |
-| `zurdo-github.sh board --project "<title>"` | Create or update the Project board and link it to the repo |
-| `zurdo-github.sh sync-status --dry-run` | Preview status sync from the latest Zurdo run |
-| `zurdo-github.sh sync-status` | Mirror Zurdo run outcomes back to GitHub issue statuses |
+| `zurdo-github.sh bootstrap [--dry-run] <prd>` | Once per repo, before the first publish: create the label vocabulary (needs any PRD for its `Effort` values); safe to repeat |
+| `zurdo-github.sh scope --dry-run docs/<initiative>/scope.md` | Preview the scope issue, one issue per file under `tickets/`, the edges, and the Project payload |
+| `zurdo-github.sh scope docs/<initiative>/scope.md` | Create or update the scope issue, sweep every `tickets/*.md`, wire ticket and epic edges, create the Project, link it to the repo, set its description and README |
+| `zurdo-github.sh ticket --dry-run docs/<initiative>/tickets/<name>.md` | Preview one ticket issue |
+| `zurdo-github.sh ticket docs/<initiative>/tickets/<name>.md` | Create or update one ticket issue; comment and close it when the file is `resolved`; exits 3 until `scope` has run; wires no edges |
+| `zurdo-github.sh publish --dry-run --scope <n> <prd>` | Preview full publish: milestone, epic, task issues, edges, nesting under scope issue `<n>` |
+| `zurdo-github.sh publish --scope <n> <prd>` | Publish the phase PRD and nest its epic under the scope issue |
+| `zurdo-github.sh board --project "<title>" --dry-run <prd>` | Preview enrollment of the PRD's task issues on the initiative's Project |
+| `zurdo-github.sh board --project "<title>" <prd>` | Enroll the task issues and set their Status; pass the initiative title or a second board is created |
+| `zurdo-github.sh sync-status --dry-run <prd>` | Preview status sync from the newest `.zurdo/<prd-basename>-*/` run (`--slug` pins one) |
+| `zurdo-github.sh sync-status <prd>` | Mirror Zurdo run outcomes back to GitHub issue statuses |
 
 ## References
 

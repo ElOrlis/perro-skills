@@ -73,7 +73,7 @@ One initiative is one Projects v2 board and one scope issue. One phase is one PR
 flowchart TD
   P["Projects v2 board<br/>one per initiative · linked to the repo"]
   S["Scope issue<br/>zurdo:scope"]
-  T["Ticket issue<br/>zurdo:ticket · research or grilling"]
+  T["Ticket issue<br/>zurdo:research or zurdo:grilling"]
   M["Milestone<br/>one per PRD · description = PRD intro"]
   E["Epic issue<br/>zurdo:epic · assigned to @me<br/>body holds the task table"]
   A["Task issue<br/>zurdo:task · unassigned"]
@@ -101,7 +101,7 @@ Each issue the script creates carries an HTML comment in its body. Re-runs searc
 
 ```
 <!-- zurdo-github scope=<initiative-slug> -->
-<!-- zurdo-github ticket=<phase>-<name> -->
+<!-- zurdo-github scope=<initiative-slug> ticket=<name> -->
 <!-- zurdo-github prd=<path> epic -->
 <!-- zurdo-github prd=<path> task=<task-id> -->
 ```
@@ -112,11 +112,11 @@ Labels are created idempotently with these exact colors. Type labels say what an
 
 | Group | Label | Color |
 |---|---|---|
-| type | `zurdo:scope` | `#0075CA` |
-| type | `zurdo:ticket` | `#006B75` |
+| type | `zurdo:scope` | `#0052CC` |
+| type | `zurdo:research` | `#006B75` |
+| type | `zurdo:grilling` | `#EE0701` |
 | type | `zurdo:epic` | `#5319E7` |
 | type | `zurdo:task` | `#1D76DB` |
-| type | `zurdo:grilling` | `#E4E669` |
 | state | `zurdo:pending-review` | `#FBCA04` |
 | state | `zurdo:failed` | `#B60205` |
 | effort | `effort:<value>` | `#BFD4F2` |
@@ -187,7 +187,7 @@ zurdo-github.sh ticket --dry-run docs/<initiative>/tickets/<name>.md
 zurdo-github.sh ticket           docs/<initiative>/tickets/<name>.md
 ```
 
-The `ticket` mode exits 3 with "run scope first" if the scope issue does not exist yet. It also wires a blocked-by edge from each phase epic to the ticket, but only once that epic exists. Until the phase is published, the edge is deferred and named in the dry-run plan.
+The `ticket` mode exits 3 with "run scope first" if the scope issue does not exist yet. It projects one file and links it under the scope issue. The blocked-by edges from phase epics to tickets are wired by the `scope` sweep, and only once the epic exists; until the phase is published, `scope` prints `defer: phase-NN has no epic yet` and retries on its next run. `scope` also projects every ticket file, so a first session needs no `ticket` call at all.
 
 ---
 
@@ -338,9 +338,7 @@ sequenceDiagram
   Agent->>You: destination and breadth interview
   Agent->>Files: write scope.md and tickets/*.md
   Agent->>Script: scope (dry-run, then live)
-  Script->>GH: scope issue, Project board, description and README
-  Agent->>Script: ticket (dry-run, then live)
-  Script->>GH: ticket issues as sub-issues of the scope issue
+  Script->>GH: scope issue, ticket issues under it, Project board, description and README
   Note over You,Files: zurdo-prd-author interview ends on READY TO RUN; commit PRD + trail + lessons
   Agent->>Script: publish --scope n (dry-run, then live)
   Script->>GH: milestone, epic under scope, task issues, edges
@@ -440,9 +438,7 @@ zurdo skills install --all  # zurdo-prd-author, zurdo-domain, zurdo-lessons are 
 
 The script itself documents: 0 ok, 2 usage or PRD parse error, 3 auth or capability error, 1 anything else. Exit 3 comes with a hint, such as "run scope first" or the `gh auth refresh -s project` command.
 
-> **Doc drift to be aware of.** The two runbooks disagree on the exit-code table: the `zurdo-project` runbook lists 1 as user error, 2 as precondition, 3 as API error, and the `zurdo-github` runbook lists 2 as rate limit and 3 as timeout. The script's own usage text is the one above. Trust the script.
->
-> Phase statuses also drift: `phases.md` uses `planned → researching → ready → running → done`, while `scope-map.md` lists `review` instead of `ready`, and `research.md` says a phase returns to `planned` when its last blocker resolves. The state diagram in this guide follows `phases.md`.
+> **Reconciled on 12 September 2026.** Both runbooks now carry the script's exit-code table, every reference uses `planned → researching → ready → running → done`, and every command in the `zurdo-project` references carries its path argument. If a doc and the script disagree again, trust the script.
 
 ---
 
@@ -489,7 +485,7 @@ Mara opens a session with one sentence: "I want a CLI that exports our monitorin
 
 Mara names two pieces. The CSV export is clear. Webhook delivery is not, because nobody knows what retry policy the receiving endpoints expect, and nobody has decided how the webhook authenticates. The agent sorts these without asking permission: one phase that is `ready`, one phase that is `researching`, one research ticket about retries that a subagent can answer alone, and one grilling ticket about auth that only Mara can answer. It writes `docs/observability-export/scope.md` and the two ticket files.
 
-Now the first GitHub write. The agent runs `scope --dry-run` and reads the plan aloud: the repo line, the initiative title, the two phase rows, and the payload that will become the Project's description and README. Mara nods. The live run creates scope issue #12, creates a Projects v2 board named after the initiative, links it to the repo, and writes the Destination paragraph into the board's description. The `ticket` mode follows and issues #13 and #14 appear as sub-issues under #12. The agent dispatches a research subagent for the retry ticket and does not wait for it.
+Now the first GitHub write. The agent runs `scope --dry-run` and reads the plan aloud: the repo line, the initiative title, the two phase rows, and the payload that will become the Project's description and README. Mara nods. The live run creates scope issue #12, sweeps the two ticket files so #13 and #14 appear as sub-issues under #12, creates a Projects v2 board named after the initiative, links it to the repo, and writes the Destination paragraph into the board's description. The agent dispatches a research subagent for the retry ticket and does not wait for it.
 
 Because phase-01 is `ready`, the session continues into `zurdo-prd-author`. That interview is long and specific: every task gets acceptance criteria, and every criterion gets a hint that the agent tries to break before accepting. It ends on `✓ READY TO RUN`. The agent commits the PRD with its trail sidecar, runs `bootstrap` so the labels exist, then `publish --dry-run --scope 12`. The plan lists one milestone, one epic, five task issues, two blocked-by edges, and no unexpected labels. The live run produces epic #15 nested under #12 and tasks #16 through #20. The three tasks with no dependencies carry `ready-for-agent`. The agent runs `board --project "Observability export"`, flips the phase row to `running`, refreshes `scope`, and stops. Nothing has been executed yet. That is the rule for a first session.
 

@@ -66,11 +66,13 @@ The destination belongs in `docs/<initiative>/scope.md` under `## Destination`. 
 
 | Status | Meaning |
 |---|---|
-| `planned` | Not yet started; no PRD written. |
+| `planned` | Charted; scope still foggy or PRD not yet due; no open blocker. |
 | `researching` | Blocked by at least one open research or grilling ticket. |
-| `running` | PRD written and published; Zurdo is executing tasks. |
-| `review` | Zurdo run complete; awaiting phase review before the next phase graduates. |
-| `done` | Phase review passed; outcomes absorbed into scope; phase closed. |
+| `ready` | No open blocker; the PRD may be written. |
+| `running` | PRD published; Zurdo is executing, or the phase review is still open. |
+| `done` | Intent review landed and phase review closed; outcomes absorbed into scope. |
+
+The `scope` parser rejects any other word with exit 2, so `review`, `blocked`, or `in-progress` never reach GitHub. Who flips each status and when: → see references/phases.md.
 
 **Not yet specified** — fog. Open questions that cannot yet be stated precisely enough to ticket. Items graduate out of here when a research or grilling ticket sharpens them into a decision or a new phase row.
 
@@ -89,9 +91,11 @@ The destination belongs in `docs/<initiative>/scope.md` under `## Destination`. 
 Refresh all three with:
 
 ```bash
-zurdo-github.sh scope --dry-run   # preview
-zurdo-github.sh scope             # live refresh
+zurdo-github.sh scope --dry-run docs/<initiative>/scope.md   # preview
+zurdo-github.sh scope           docs/<initiative>/scope.md   # live refresh
 ```
+
+The same run sweeps every file under `tickets/` and wires their edges, so one `scope` invocation is a full refresh of the initiative.
 
 Always run `--dry-run` first and read the plan. Never edit the scope issue body, the Project description, or the Project README directly; the next `scope` run overwrites them. Keep the first Destination paragraph to one or two sentences so the description reads cleanly in the Projects list; the truncation is a safety net, not a formatting tool.
 
@@ -168,7 +172,7 @@ The map is an index, not a store. Full reasoning, options considered, and findin
 
 ## Claim and resolve
 
-**Claim before work.** Assign yourself to the ticket issue before touching the ticket file. Claiming prevents two agents from working the same ticket concurrently.
+**Claim before work.** Assign yourself to the ticket issue before touching the ticket file. Claiming prevents two agents from working the same ticket concurrently. The script never sets or clears assignees, so this is the one direct `gh` write the skill allows during a phase:
 
 ```bash
 gh issue edit <number> --add-assignee @me -R owner/repo
@@ -182,18 +186,18 @@ gh issue edit <number> --add-assignee @me -R owner/repo
 
 1. Write `## Findings` in the ticket file with the answer. For grilling tickets, record the user's answer verbatim; do not paraphrase or reinterpret.
 2. Flip `status: resolved` in the frontmatter.
-3. Run `zurdo-github.sh ticket` to post the findings as a comment and close the issue.
+3. Run `zurdo-github.sh ticket --dry-run docs/<initiative>/tickets/<name>.md`, read the plan, then the live call: it posts the findings as a comment and closes the issue.
 
-After resolving, update `scope.md`: add the decision to "Decisions so far" or graduate the fog item, then run `zurdo-github.sh scope` to refresh the scope issue.
+After resolving, update `scope.md`: add the decision to "Decisions so far" or graduate the fog item, flip a phase to `ready` if its last blocker just resolved, then run `zurdo-github.sh scope docs/<initiative>/scope.md` (dry-run first) to refresh the projections and re-wire edges.
 
 ---
 
 ## Concurrency
 
-Other sessions may be editing `scope.md`, ticket files, or the scope issue simultaneously. Before any live refresh:
+Other sessions may be editing `scope.md`, ticket files, or the scope issue simultaneously. The dry-run cannot detect this: under `--dry-run` every lookup is assumed not-found, so the plan always shows the full create path. Protect against concurrent edits with git and with the live run's own report:
 
-```bash
-zurdo-github.sh scope --dry-run
-```
+1. Pull before editing `scope.md` or a ticket file; commit right after.
+2. Run `zurdo-github.sh scope --dry-run docs/<initiative>/scope.md` and read the plan to confirm the file parses and the ticket set is the one you expect.
+3. Run the live command and read its summary: `tickets: created=N updated=N closed=N`, every `divergence:` line, every `defer:` line. A `created` where you expected `updated` means the marker was not found; stop and inspect the issue list before running again.
 
-Read the full dry-run output. Confirm no other session has already applied the same change. Then run the live command. Never skip the dry-run gate.
+Never skip the dry-run gate; it is the parse check. Never skip reading the live summary; it is the concurrency check.

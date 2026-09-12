@@ -11,7 +11,7 @@ Data model: how Zurdo PRD concepts map to GitHub milestones, epic issues, task i
 | `scope.md` (project scope file) | Scope issue (top-level container; all PRD epics nest under it as sub-issues when `--scope` is given) |
 | `## Destination` first paragraph in `scope.md` | Projects v2 project short description (capped at 256 chars; rewritten on every `scope` run) |
 | Whole `scope.md` body | Projects v2 project README, under a `# <initiative title>` heading (rewritten on every `scope` run) |
-| Ticket file (`tickets/<phase>-<name>.md`) | Ticket issue (phase-level deliverable; sub-issue of the scope issue; phase epics are blocked by it) |
+| Ticket file (`tickets/<name>.md`) | Ticket issue (research or grilling question; sub-issue of the scope issue; the epics it `blocks` are blocked by it) |
 | `# PRD: <title>` | Milestone title + epic issue title |
 | Intro text (after H1, before first `## Task:`) | Milestone description + epic issue body intro |
 | `## Task: <id> — <title>` | Task issue (sub-issue of epic, member of milestone) |
@@ -35,11 +35,11 @@ Labels belong to three groups plus the five triage labels.
 
 | Name | Hex | Description |
 |---|---|---|
-| `zurdo:scope` | `#0075CA` | Zurdo project scope issue |
-| `zurdo:ticket` | `#006B75` | Zurdo phase ticket issue |
+| `zurdo:scope` | `#0052CC` | Zurdo initiative scope issue |
+| `zurdo:research` | `#006B75` | Zurdo research ticket |
+| `zurdo:grilling` | `#EE0701` | Zurdo grilling ticket |
 | `zurdo:epic` | `#5319E7` | Zurdo PRD epic issue |
 | `zurdo:task` | `#1D76DB` | Zurdo PRD task issue |
-| `zurdo:grilling` | `#E4E669` | Issue under active grilling / design review |
 
 ### Group 2 — state
 
@@ -151,18 +151,20 @@ When sub-issues are unavailable (fallback mode), append:
 ### Ticket body
 
 ```markdown
-<!-- zurdo-github ticket=<phase>-<name> -->
+Part of #<scope-number>
 
-<description from ticket file>
+<!-- zurdo-github scope=<initiative-slug> ticket=<name> -->
 
-## Epics
+## Question
 
-| Epic | PRD | Status |
-|---|---|---|
-| [<epic-title>](#<epic-number>) | <prd-path> | Todo |
+<## Question body from the ticket file, verbatim>
+
+## Findings
+
+<## Findings body; present only when the file is status: resolved>
 ```
 
-`ticket` creates the issue, links it as a sub-issue of the scope issue, and wires a blocked-by edge from each phase epic to the ticket in a second pass (so the epic cannot start until the ticket is complete). The checklist fallback applies to the scope body only; the epic-blocked-by-ticket edge degrades to a `Blocked by:` line in the epic body when the dependency endpoint is unavailable.
+The issue title is the ticket's `question:` line; the label is `zurdo:research` or `zurdo:grilling` from `type:`; no assignee. `ticket` projects one file, links it as a sub-issue of the scope issue, and, when the file is `resolved` and the issue is open, posts the Findings as a comment and closes it. The `scope` sweep does the same for every file under `tickets/` and then wires edges in a second pass: ticket-to-ticket `blocked-by`, and a blocked-by edge from each phase epic to every ticket that `blocks` it, so the epic cannot start until the ticket resolves. When the epic does not exist yet the sweep prints `defer: phase-NN has no epic yet`. The summary's `edges: mode=` reports `native` or `fallback`.
 
 ---
 
@@ -173,11 +175,11 @@ When sub-issues are unavailable (fallback mode), append:
 ```
 <!-- zurdo-github prd=<path> task=<task-id> -->
 <!-- zurdo-github prd=<path> epic -->
-<!-- zurdo-github scope=<project-slug> -->
-<!-- zurdo-github ticket=<phase>-<name> -->
+<!-- zurdo-github scope=<initiative-slug> -->
+<!-- zurdo-github scope=<initiative-slug> ticket=<name> -->
 ```
 
-`<path>` is the PRD file path as passed to the script (e.g. `docs/my-feature/prds/prd-01-setup.md`). `<project-slug>` is the slugified project title from `scope.md`. `<phase>-<name>` identifies the ticket file (e.g. `phase-01-foundations`).
+`<path>` is the PRD file path as passed to the script (e.g. `docs/my-feature/prds/prd-01-setup.md`). `<initiative-slug>` is the basename of the directory holding `scope.md` (`my-feature` for `docs/my-feature/scope.md`), not the title. `<name>` is the ticket file's basename without `.md` (e.g. `webhook-retries`).
 
 ### Why an HTML comment
 
@@ -311,7 +313,7 @@ Re-running any mode must be safe. The rules:
 | Milestone | `GET repos/<o>/<r>/milestones?state=all` — match on title | PATCH description; reuse number | Delete or renumber |
 | Labels | `gh label list --json name` — match on name | Skip create | Delete or rename |
 | Scope issue | Search marker `<!-- zurdo-github scope=<slug> -->` + body confirm | Edit body in place | Reopen if closed; create duplicate |
-| Ticket issue | Search marker `<!-- zurdo-github ticket=<phase>-<name> -->` + body confirm | Edit title, body, labels | Reopen if closed; create duplicate |
+| Ticket issue | Search marker `<!-- zurdo-github scope=<slug> ticket=<name> -->` + body confirm | Edit title, body, labels | Reopen if closed; create duplicate |
 | Epic issue | Search marker `<!-- zurdo-github prd=<path> epic -->` + body confirm | Edit body in place | Reopen if closed; create duplicate |
 | Task issue | Search marker `<!-- zurdo-github prd=<path> task=<id> -->` + body confirm | Edit title, body, labels, milestone | Reopen if closed; create duplicate |
 | Sub-issue edge | 422 "already" response is silently ignored | No action needed | — |

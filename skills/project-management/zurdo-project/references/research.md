@@ -19,8 +19,8 @@ Full template:
 type: research
 question: <one sentence: the specific unknown>
 status: open          # open | resolved
-blocks: [phase-NN]    # phases that cannot proceed until this resolves; empty if none
-blocked-by: []        # other ticket slugs this ticket depends on
+blocks: [phase-NN]    # optional; phases that cannot proceed until this resolves; omit when none
+blocked-by: []        # optional; other ticket slugs this ticket depends on; omit when none
 ---
 
 ## Question
@@ -58,6 +58,21 @@ Each subagent's brief contains three things:
 2. The destination file: `docs/<initiative>/tickets/<slug>.md`.
 3. The instruction to write `## Findings` there, flip `status: resolved`, and run `zurdo-github.sh ticket <file>` when done.
 
+Brief template:
+
+```
+Research ticket: <question line from the frontmatter>
+
+Question, verbatim from docs/<initiative>/tickets/<slug>.md:
+<## Question body>
+
+Deliver, in this order:
+1. Write `## Findings` in that file. Cite every claim (URL or repo path). Label "Observed:" and "Recommendation:". End with one `PRD line:`. List anything new under `## Follow-ups`.
+2. Flip `status: resolved` in the frontmatter.
+3. Run `zurdo-github.sh ticket --dry-run docs/<initiative>/tickets/<slug>.md`, read the plan, then the live call.
+Do not edit scope.md or any other ticket. Do not answer the follow-ups.
+```
+
 The subagent:
 - Writes findings directly into the ticket file under `## Findings`.
 - Sets `status: resolved` in the frontmatter.
@@ -82,14 +97,14 @@ Every `## Findings` section must meet these four standards:
 
 ## Blocking a phase
 
-Set `blocks: [phase-NN]` in the ticket frontmatter. The script reads this field when the epic exists and sets the phase status to `researching`. If the epic does not yet exist (research runs before the PRD is published), the script defers the edge — it records the intent but cannot wire the GitHub relationship until the epic is created during `zurdo-github.sh publish`.
+Set `blocks: [phase-NN]` in the ticket frontmatter and flip that phase's row to `researching` in `scope.md` yourself; the script never writes to `scope.md`. On every `scope` run the sweep reads `blocks`: when the phase's epic exists it posts a blocked-by edge from the epic to the ticket; when it does not (research runs before the PRD is published) it prints `defer: phase-NN has no epic yet` and tries again on the next run after `publish --scope <n>`. The single-file `ticket` mode does not wire edges; run `scope` for that.
 
 A phase in `researching` status:
 - Does not graduate to PRD authoring.
 - Does not allow `zurdo-prd-author` to run.
 - Remains blocked until every ticket in its `blocks` chain is `resolved`.
 
-When the last blocking ticket resolves, the phase status returns to `planned` and PRD authoring can proceed.
+When the last blocking ticket resolves, flip the phase status to `ready`; PRD authoring can proceed.
 
 A research ticket whose findings compare approaches and must be decided on measurement, not taste, graduates to a design record: invoke `zurdo-design-author` to write `docs/<initiative>/design/<topic>.md`, and link the record from the ticket's `## Findings` and from the phase PRD's `## Background`.
 

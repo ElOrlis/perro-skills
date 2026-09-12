@@ -28,7 +28,7 @@ planned → researching → ready → running → done
 | `researching` | At least one open ticket has `blocks: [phase-NN]`. | Agent, when the blocking ticket is opened. |
 | `ready` | No open blocking tickets; PRD may be written. | Agent, when the last blocking ticket resolves. |
 | `running` | PRD published; `zurdo run` is in progress. | Agent, after `publish --scope <n>` succeeds. |
-| `done` | Every Zurdo task is `passed`; `sync-status` completed; phase review done. | Agent, after phase review closes. |
+| `done` | Every Zurdo task `passed`; `sync-status` ran; `zurdo-prd-review` landed as intended; phase review closed. | Agent, after phase review closes. |
 
 **Only one phase may be `running` at a time.** If a phase is `running`, do not advance any other phase to `running` until the current one reaches `done`.
 
@@ -68,40 +68,46 @@ Before invoking `zurdo-prd-author`:
 Run these commands in order. Always `--dry-run` first.
 
 ```bash
-# One-time per repo (skip if already bootstrapped)
-zurdo-github.sh bootstrap
+PRD=docs/<initiative>/prds/prd-NN-<phase>.md
+
+# Once per repo, before the first publish; needs a PRD for its effort labels; safe to repeat
+zurdo-github.sh bootstrap --dry-run $PRD
+zurdo-github.sh bootstrap $PRD
 
 # Preview the publish
-zurdo-github.sh publish --dry-run --scope <n>
+zurdo-github.sh publish --dry-run --scope <n> $PRD
 
-# Live publish: creates milestone, epic, task issues, enrolls them in the Project
-zurdo-github.sh publish --scope <n>
+# Live publish: milestone, epic, task issues, edges; nests the epic under scope issue <n>
+zurdo-github.sh publish --scope <n> $PRD
 
-# Create or update the Project board (also links it to the repo)
-zurdo-github.sh board --project "<initiative title>"
+# Enroll the task issues on the initiative's Project; pass the initiative title or a second board is created
+zurdo-github.sh board --project "<initiative title>" --dry-run $PRD
+zurdo-github.sh board --project "<initiative title>" $PRD
 
-# Refresh the scope issue and the Project description/README to reflect the new running phase
-zurdo-github.sh scope --dry-run
-zurdo-github.sh scope
+# Flip the phase row to running in scope.md, then refresh the scope issue and the Project description/README
+zurdo-github.sh scope --dry-run docs/<initiative>/scope.md
+zurdo-github.sh scope docs/<initiative>/scope.md
 ```
 
-After `publish --scope <n>` succeeds, flip the phase row to `Status: running` in `scope.md`.
+Flip the phase row to `Status: running` in `scope.md` after `publish --scope <n>` succeeds and before the `scope` refresh, so the projection carries the new status and the epic link in one run.
 
-`bootstrap` runs once per repo; it initializes the marker database. Calling it again on an already-bootstrapped repo is safe — it is idempotent.
+`bootstrap` creates the label vocabulary (type, status, triage, and the `effort:` values read from the PRD). Calling it again is safe; it creates only what is missing. `scope` and `ticket` create their own labels, so bootstrap is not needed before charting.
 
 ---
 
 ## Running and syncing
 
 ```bash
+PRD=docs/<initiative>/prds/prd-NN-<phase>.md
+
 # Execute the phase
 zurdo run
 
-# Preview the status sync
-zurdo-github.sh sync-status --dry-run
+# Preview the status sync; reads the newest .zurdo/<prd-basename>-*/ run, or --slug <slug>
+zurdo-github.sh sync-status --dry-run $PRD
 
 # Mirror outcomes to GitHub issue statuses
-zurdo-github.sh sync-status
+zurdo-github.sh sync-status $PRD
 ```
 
 While a run is in flight or just finished, invoke `zurdo-state-summary` for the task tally and the settled/resume/reset call; do not run `sync-status` against a run that still holds a live lock. If any task finished `failed`, invoke `zurdo-hint-debugger` on the failing criterion before touching the hint or the code by hand.
@@ -111,8 +117,8 @@ After `zurdo review` (the CLI TUI that signs off `[manual]` criteria), run `sync
 Then refresh the scope issue:
 
 ```bash
-zurdo-github.sh scope --dry-run
-zurdo-github.sh scope
+zurdo-github.sh scope --dry-run docs/<initiative>/scope.md
+zurdo-github.sh scope docs/<initiative>/scope.md
 ```
 
 **Do not declare the phase `done` until every task is `passed` and the intent review verdict is landed-as-intended.** If any task is not `passed` after `sync-status`, investigate before closing; do not manually flip the scope row.
@@ -130,7 +136,7 @@ A phase review begins when every Zurdo task for the running phase is `passed` af
 Before the interview, invoke `zurdo-prd-review` against the phase PRD. Green criteria are necessary, not sufficient: a hint can pass on a change that misses the task's intent. The skill binds `.zurdo/<slug>/run-diff.patch` to each task, reads the `.trail.md` sidecar as its best intent source, and ends in one of two verdicts:
 
 - **Landed as intended** — proceed to the interview; the per-task report is the input to Round 1.
-- **Gaps exist** — the skill scaffolds `<stem>-followup.md` beside the PRD (never editing the original) and may write `lessons/` files. Commit them together, publish the follow-up with `publish --scope <n>`, run it, and `sync-status`. The phase stays `running`; re-run the intent review when the follow-up is green. Do not start the interview on a gaps verdict.
+- **Gaps exist** — the skill scaffolds `<stem>-followup.md` beside the PRD (never editing the original) and may write `lessons/` files. Commit them together, publish the follow-up with `publish --scope <n>`, run it, and `sync-status`. The phase stays `running`; re-run the intent review when the follow-up is green. Do not start the interview on a gaps verdict. The follow-up gets its own milestone and epic under the scope issue; the phase row keeps the original PRD path, so the scope issue's Epic column shows the original epic and the follow-up is visible only as a second sub-issue of the scope issue.
 
 If `zurdo-prd-review` is not installed, run the interview against `prd.json` and the diff alone and record in the review notes that no intent-level review ran.
 
@@ -154,8 +160,8 @@ After the interview, update `scope.md` in this order:
 Then refresh the scope issue:
 
 ```bash
-zurdo-github.sh scope --dry-run
-zurdo-github.sh scope
+zurdo-github.sh scope --dry-run docs/<initiative>/scope.md
+zurdo-github.sh scope docs/<initiative>/scope.md
 ```
 
 ### End condition
@@ -163,7 +169,7 @@ zurdo-github.sh scope
 The review ends in one of two ways:
 
 - **Next phase named** — the review identifies a phase in `ready` status (or a phase that can now move to `ready` because its blockers resolved). Name it explicitly as the next phase to run.
-- **Initiative done** — the destination is reached and no fog remains in "Not yet specified." Close the scope issue. Do not graduate a next phase.
+- **Initiative done** — the destination is reached and no fog remains in "Not yet specified." Run a final `scope` refresh, then close the scope issue with `gh issue close <n> --comment "Destination reached"`. The script never closes it; this is the one direct write besides claiming. Do not graduate a next phase.
 
 The review is not complete until one of these two conditions is met.
 

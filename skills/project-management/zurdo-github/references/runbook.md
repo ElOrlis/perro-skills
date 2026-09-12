@@ -106,10 +106,10 @@ and exits 3. Run `./scripts/zurdo-github.sh scope <prd>` (or confirm the correct
 
 **Hand-closed tickets**
 
-If a ticket issue is closed by hand outside of sync, `ticket` re-runs leave it closed and print:
+If a ticket issue is closed by hand while its file still says `status: open`, `ticket` and `scope` re-runs leave it closed, update body and labels, and print (live runs only; the dry-run assumes every issue is new):
 
 ```
-DIVERGED: ticket-<phase>-<name> is closed in GitHub; body and labels updated, state unchanged
+divergence: <name> closed on GitHub but open in file
 ```
 
 The ticket body and labels are updated in place; the closed state is never changed by the tool.
@@ -229,7 +229,7 @@ Fallback mode is decided by the POST's **exit status**, never by sniffing the re
 
 **Timeouts**
 
-Every network call is wrapped with `timeout 90`. A call that exceeds 90 seconds is killed and the run fails with exit code 3 (see exit-code table below). Network flakiness on GitHub's side is the common cause; retry the full run — idempotency makes it safe.
+Every network call is wrapped with `timeout 90`. A call that exceeds 90 seconds is killed. Where the script does not swallow the failure, the run stops with `timeout`'s own status (124), outside the table below; where it does, the summary shows a placeholder number. Network flakiness on GitHub's side is the common cause; retry the full run — idempotency makes it safe.
 
 **Rate limits**
 
@@ -239,16 +239,18 @@ Check remaining quota before a large publish (many tasks):
 gh api rate_limit --jq '.resources.core | {limit, remaining, reset}'
 ```
 
-`reset` is a Unix timestamp. If `remaining` is below the estimated call count (roughly 3 per task plus 10 fixed), wait until reset. The script does not auto-wait on rate limit responses; it exits 2.
+`reset` is a Unix timestamp. If `remaining` is below the estimated call count (roughly 3 per task plus 10 fixed), wait until reset. The script does not auto-wait on rate-limit responses; the failed call surfaces as exit 1 or as a swallowed failure in the summary.
 
 **Exit-code table**
 
 | Code | Meaning |
 |---|---|
 | `0` | All operations completed successfully |
-| `1` | Validation or configuration error (bad PRD, missing `jq`, wrong repo) — fix the input and re-run |
-| `2` | GitHub API rate limit hit — wait for quota reset, then re-run |
-| `3` | Network timeout or transient API failure — retry; idempotency makes re-runs safe |
+| `2` | Usage or parse error: unknown mode, missing path, unknown flag, or a `PARSE ERROR:` from the PRD, scope, or ticket parser — fix the invocation or the offending line and re-run |
+| `3` | Auth or capability error: no origin remote and no `--repo`, `project` scope missing for `board`, or `run scope first` — apply the hint printed with the error |
+| `1` | Anything else: a `gh` call failed, or `sync-status` found no run directory or `prd.json` — check auth and network, or pass `--slug` |
+
+This is the script's own usage text (`--help`); trust it over any other table.
 
 ---
 

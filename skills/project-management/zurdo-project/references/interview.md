@@ -75,7 +75,7 @@ The user may answer **"all recommended"** to accept every `➡️` answer in the
 **Protocol:**
 - Ask one frontier round to surface all areas of known unknowing.
 - For each area: is it sharp enough to write a ticket, or is it fog that needs research first?
-- Sharp → open a grilling or research ticket. Fog → record in `scope.md` Notes.
+- Sharp → open a grilling or research ticket. Fog → record under `## Not yet specified` in `scope.md`; Notes holds facts and preferences, never open questions.
 - Do not recurse into any single phase; record it and move on.
 
 **Stop condition:** Every area the user can name has been classified as a phase, a ticket, or fog. No further threads are dangling. Stop; do not resolve any open ticket in this session.
@@ -95,7 +95,7 @@ The user may answer **"all recommended"** to accept every `➡️` answer in the
 - Round 3: scope changes (what is now in scope that was not, what is out, and why).
 - Do not open tickets for the next phase here; record decisions and fog in `scope.md` first; graduate the next phase separately.
 
-**Stop condition:** `scope.md` reflects the phase's outcomes, the Decisions so far section is current, and the Notes section records any new fog. No unresolved surprise is left without a ticket or a fog entry.
+**Stop condition:** `scope.md` reflects the phase's outcomes, the Decisions so far section is current, and Not yet specified records any new fog. No unresolved surprise is left without a ticket or a fog entry.
 
 ---
 
@@ -125,7 +125,7 @@ A **grilling ticket** records a question that requires the user's live judgment.
 
 At the end of any interview — regardless of shape — write in this order:
 
-1. **Write `scope.md` first.** Add the new decision(s) to `## Decisions so far`, update `## Notes` for any new fog, and revise `## Destination` if the session sharpened it.
-2. **Refresh the scope issue.** Update the issue body to reflect the current `scope.md` state. The issue is a projection; `scope.md` is the source.
+1. **Write `scope.md` first.** Add the new decision(s) to `## Decisions so far`, add new fog under `## Not yet specified`, add durable facts or preferences to `## Notes`, and revise `## Destination` if the session sharpened it.
+2. **Refresh the projections.** Run `zurdo-github.sh scope --dry-run docs/<initiative>/scope.md`, read the plan, then the live call. The scope issue, the Project description, and the Project README are projections; `scope.md` is the source.
 
 Never update the GitHub issue before the file. Drift originates from reversing this order.

@@ -18,7 +18,7 @@ This is a *skills* repository, not an application. There is no build, no runtime
 
 ## Authoring a skill — the rules
 
-Follow `superpowers:writing-skills` discipline. When creating or editing a skill, invoke that skill first.
+Follow the four rules below when creating or editing a skill.
 
 1. **Progressive disclosure.** `SKILL.md` is a standalone working guide carrying the high-frequency decision rules **inline**, not a thin index that just links out. Each inline rule is: a terse imperative line + a one-line "why" + an arrow `→ see references/<file>.md` pointing to depth.
 2. **Depth lives in `references/`.** Long-form synthesis, examples, and edge cases go in `references/*.md`. `SKILL.md` must have a "References" section linking every reference file with a one-line description.
